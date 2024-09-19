@@ -16,6 +16,39 @@
         <mxCell id="I_QVvolvyh0wgv4aYKM6-4" value="Doctor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="145" y="200" width="30" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="60" width="410" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-7" value="&lt;b&gt; Mister Ed&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="60" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-8" value="Log-in" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="180" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-9" value="User&#39;s Database" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="290" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-10" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="I_QVvolvyh0wgv4aYKM6-8" target="I_QVvolvyh0wgv4aYKM6-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="400" as="sourcePoint" />
+            <mxPoint x="380" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-11" value="Email Address" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="180" width="120" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-13" value="Password" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="280" width="120" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-14" value="&amp;lt;&amp;lt;includes&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.767;exitY=0.96;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="I_QVvolvyh0wgv4aYKM6-8" target="I_QVvolvyh0wgv4aYKM6-13">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="507" y="222" as="sourcePoint" />
+            <mxPoint x="620" y="221" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-15" value="Call Staff/Live chat" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="382.5" y="110" width="127.5" height="50" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
