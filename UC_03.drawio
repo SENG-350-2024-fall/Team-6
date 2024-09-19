@@ -162,10 +162,19 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-53" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="900" y="155" width="120" height="310" as="geometry" />
+          <mxGeometry x="900" y="155" width="150" height="310" as="geometry" />
         </mxCell>
-        <mxCell id="I_QVvolvyh0wgv4aYKM6-54" value="&lt;b&gt;Primary Actors&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="900" y="155" width="90" height="30" as="geometry" />
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-54" value="&lt;b&gt;Secondary Actors&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="155" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-55" value="Clinic" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="960" y="202" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-56" value="Pharmacy" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="960" y="324" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-57" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410.5" y="610" width="106.5" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
