@@ -14,10 +14,10 @@
           <mxGeometry x="90" y="150" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="61" width="620" height="959" as="geometry" />
+          <mxGeometry x="240" y="-90" width="620" height="1140" as="geometry" />
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-7" value="&lt;b&gt; Mister Ed&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="61" width="120" height="40" as="geometry" />
+          <mxGeometry x="240" y="-90" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-15" value="Check ED Load" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="386.38" y="400" width="121.25" height="50" as="geometry" />
@@ -119,11 +119,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="I_QVvolvyh0wgv4aYKM6-39" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;UC_03 Use Case Diagram&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="310" y="-40" width="275" height="30" as="geometry" />
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-39" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;Comprehensive Use Case Diagram&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="397" y="-180" width="275" height="30" as="geometry" />
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-42" value="Log-in" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="386.38" y="100" width="120" height="50" as="geometry" />
+          <mxGeometry x="386.38" y="-10" width="120" height="50" as="geometry" />
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-43" value="User&#39;s Database" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="602" y="155" width="115" height="60" as="geometry" />
@@ -249,7 +249,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-70" value="Issue Meds" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="410.5" y="850" width="106.5" height="60" as="geometry" />
+          <mxGeometry x="410.5" y="800" width="106.5" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-72" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="I_QVvolvyh0wgv4aYKM6-46" target="I_QVvolvyh0wgv4aYKM6-70">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -275,7 +275,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-74" value="Chat with Patient" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="410.5" y="950" width="106.5" height="60" as="geometry" />
+          <mxGeometry x="410.5" y="900" width="106.5" height="60" as="geometry" />
         </mxCell>
         <mxCell id="I_QVvolvyh0wgv4aYKM6-75" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="I_QVvolvyh0wgv4aYKM6-74">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -286,6 +286,15 @@
               <mxPoint x="20" y="600" />
               <mxPoint x="100" y="930" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-78" value="Virtual Assessment " style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="387.63" y="90" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-79" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.07;entryY=0.8;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="I_QVvolvyh0wgv4aYKM6-78">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="220" as="sourcePoint" />
+            <mxPoint x="396" y="215" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
