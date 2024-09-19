@@ -58,9 +58,9 @@
         <mxCell id="ufBsXPS3xFedlbiG6Zfy-25" value="Doctor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="165" y="270" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ufBsXPS3xFedlbiG6Zfy-26" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ufBsXPS3xFedlbiG6Zfy-25" target="ufBsXPS3xFedlbiG6Zfy-8">
+        <mxCell id="ufBsXPS3xFedlbiG6Zfy-26" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.833;exitY=0.333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ufBsXPS3xFedlbiG6Zfy-25" target="ufBsXPS3xFedlbiG6Zfy-8">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="420" as="sourcePoint" />
+            <mxPoint x="200" y="290" as="sourcePoint" />
             <mxPoint x="450" y="370" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -85,6 +85,12 @@
               <mxPoint x="550" y="180" />
             </Array>
             <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ufBsXPS3xFedlbiG6Zfy-32" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ufBsXPS3xFedlbiG6Zfy-25" target="ufBsXPS3xFedlbiG6Zfy-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="300" as="sourcePoint" />
+            <mxPoint x="450" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
