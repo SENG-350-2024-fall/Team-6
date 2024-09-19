@@ -224,6 +224,18 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="I_QVvolvyh0wgv4aYKM6-68" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="I_QVvolvyh0wgv4aYKM6-23" target="I_QVvolvyh0wgv4aYKM6-20">
+          <mxGeometry x="-0.5961" y="20" width="160" relative="1" as="geometry">
+            <mxPoint x="407" y="544" as="sourcePoint" />
+            <mxPoint x="410" y="370" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="370" y="580" />
+              <mxPoint x="290" y="580" />
+              <mxPoint x="290" y="240" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
