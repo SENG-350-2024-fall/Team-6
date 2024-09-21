@@ -266,12 +266,12 @@
         <mxCell id="SGyGOrsd530BBkBX5eQM-1" value="Check Prescription Status" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="402.63" y="660" width="120" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="SGyGOrsd530BBkBX5eQM-4" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.833;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="I_QVvolvyh0wgv4aYKM6-2" target="SGyGOrsd530BBkBX5eQM-1">
+        <mxCell id="SGyGOrsd530BBkBX5eQM-4" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="SGyGOrsd530BBkBX5eQM-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="180" y="230" as="sourcePoint" />
+            <mxPoint x="170" y="220" as="sourcePoint" />
             <mxPoint x="438" y="543" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="160" y="700" />
+              <mxPoint x="170" y="703" />
             </Array>
           </mxGeometry>
         </mxCell>
