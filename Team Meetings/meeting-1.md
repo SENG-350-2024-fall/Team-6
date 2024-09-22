@@ -1,16 +1,17 @@
 **Meeting 1 - Sep 12**
 
-Each member is to create at least one use case's text description by Saturday, Sep 14
-
+During the first week of lab, we formed our groups and began by reviewing the Milestone 1 description both individually and as a team. We decided to work on the same project specified in the milestone rather than selecting our own topics.
+<br><br>
+Each of us began collaborating on the overall use case diagram, aiming to consider all possible actors while determining which would be the primary ones. We divided the research tasks among ourselves, with each member focusing on one actor to generate ideas for our next lab session.
+<br><br>
+Most of our time was spent on group formation and thoroughly understanding the requirements for Milestone 1. Below are some primary actors we thought would be good to start with.
+<br><br>
 Actors of application Identified to be:
-
 1. Patient
 2. Doctor
 3. Nurse
 4. Admin
 5. Program/Application Maintainer
-
-(Add descriptions and reasoning behind identified actors)
 
 **Meeting 2 - Sep 19**
 
