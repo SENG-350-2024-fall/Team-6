@@ -14,10 +14,14 @@ Actors of application Identified to be:
 
 **Meeting 2 - Sep 19**
 
-After reviewing the project Milestone 1 guidelines and gathering more information about the project, we discussed further
-as a team in the lab. We decided to change our primary actors to include a doctor, nurse, ED staff, patient, and system administrator.
-To avoid clutter, we planned to create a separate use case diagram for each primary actor, as having one diagram for all would be
-too complex. We divided the work evenly among our five team members, with each member taking responsibility for one actor. Each
-member will create a use case diagram for their assigned actor and also write a minimum of five textual use cases.
-We aim to complete the diagrams by the following Monday after our meeting, and we’ll schedule another time to meet before
-the next lab to finalize Milestone 1.
+After reviewing the guidelines for Milestone 1 and gathering additional information about the project,
+our team engaged in further discussions during our lab session. We have decided to update our primary actors
+to include a doctor, nurse, ED staff, patient, and system administrator.
+<br>
+To maintain clarity and organization, we will create a separate use case diagram for each primary actor,
+as combining all actors into a single diagram would be overly complex. We have evenly distributed the workload
+among our five team members, with each member responsible for developing the use case diagram and writing a
+minimum of five textual use cases for their assigned actor.
+<br>
+Our goal is to complete these diagrams by the following Monday after our meeting. Additionally, we plan
+to schedule another meeting before the next lab to finalize Milestone 1.
