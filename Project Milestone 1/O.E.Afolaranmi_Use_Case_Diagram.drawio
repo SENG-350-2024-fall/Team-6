@@ -5,7 +5,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="4P_DZhee5pJh1wVSsmIm-3" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="2" y="-149" width="977" height="990" as="geometry" />
+          <mxGeometry x="2" y="-207" width="977" height="1048" as="geometry" />
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-1" value="System Administrator&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="-168" y="173" width="30" height="60" as="geometry" />
@@ -35,7 +35,7 @@
           <mxGeometry x="55" y="333" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-11" value="logIn" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="58" y="-78" width="120" height="80" as="geometry" />
+          <mxGeometry x="39.5" y="-183" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-12" value="givePermission" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="24" y="176" width="151" height="99" as="geometry" />
@@ -194,7 +194,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-57" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;System Administrator Use Case Diagram&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-163" y="-262" width="225" height="90" as="geometry" />
+          <mxGeometry x="-213" y="-249" width="225" height="90" as="geometry" />
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-62" value="resetPassword" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="644" y="461" width="120" height="80" as="geometry" />
@@ -206,12 +206,30 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-64" value="systemSecurityCheck" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="604" y="-34" width="139" height="87" as="geometry" />
+          <mxGeometry x="589" y="-38" width="139" height="87" as="geometry" />
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-65" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="THxBq8Z5EoYOMyfSU2FK-45" target="THxBq8Z5EoYOMyfSU2FK-64">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="317" y="90" as="sourcePoint" />
             <mxPoint x="367" y="40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="THxBq8Z5EoYOMyfSU2FK-66" value="systemAudit" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="852" y="-34" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="THxBq8Z5EoYOMyfSU2FK-67" value="&amp;lt;&amp;lt;includes&amp;gt;&amp;gt;" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="THxBq8Z5EoYOMyfSU2FK-64" target="THxBq8Z5EoYOMyfSU2FK-66">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="791" y="-42" as="sourcePoint" />
+            <mxPoint x="841" y="-92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="THxBq8Z5EoYOMyfSU2FK-68" value="logActivity" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="68" y="-60" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="THxBq8Z5EoYOMyfSU2FK-69" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="THxBq8Z5EoYOMyfSU2FK-1" target="THxBq8Z5EoYOMyfSU2FK-68">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-63" y="132" as="sourcePoint" />
+            <mxPoint x="-13" y="82" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
