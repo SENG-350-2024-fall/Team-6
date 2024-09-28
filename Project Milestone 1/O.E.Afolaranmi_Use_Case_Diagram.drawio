@@ -1,11 +1,11 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.16">
   <diagram name="Page-1" id="twDvhtgVF-Ve9I6iekdA">
-    <mxGraphModel dx="3625" dy="1815" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1833" dy="1029" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="4P_DZhee5pJh1wVSsmIm-3" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;strokeColor=default;fillColor=default;" parent="1" vertex="1">
-          <mxGeometry x="-302" y="-239" width="1266" height="1048" as="geometry" />
+          <mxGeometry x="-302" y="-239" width="1681" height="1048" as="geometry" />
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-3" value="checkSystemLoad" style="ellipse;whiteSpace=wrap;html=1;strokeColor=default;fillColor=default;" parent="1" vertex="1">
           <mxGeometry x="397" y="53" width="120" height="80" as="geometry" />
@@ -191,7 +191,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-57" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;System Administrator Use Case Diagram&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=default;fillColor=default;" parent="1" vertex="1">
-          <mxGeometry x="726" y="-183" width="225" height="90" as="geometry" />
+          <mxGeometry x="1113" y="-211" width="225" height="90" as="geometry" />
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-62" value="resetPassword" style="ellipse;whiteSpace=wrap;html=1;strokeColor=default;fillColor=default;" parent="1" vertex="1">
           <mxGeometry x="644" y="461" width="120" height="80" as="geometry" />
@@ -236,6 +236,9 @@
         </mxCell>
         <mxCell id="THxBq8Z5EoYOMyfSU2FK-1" value="System Administrator&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=default;fillColor=#0D0D0D;" parent="WlEXncajSMZhKXmq6oTS-1" vertex="1">
           <mxGeometry x="85" y="64" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WlEXncajSMZhKXmq6oTS-2" value="" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-19" y="-244" width="1043" height="1058" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
