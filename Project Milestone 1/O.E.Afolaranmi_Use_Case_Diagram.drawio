@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.16">
   <diagram name="Page-1" id="twDvhtgVF-Ve9I6iekdA">
-    <mxGraphModel dx="3267" dy="1658" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2013" dy="1108" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -229,7 +229,7 @@
             <mxPoint x="-13" y="82" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WlEXncajSMZhKXmq6oTS-1" value="Primary Actor" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="WlEXncajSMZhKXmq6oTS-1" value="Primary Actor" style="swimlane;whiteSpace=wrap;html=1;fillColor=#0D0D0D;" vertex="1" parent="1">
           <mxGeometry x="-259" y="112" width="200" height="200" as="geometry">
             <mxRectangle x="-259" y="112" width="130" height="26" as="alternateBounds" />
           </mxGeometry>
