@@ -26,3 +26,9 @@ minimum of five textual use cases for their assigned actor.
 <br><br>
 Our goal is to complete these diagrams by the following Monday after our meeting. Additionally, we plan
 to schedule another meeting before the next lab to finalize Milestone 1.
+
+**Meeting 3 - Sep 26**
+
+Our team met to refine our Milestone 1 project. Since the work was divided efficiently,
+each member presented their progress, and we reviewed one another's work, offering suggestions
+for improvements as a team. We also discussed additional use cases and incorporated them into the project.
