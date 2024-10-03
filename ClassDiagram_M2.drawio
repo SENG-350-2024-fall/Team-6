@@ -4,6 +4,21 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="20" width="285" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-7" value="User" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="20" width="285" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-9" value="&lt;div&gt;+Name&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="60" width="285" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-10" value="&lt;div&gt;+DateOfBirth&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="80" width="285" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-11" value="&lt;div&gt;+Address&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="100" width="285" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
