@@ -146,7 +146,7 @@
           <mxGeometry y="110" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-67" value="View Records" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="200" y="588" width="160" height="136" as="geometry" />
+          <mxGeometry x="265" y="630" width="160" height="136" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-68" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kCQZ86NIx0HZvK4VsaJa-67" vertex="1">
           <mxGeometry y="26" width="160" height="84" as="geometry" />
