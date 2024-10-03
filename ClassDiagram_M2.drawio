@@ -50,16 +50,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-25" value="System Administrator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="930" y="300" width="180" height="140" as="geometry" />
+          <mxGeometry x="930" y="300" width="230" height="140" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-26" value="&lt;div&gt;+ Permissions&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-25" vertex="1">
-          <mxGeometry y="26" width="180" height="44" as="geometry" />
+          <mxGeometry y="26" width="230" height="44" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-27" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kCQZ86NIx0HZvK4VsaJa-25" vertex="1">
-          <mxGeometry y="70" width="180" height="8" as="geometry" />
+          <mxGeometry y="70" width="230" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="kCQZ86NIx0HZvK4VsaJa-28" value="+ getPermssions()&lt;br&gt;# setPermissions(Permissions)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-25" vertex="1">
-          <mxGeometry y="78" width="180" height="62" as="geometry" />
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-28" value="+ getPermssions(AdminEmailAddress)&lt;br&gt;# setPermissions(Permissions)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-25" vertex="1">
+          <mxGeometry y="78" width="230" height="62" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-29" value="Doctor" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-155" y="290" width="370" height="210" as="geometry" />
