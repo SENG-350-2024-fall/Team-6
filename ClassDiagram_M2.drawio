@@ -5,7 +5,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-13" value="Nurse" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="250" y="290" width="210" height="200" as="geometry" />
+          <mxGeometry x="250" y="290" width="210" height="220" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-14" value="&lt;div&gt;+ AllowedDuties&lt;/div&gt;&lt;div&gt;+ PatientsList&lt;br&gt;+ Schedule&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-13" vertex="1">
           <mxGeometry y="26" width="210" height="74" as="geometry" />
@@ -14,7 +14,7 @@
           <mxGeometry y="100" width="210" height="8" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-16" value="- setPatientsList(PatientsList)&lt;div&gt;- getPatientsList()&lt;/div&gt;&lt;div&gt;- setTreatments(patientID)&lt;/div&gt;&lt;div&gt;- getTreatments(patientID)&lt;/div&gt;&lt;div&gt;+ setSchedule(email address)&lt;br&gt;- getSchedule(email address)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-13" vertex="1">
-          <mxGeometry y="108" width="210" height="92" as="geometry" />
+          <mxGeometry y="108" width="210" height="112" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-17" value="Patient" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-190" y="290" width="160" height="164" as="geometry" />
