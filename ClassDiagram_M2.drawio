@@ -274,6 +274,20 @@
         <mxCell id="YFzNDSDjmiGHcyGTs0AI-6" value="+ DisplayAssesmentResults()&lt;div&gt;+ DisplayPresecription()&lt;/div&gt;&lt;div&gt;+ DisplayAppointments()&lt;/div&gt;&lt;div&gt;+ DisplayConfirmation()&lt;/div&gt;&lt;div&gt;+ DisplayLoginPage()&lt;/div&gt;&lt;div&gt;+ DisplayCancellation()&amp;nbsp;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="YFzNDSDjmiGHcyGTs0AI-1">
           <mxGeometry y="228" width="260" height="110" as="geometry" />
         </mxCell>
+        <mxCell id="YFzNDSDjmiGHcyGTs0AI-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.903;exitY=1.072;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.009;entryY=0.286;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="kCQZ86NIx0HZvK4VsaJa-20" target="YFzNDSDjmiGHcyGTs0AI-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-210" y="620" as="sourcePoint" />
+            <mxPoint x="-160" y="570" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-234" y="773" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YFzNDSDjmiGHcyGTs0AI-8" value="Patient performs necessary &lt;br&gt;tasks" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="YFzNDSDjmiGHcyGTs0AI-7">
+          <mxGeometry x="-0.1625" y="2" relative="1" as="geometry">
+            <mxPoint x="12" y="-22" as="offset" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
