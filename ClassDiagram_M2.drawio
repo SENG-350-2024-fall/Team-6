@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0" version="24.7.17">
   <diagram name="Page-1" id="DIFtrZZW887G86_Ft9EP">
-    <mxGraphModel dx="2063" dy="1763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1820" dy="1630" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -103,7 +103,7 @@
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-50" value="Regular Appointment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-700" y="1220" width="200" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="D10UU46wWhDUto-U2Or--1" value="+ WaitTime&lt;div&gt;+ Instructions&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="kCQZ86NIx0HZvK4VsaJa-50">
+        <mxCell id="D10UU46wWhDUto-U2Or--1" value="+ WaitTime&lt;div&gt;+ Instructions&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="kCQZ86NIx0HZvK4VsaJa-50" vertex="1">
           <mxGeometry y="26" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-51" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kCQZ86NIx0HZvK4VsaJa-50" vertex="1">
@@ -125,13 +125,16 @@
           <mxGeometry y="100" width="220" height="130" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-58" value="Hospital" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="760" y="654" width="160" height="146" as="geometry" />
+          <mxGeometry x="760" y="654" width="160" height="152" as="geometry" />
+        </mxCell>
+        <mxCell id="anEtgEdzq5n-XPFeTXOw-1" value="&amp;nbsp;+ Location&lt;div&gt;&amp;nbsp;+ PhoneNumber&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="kCQZ86NIx0HZvK4VsaJa-58">
+          <mxGeometry y="26" width="160" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-59" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kCQZ86NIx0HZvK4VsaJa-58" vertex="1">
-          <mxGeometry y="26" width="160" height="94" as="geometry" />
+          <mxGeometry y="86" width="160" height="6" as="geometry" />
         </mxCell>
-        <mxCell id="kCQZ86NIx0HZvK4VsaJa-60" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-58" vertex="1">
-          <mxGeometry y="120" width="160" height="26" as="geometry" />
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-60" value="+ getLocation(hospitalID)&lt;div&gt;+ setLocation(hospitalID)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-58" vertex="1">
+          <mxGeometry y="92" width="160" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-61" value="ED System" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="760" y="880" width="160" height="136" as="geometry" />
@@ -145,7 +148,7 @@
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-64" value="Virtual Triage" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="120" y="670" width="305" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="D10UU46wWhDUto-U2Or--2" value="&amp;nbsp;+ Questions&lt;div&gt;&amp;nbsp;+ Results&lt;/div&gt;&lt;div&gt;&amp;nbsp;+ Suggestions&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="kCQZ86NIx0HZvK4VsaJa-64">
+        <mxCell id="D10UU46wWhDUto-U2Or--2" value="&amp;nbsp;+ Questions&lt;div&gt;&amp;nbsp;+ Results&lt;/div&gt;&lt;div&gt;&amp;nbsp;+ Suggestions&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="kCQZ86NIx0HZvK4VsaJa-64" vertex="1">
           <mxGeometry y="26" width="305" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-65" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kCQZ86NIx0HZvK4VsaJa-64" vertex="1">
