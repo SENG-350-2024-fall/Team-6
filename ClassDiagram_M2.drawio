@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0" version="24.7.17">
   <diagram name="Page-1" id="DIFtrZZW887G86_Ft9EP">
-    <mxGraphModel dx="2277" dy="1880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2063" dy="1763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -101,13 +101,16 @@
           <mxGeometry y="98" width="260" height="172" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-50" value="Regular Appointment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-700" y="1220" width="160" height="136" as="geometry" />
+          <mxGeometry x="-700" y="1220" width="200" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="D10UU46wWhDUto-U2Or--1" value="+ Wait_Time&lt;div&gt;+ Instructions&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="kCQZ86NIx0HZvK4VsaJa-50">
+          <mxGeometry y="26" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-51" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kCQZ86NIx0HZvK4VsaJa-50" vertex="1">
-          <mxGeometry y="26" width="160" height="84" as="geometry" />
+          <mxGeometry y="66" width="200" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="kCQZ86NIx0HZvK4VsaJa-52" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-50" vertex="1">
-          <mxGeometry y="110" width="160" height="26" as="geometry" />
+        <mxCell id="kCQZ86NIx0HZvK4VsaJa-52" value="+ getWaitTime()&lt;div&gt;+ setInstructions(Date, Time)&lt;/div&gt;&lt;div&gt;+ getInstructions(&lt;span style=&quot;background-color: initial;&quot;&gt;Date, Time&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kCQZ86NIx0HZvK4VsaJa-50" vertex="1">
+          <mxGeometry y="90" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="kCQZ86NIx0HZvK4VsaJa-53" value="Virtual Appointment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-281" y="1215" width="220" height="230" as="geometry" />
