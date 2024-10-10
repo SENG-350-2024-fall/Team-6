@@ -32,3 +32,10 @@ to schedule another meeting before the next lab to finalize Milestone 1.
 Our team met to refine our Milestone 1 project. Since the work was divided efficiently,
 each member presented their progress, and we reviewed one another's work, offering suggestions
 for improvements as a team. We also discussed additional use cases and incorporated them into the project.
+
+
+**Meeting 4 - Oct 03**
+
+We started working on Milestone 2 and discussed how we want to proceed with the project. After reviewing the requirements, we identified the diagrams we need to create for this phase. To help track our progress, we added an incremental construction section where we will log the work as it develops.
+
+During the meeting, we focused on the class diagram. All team members collaborated, and we were able to create a rough draft of the class diagram together. This will serve as the foundation for refining the rest of the diagrams as we move forward.
