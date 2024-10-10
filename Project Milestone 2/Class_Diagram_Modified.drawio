@@ -289,6 +289,21 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="KYRrboBj7Vg_x4o4IDn0-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="KYRrboBj7Vg_x4o4IDn0-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="26325" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KYRrboBj7Vg_x4o4IDn0-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.144;entryY=1.049;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="KYRrboBj7Vg_x4o4IDn0-3" target="6I1sl8L_XAqL_WmrRl12-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1170" y="25850" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="225" y="25990" />
+              <mxPoint x="1161" y="25990" />
+              <mxPoint x="1161" y="25850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="KYRrboBj7Vg_x4o4IDn0-3" value="Triage" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="100" y="26220" width="250" height="210" as="geometry" />
         </mxCell>
