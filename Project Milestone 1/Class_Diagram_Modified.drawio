@@ -267,9 +267,6 @@
             <mxPoint x="830" y="26558.066666666666" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="M8oscCmM2QQ_4ZqXX-RY-13" value="Text" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="770" y="25890" width="60" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="M8oscCmM2QQ_4ZqXX-RY-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="M8oscCmM2QQ_4ZqXX-RY-14" target="6I1sl8L_XAqL_WmrRl12-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
