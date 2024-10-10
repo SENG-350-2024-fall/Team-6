@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="8p4IRBJsOH0NWqh5FR3a">
-    <mxGraphModel dx="1793" dy="981" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1912" dy="1047" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -106,28 +106,16 @@
           <mxGeometry y="138" width="292" height="182" as="geometry" />
         </mxCell>
         <mxCell id="6I1sl8L_XAqL_WmrRl12-39" value="Hospital" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1855" y="26450" width="200" height="190" as="geometry" />
+          <mxGeometry x="1855" y="26450" width="295" height="330" as="geometry" />
         </mxCell>
-        <mxCell id="6I1sl8L_XAqL_WmrRl12-40" value="&amp;nbsp;+ Location: String&lt;div&gt;&amp;nbsp;+ PhoneNumber: Int&lt;/div&gt;&lt;div&gt;+&amp;nbsp; distance: Double&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="6I1sl8L_XAqL_WmrRl12-39" vertex="1">
-          <mxGeometry y="26" width="200" height="60" as="geometry" />
+        <mxCell id="6I1sl8L_XAqL_WmrRl12-40" value="- hospitalID: String&lt;br&gt;- name: String&lt;br&gt;- location: String&lt;br&gt;- edCapacity: Integer&lt;br&gt;- currentEDLoad: Integer" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="6I1sl8L_XAqL_WmrRl12-39" vertex="1">
+          <mxGeometry y="26" width="295" height="90" as="geometry" />
         </mxCell>
         <mxCell id="6I1sl8L_XAqL_WmrRl12-41" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="6I1sl8L_XAqL_WmrRl12-39" vertex="1">
-          <mxGeometry y="86" width="200" height="6" as="geometry" />
+          <mxGeometry y="116" width="295" height="6" as="geometry" />
         </mxCell>
-        <mxCell id="6I1sl8L_XAqL_WmrRl12-42" value="+ getLocation(hospital_ID)&lt;div&gt;+ setLocation(hospital_ID)&lt;/div&gt;&lt;div&gt;+ getPhoneNumber(hospital_ID)&lt;/div&gt;&lt;div&gt;+ setPhoneNumber&lt;/div&gt;&lt;div&gt;+ getDistance(hospital_ID)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6I1sl8L_XAqL_WmrRl12-39" vertex="1">
-          <mxGeometry y="92" width="200" height="98" as="geometry" />
-        </mxCell>
-        <mxCell id="6I1sl8L_XAqL_WmrRl12-43" value="ED System" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1861" y="26700" width="194" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="6I1sl8L_XAqL_WmrRl12-44" value="+ load: Int&lt;div&gt;+ waitTime: Time&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="6I1sl8L_XAqL_WmrRl12-43" vertex="1">
-          <mxGeometry y="26" width="194" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="6I1sl8L_XAqL_WmrRl12-45" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="6I1sl8L_XAqL_WmrRl12-43" vertex="1">
-          <mxGeometry y="66" width="194" height="24" as="geometry" />
-        </mxCell>
-        <mxCell id="6I1sl8L_XAqL_WmrRl12-46" value="+ getLoad(hospitalLocation)&lt;div&gt;+ getWaitTime(hospitalLocation)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6I1sl8L_XAqL_WmrRl12-43" vertex="1">
-          <mxGeometry y="90" width="194" height="50" as="geometry" />
+        <mxCell id="6I1sl8L_XAqL_WmrRl12-42" value="+ updateEDCapacity(newCapacity: Integer): void&lt;br/&gt;+ incrementEDLoad(): void&lt;br/&gt;+ decrementEDLoad(): void&lt;br/&gt;+ getCurrentLoad(): Integer&lt;br/&gt;+ getName(): String&lt;br/&gt;+ setName(name: String): void&lt;br/&gt;+ getLocation(): String&lt;br/&gt;+ setLocation(location: String): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="6I1sl8L_XAqL_WmrRl12-39" vertex="1">
+          <mxGeometry y="122" width="295" height="208" as="geometry" />
         </mxCell>
         <mxCell id="6I1sl8L_XAqL_WmrRl12-47" value="Virtual Triage" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="40" y="25970" width="305" height="210" as="geometry" />
@@ -193,12 +181,6 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1910" y="25620" as="sourcePoint" />
             <mxPoint x="1610" y="25500" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="6I1sl8L_XAqL_WmrRl12-62" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.463;entryY=0.968;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="6I1sl8L_XAqL_WmrRl12-42" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1949" y="26704" as="sourcePoint" />
-            <mxPoint x="1943" y="26626" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="6I1sl8L_XAqL_WmrRl12-67" value="" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;exitX=0.49;exitY=1.013;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="6I1sl8L_XAqL_WmrRl12-9" target="6I1sl8L_XAqL_WmrRl12-53" edge="1">
