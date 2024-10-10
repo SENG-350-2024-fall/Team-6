@@ -39,3 +39,9 @@ for improvements as a team. We also discussed additional use cases and incorpora
 We started working on Milestone 2 and discussed how we want to proceed with the project. After reviewing the requirements, we identified the diagrams we need to create for this phase. To help track our progress, we added an incremental construction section where we will log the work as it develops.
 
 During the meeting, we focused on the class diagram. All team members collaborated, and we were able to create a rough draft of the class diagram together. This will serve as the foundation for refining the rest of the diagrams as we move forward.
+
+**Meeting 5 - Oct 10**
+
+In today’s meeting, we finalized the class diagram and are satisfied with its current state. From here, we planned how to proceed by dividing the remaining diagrams among team members, with each person responsible for about 4-5 diagrams. This ensures that the workload is distributed evenly across the team.
+
+We briefly discussed the diagrams to clarify any questions, and we aim to have them completed by Sunday or Monday. After that, we’ve scheduled another meeting to review the diagrams and start planning the coding phase, which we will begin working on afterward.
