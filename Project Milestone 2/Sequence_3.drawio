@@ -27,7 +27,7 @@
             <mxPoint x="45" y="700" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-83" value="The patient chooses a &lt;br&gt;preferable appointment time&lt;br&gt; and type then confirms it" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-82" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-83" value="Chooses a &lt;br&gt;preferable appointment time&lt;br&gt; and type then confirms it" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-82" vertex="1" connectable="0">
           <mxGeometry x="0.1172" relative="1" as="geometry">
             <mxPoint x="-11" y="-26" as="offset" />
           </mxGeometry>
@@ -103,7 +103,7 @@
             <mxPoint x="57" y="124.63999999999999" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-59" value="Check the patient&#39;s&lt;br&gt; test results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-58" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-59" value="Checks the patient&#39;s&lt;br&gt; test results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-58" vertex="1" connectable="0">
           <mxGeometry x="0.1236" y="3" relative="1" as="geometry">
             <mxPoint x="-10" y="-25" as="offset" />
           </mxGeometry>
@@ -136,7 +136,7 @@
             <mxPoint x="290" y="190" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-38" value="&lt;div&gt;The user clicks&lt;/div&gt;&lt;div&gt;&quot;Check my Assessment Results&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp;button&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-37" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-38" value="&lt;div&gt;Clicks&lt;/div&gt;&lt;div&gt;&quot;Check my Assessment Results&quot;&lt;/div&gt;&lt;div&gt;&amp;nbsp;button&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-37" vertex="1" connectable="0">
           <mxGeometry x="0.1236" y="3" relative="1" as="geometry">
             <mxPoint x="-22" y="-27" as="offset" />
           </mxGeometry>
@@ -192,7 +192,7 @@
             <mxPoint x="-554.5" y="177" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-76" value="Send the patient test results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-74" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-76" value="Sends the patient test results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-74" vertex="1" connectable="0">
           <mxGeometry x="0.1717" relative="1" as="geometry">
             <mxPoint x="14" y="-5" as="offset" />
           </mxGeometry>
@@ -203,7 +203,7 @@
             <mxPoint x="295" y="275.20000000000005" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-61" value="Send back the patient&#39;s&lt;br&gt;results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-60" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-61" value="Sends back the patient&#39;s&lt;br&gt;results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-60" vertex="1" connectable="0">
           <mxGeometry x="0.1008" y="-1" relative="1" as="geometry">
             <mxPoint x="7" y="-17" as="offset" />
           </mxGeometry>
@@ -233,7 +233,7 @@
             <mxPoint x="1069" y="227" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-73" value="Get the patient&#39;s test results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-72" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-73" value="Gets the patient&#39;s test results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-72" vertex="1" connectable="0">
           <mxGeometry x="-0.1199" y="2" relative="1" as="geometry">
             <mxPoint y="-8" as="offset" />
           </mxGeometry>
@@ -255,7 +255,7 @@
             <mxPoint x="90" y="722" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-81" value="Display all available appointments" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-79" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-81" value="Displays all available appointments" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-79" vertex="1" connectable="0">
           <mxGeometry x="-0.0526" y="2" relative="1" as="geometry">
             <mxPoint y="-12" as="offset" />
           </mxGeometry>
@@ -277,7 +277,7 @@
             <mxPoint x="90" y="952" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-96" value="Display a pop up message that &lt;br&gt;the selected appointment has been &lt;br&gt;booked" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-95" vertex="1" connectable="0">
+        <mxCell id="zMa2yMFzsjRW4yP6B8nZ-96" value="Displays a pop up message that &lt;br&gt;the selected appointment has been &lt;br&gt;booked" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zMa2yMFzsjRW4yP6B8nZ-95" vertex="1" connectable="0">
           <mxGeometry x="0.7605" y="1" relative="1" as="geometry">
             <mxPoint x="77" y="-31" as="offset" />
           </mxGeometry>
