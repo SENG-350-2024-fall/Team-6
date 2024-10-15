@@ -174,7 +174,7 @@
             <mxPoint y="-8" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BnOWhrEO1M733YUDJ6N0-30" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" target="BnOWhrEO1M733YUDJ6N0-33" edge="1">
+        <mxCell id="BnOWhrEO1M733YUDJ6N0-30" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.2;entryY=0.35;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="BnOWhrEO1M733YUDJ6N0-33" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="455" y="704" as="sourcePoint" />
             <mxPoint x="590" y="680" as="targetPoint" />
@@ -189,12 +189,12 @@
           <mxGeometry x="820" y="80" width="100" height="790" as="geometry" />
         </mxCell>
         <mxCell id="BnOWhrEO1M733YUDJ6N0-33" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="BnOWhrEO1M733YUDJ6N0-31" vertex="1">
-          <mxGeometry x="45" y="610" width="10" height="60" as="geometry" />
+          <mxGeometry x="45" y="600" width="10" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="BnOWhrEO1M733YUDJ6N0-35" value="The patient clicks &lt;br&gt;the &quot;Join&quot; button" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;exitX=-0.057;exitY=0.927;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
+        <mxCell id="BnOWhrEO1M733YUDJ6N0-35" value="The patient clicks &lt;br&gt;the &quot;Join&quot; button" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;exitX=-0.057;exitY=0.927;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.2;entryY=0.747;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="BnOWhrEO1M733YUDJ6N0-26" edge="1">
           <mxGeometry x="-0.012" relative="1" as="geometry">
-            <mxPoint x="452" y="739" as="targetPoint" />
-            <mxPoint x="864.9999999999998" y="740.02" as="sourcePoint" />
+            <mxPoint x="452" y="744" as="targetPoint" />
+            <mxPoint x="864.9999999999998" y="745.02" as="sourcePoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
