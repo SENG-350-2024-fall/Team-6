@@ -89,8 +89,8 @@
             <mxPoint x="12" y="-9" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hc-biCmf0aNUgXZs6N0B-1" value="Processes &lt;br&gt;results" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;elbow=vertical;edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1.038;exitY=0.345;exitPerimeter=0;" edge="1" parent="vEi8x9JW135LUDFCunV6-17">
-          <mxGeometry x="0.1081" y="-30" relative="1" as="geometry">
+        <mxCell id="Hc-biCmf0aNUgXZs6N0B-1" value="Processes &lt;br&gt;information" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;elbow=vertical;edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1.038;exitY=0.345;exitPerimeter=0;" edge="1" parent="vEi8x9JW135LUDFCunV6-17">
+          <mxGeometry x="0.1081" y="-50" relative="1" as="geometry">
             <mxPoint x="58" y="473" as="sourcePoint" />
             <mxPoint x="58" y="511" as="targetPoint" />
             <Array as="points">
