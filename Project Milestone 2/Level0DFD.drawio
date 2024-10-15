@@ -4,11 +4,11 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="dtrRUTYJO1EXD4Yrg5B--1" value="User" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--1" value="Patient" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="130" y="100" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="dtrRUTYJO1EXD4Yrg5B--2" value="&lt;div&gt;1.0&lt;/div&gt;Login / Register User" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="450" y="100" width="90" height="90" as="geometry" />
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--2" value="&lt;div&gt;1.0&lt;/div&gt;Login / Register&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="450" y="90" width="100" height="100" as="geometry" />
         </mxCell>
         <mxCell id="dtrRUTYJO1EXD4Yrg5B--3" value="Login/Registration&amp;nbsp;&lt;div&gt;Details&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="dtrRUTYJO1EXD4Yrg5B--1" target="dtrRUTYJO1EXD4Yrg5B--2">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -56,6 +56,33 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="480" y="400" as="sourcePoint" />
             <mxPoint x="530" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--15" value="5.0&lt;div&gt;Alternative Methods&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="220" y="530" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--16" value="ED Not required" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=-0.024;exitY=0.589;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="dtrRUTYJO1EXD4Yrg5B--8" target="dtrRUTYJO1EXD4Yrg5B--15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="540" as="sourcePoint" />
+            <mxPoint x="360" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--17" value="6.0&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;status&lt;/span&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="700" y="130" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--18" value="View" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="dtrRUTYJO1EXD4Yrg5B--2" target="dtrRUTYJO1EXD4Yrg5B--17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="190" as="sourcePoint" />
+            <mxPoint x="650" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--19" value="Staff" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dtrRUTYJO1EXD4Yrg5B--20" value="Login/Registration&amp;nbsp;&lt;div&gt;Details&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="dtrRUTYJO1EXD4Yrg5B--19" target="dtrRUTYJO1EXD4Yrg5B--2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="640" y="260" as="sourcePoint" />
+            <mxPoint x="690" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
