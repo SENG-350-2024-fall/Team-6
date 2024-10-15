@@ -116,7 +116,7 @@
             <mxPoint x="6" y="-21" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="y48-t9sXYTljMdShnsAE-67" value=":Patient Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+        <mxCell id="y48-t9sXYTljMdShnsAE-67" value=":Patients Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
           <mxGeometry x="450" y="80" width="100" height="710" as="geometry" />
         </mxCell>
         <mxCell id="y48-t9sXYTljMdShnsAE-68" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="y48-t9sXYTljMdShnsAE-67" vertex="1">
