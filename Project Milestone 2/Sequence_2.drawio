@@ -10,7 +10,7 @@
         <mxCell id="vEi8x9JW135LUDFCunV6-4" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="vEi8x9JW135LUDFCunV6-3" vertex="1">
           <mxGeometry x="45" y="100" width="10" height="760" as="geometry" />
         </mxCell>
-        <mxCell id="vEi8x9JW135LUDFCunV6-5" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;The user submits&amp;nbsp;&lt;br&gt;their answers&lt;/span&gt;" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;" parent="vEi8x9JW135LUDFCunV6-3" edge="1">
+        <mxCell id="vEi8x9JW135LUDFCunV6-5" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Submits&amp;nbsp;&lt;br&gt;their answers&lt;/span&gt;" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;" parent="vEi8x9JW135LUDFCunV6-3" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-86" y="322" as="sourcePoint" />
             <mxPoint x="44" y="322" as="targetPoint" />
@@ -162,17 +162,6 @@
             <mxPoint x="435" y="434" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="vEi8x9JW135LUDFCunV6-58" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;User answers&lt;br&gt;questions&lt;/font&gt;" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;elbow=vertical;edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1.038;exitY=0.345;exitPerimeter=0;" parent="1" edge="1">
-          <mxGeometry x="0.1216" y="25" relative="1" as="geometry">
-            <mxPoint x="160" y="322" as="sourcePoint" />
-            <mxPoint x="160" y="360" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="215" y="322" />
-              <mxPoint x="215" y="360" />
-            </Array>
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-60" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.433;entryY=0.919;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="449" y="527" as="sourcePoint" />
@@ -190,9 +179,20 @@
             <mxPoint x="280" y="779" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="vEi8x9JW135LUDFCunV6-75" value="clicks &lt;br&gt;&quot;Check Assessment&quot;&lt;br&gt;&amp;nbsp;button to access &lt;br&gt;their results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-74" vertex="1" connectable="0">
+        <mxCell id="vEi8x9JW135LUDFCunV6-75" value="Clicks &lt;br&gt;&quot;Check Assessment&quot;&lt;br&gt;&amp;nbsp;button to access &lt;br&gt;their results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-74" vertex="1" connectable="0">
           <mxGeometry x="0.1775" y="-1" relative="1" as="geometry">
             <mxPoint x="-6" y="-31" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vEi8x9JW135LUDFCunV6-58" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;User answers&lt;br&gt;questions&lt;/font&gt;" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;elbow=vertical;edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1.038;exitY=0.345;exitPerimeter=0;" parent="1" edge="1">
+          <mxGeometry x="0.1622" y="30" relative="1" as="geometry">
+            <mxPoint x="160" y="322" as="sourcePoint" />
+            <mxPoint x="160" y="360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="215" y="322" />
+              <mxPoint x="215" y="360" />
+            </Array>
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
