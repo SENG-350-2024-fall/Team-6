@@ -150,8 +150,8 @@
         </mxCell>
         <mxCell id="y48-t9sXYTljMdShnsAE-71" value="" style="html=1;labelBackgroundColor=#ffffff;startArrow=none;startFill=0;startSize=6;endArrow=classic;endFill=1;endSize=6;jettySize=auto;orthogonalLoop=1;strokeWidth=1;dashed=1;fontSize=14;rounded=0;" parent="1" edge="1">
           <mxGeometry width="60" height="60" relative="1" as="geometry">
-            <mxPoint x="499.5" y="551" as="sourcePoint" />
-            <mxPoint x="320" y="551" as="targetPoint" />
+            <mxPoint x="499.5" y="553" as="sourcePoint" />
+            <mxPoint x="320" y="553" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="y48-t9sXYTljMdShnsAE-72" value="confirms patient&#39;s&lt;br&gt;&amp;nbsp;credentials and sends their file" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="y48-t9sXYTljMdShnsAE-71" vertex="1" connectable="0">
