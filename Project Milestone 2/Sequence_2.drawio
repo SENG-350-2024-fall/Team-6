@@ -18,8 +18,8 @@
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-72" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;dashed=1;rounded=0;exitX=-0.067;exitY=0.657;exitDx=0;exitDy=0;exitPerimeter=0;" parent="vEi8x9JW135LUDFCunV6-3" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="44.32999999999993" y="623.3200000000002" as="sourcePoint" />
-            <mxPoint x="-80" y="624" as="targetPoint" />
+            <mxPoint x="44.32999999999993" y="690.3200000000002" as="sourcePoint" />
+            <mxPoint x="-80" y="691" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-73" value="Update GUI to show&lt;br&gt;&quot;Check Assessment&quot;&lt;br&gt;&amp;nbsp;button for the user" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-72" vertex="1" connectable="0">
@@ -27,10 +27,10 @@
             <mxPoint x="4" y="-23" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="vEi8x9JW135LUDFCunV6-76" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;dashed=1;rounded=0;exitX=-0.067;exitY=0.657;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.067;entryY=0.868;entryDx=0;entryDy=0;entryPerimeter=0;" parent="vEi8x9JW135LUDFCunV6-3" target="vEi8x9JW135LUDFCunV6-13" edge="1">
+        <mxCell id="vEi8x9JW135LUDFCunV6-76" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;dashed=1;rounded=0;exitX=-0.067;exitY=0.657;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.067;entryY=0.868;entryDx=0;entryDy=0;entryPerimeter=0;" parent="vEi8x9JW135LUDFCunV6-3" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="44.99999999999994" y="760.0000000000002" as="sourcePoint" />
-            <mxPoint x="-79.33000000000001" y="760.6800000000001" as="targetPoint" />
+            <mxPoint x="44.99999999999994" y="827.0000000000002" as="sourcePoint" />
+            <mxPoint x="-84.32999999999993" y="826.6799999999998" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-77" value="Assessment info are&lt;br&gt;displayed&amp;nbsp;&lt;br&gt;for the user" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-76" vertex="1" connectable="0">
@@ -40,11 +40,11 @@
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-70" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Enables needed&lt;br&gt;buttons and &lt;br&gt;information&lt;br&gt;display&lt;/span&gt;" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;elbow=vertical;edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1.038;exitY=0.345;exitPerimeter=0;" parent="vEi8x9JW135LUDFCunV6-3" edge="1">
           <mxGeometry x="0.1892" y="-24" relative="1" as="geometry">
-            <mxPoint x="45" y="526" as="sourcePoint" />
-            <mxPoint x="45" y="564" as="targetPoint" />
+            <mxPoint x="45" y="593" as="sourcePoint" />
+            <mxPoint x="45" y="631" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-10" y="526" />
-              <mxPoint x="-10" y="564" />
+              <mxPoint x="-10" y="593" />
+              <mxPoint x="-10" y="631" />
             </Array>
             <mxPoint as="offset" />
           </mxGeometry>
@@ -65,7 +65,7 @@
           <mxGeometry x="707" y="80" width="130" height="880" as="geometry" />
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-18" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="vEi8x9JW135LUDFCunV6-17" vertex="1">
-          <mxGeometry x="60" y="440" width="10" height="60" as="geometry" />
+          <mxGeometry x="60" y="440" width="10" height="100" as="geometry" />
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-62" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.433;entryY=0.919;entryDx=0;entryDy=0;entryPerimeter=0;" parent="vEi8x9JW135LUDFCunV6-17" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -80,13 +80,24 @@
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-64" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;dashed=1;rounded=0;entryX=1;entryY=0.96;entryDx=0;entryDy=0;entryPerimeter=0;" parent="vEi8x9JW135LUDFCunV6-17" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="60" y="491" as="sourcePoint" />
-            <mxPoint x="-97" y="491" as="targetPoint" />
+            <mxPoint x="60" y="538" as="sourcePoint" />
+            <mxPoint x="-97" y="538" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-65" value="Confirmation of info storing" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-64" vertex="1" connectable="0">
           <mxGeometry x="0.1008" y="-1" relative="1" as="geometry">
             <mxPoint x="12" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hc-biCmf0aNUgXZs6N0B-1" value="Processes &lt;br&gt;results" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;elbow=vertical;edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1.038;exitY=0.345;exitPerimeter=0;" edge="1" parent="vEi8x9JW135LUDFCunV6-17">
+          <mxGeometry x="0.1081" y="-30" relative="1" as="geometry">
+            <mxPoint x="58" y="473" as="sourcePoint" />
+            <mxPoint x="58" y="511" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="3" y="473" />
+              <mxPoint x="3" y="511" />
+            </Array>
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-25" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;dashed=1;rounded=0;entryX=1.133;entryY=0.135;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
@@ -121,15 +132,15 @@
           <mxGeometry x="540" y="80" width="130" height="880" as="geometry" />
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-46" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="vEi8x9JW135LUDFCunV6-45" vertex="1">
-          <mxGeometry x="60" y="340" width="10" height="180" as="geometry" />
+          <mxGeometry x="60" y="340" width="10" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="vEi8x9JW135LUDFCunV6-67" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;dashed=1;rounded=0;" parent="vEi8x9JW135LUDFCunV6-45" edge="1" target="vEi8x9JW135LUDFCunV6-3">
+        <mxCell id="vEi8x9JW135LUDFCunV6-67" value="" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=block;endFill=1;dashed=1;rounded=0;" parent="vEi8x9JW135LUDFCunV6-45" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="60" y="506" as="sourcePoint" />
-            <mxPoint x="-240" y="506" as="targetPoint" />
+            <mxPoint x="60" y="564" as="sourcePoint" />
+            <mxPoint x="-250.5" y="564" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="vEi8x9JW135LUDFCunV6-68" value="Inform the GUI that the information are ready for&lt;br&gt;display" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-67" vertex="1" connectable="0">
+        <mxCell id="vEi8x9JW135LUDFCunV6-68" value="Informs the GUI that the information are ready for&lt;br&gt;display" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-67" vertex="1" connectable="0">
           <mxGeometry x="0.1008" y="-1" relative="1" as="geometry">
             <mxPoint x="15" y="-19" as="offset" />
           </mxGeometry>
@@ -173,10 +184,10 @@
             <mxPoint x="40" y="-18" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="vEi8x9JW135LUDFCunV6-74" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.788;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="vEi8x9JW135LUDFCunV6-13" edge="1">
+        <mxCell id="vEi8x9JW135LUDFCunV6-74" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.788;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="156.5" y="780" as="sourcePoint" />
-            <mxPoint x="280" y="779" as="targetPoint" />
+            <mxPoint x="155" y="845.8800000000001" as="sourcePoint" />
+            <mxPoint x="280" y="846" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="vEi8x9JW135LUDFCunV6-75" value="Clicks &lt;br&gt;&quot;Check Assessment&quot;&lt;br&gt;&amp;nbsp;button to access &lt;br&gt;their results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="vEi8x9JW135LUDFCunV6-74" vertex="1" connectable="0">
