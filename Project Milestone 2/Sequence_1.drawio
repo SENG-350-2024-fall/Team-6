@@ -78,7 +78,7 @@
             <mxPoint x="285" y="188.00000000000534" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_YgqkLYI4GzV4CjIsU5T-3" value=":User Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+        <mxCell id="_YgqkLYI4GzV4CjIsU5T-3" value=":Patients Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
           <mxGeometry x="543" y="80" width="130" height="910" as="geometry" />
         </mxCell>
         <mxCell id="_YgqkLYI4GzV4CjIsU5T-10" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="_YgqkLYI4GzV4CjIsU5T-3" vertex="1">
