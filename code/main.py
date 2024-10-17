@@ -36,7 +36,6 @@ def main():
         #system_admin.run_system_admin_portal()
         print("System Administrator Portal")
     elif role == '6':
-        #system_admin.run_system_admin_portal()
         print("***** Thank you for using the ED Portal :) *****")
     else:
         print("Invalid option. Please try again.")
