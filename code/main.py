@@ -21,6 +21,7 @@ def main():
 
         role = input("Please enter the number corresponding to your Portal:\n")
 
+
         if role == '1':
             #patient.run_patient_portal()
             print("Patient Portal")
@@ -48,6 +49,7 @@ def main():
         else:
             print("\n\nInvalid option. Please try again.\n\n")
             continue
+
 
 if __name__ == "__main__":
     main()
