@@ -1,0 +1,54 @@
+{
+    "users": [
+        {
+            "username": "doctor1",
+            "password": "password1",
+            "role": "doctor",
+            "name": "Dr. John Doe",
+            "dob": "1980-05-15",
+            "address": "123 Medical St, Cityville, ST 12345",
+            "email": "john.doe@hospital.com",
+            "phone": "555-123-4567"
+        },
+        {
+            "username": "nurse1",
+            "password": "password3",
+            "role": "nurse",
+            "name": "Nurse Jane Smith",
+            "dob": "1990-08-20",
+            "address": "456 Health Ave, Townsville, ST 67890",
+            "email": "jane.smith@hospital.com",
+            "phone": "555-987-6543"
+        },
+        {
+            "username": "patient1",
+            "password": "patientpassword",
+            "role": "patient",
+            "name": "Alice Johnson",
+            "dob": "2000-01-30",
+            "address": "789 Patient Rd, Villagetown, ST 11111",
+            "email": "alice.johnson@email.com",
+            "phone": "555-555-5555"
+        },
+        {
+            "username": "edstaff1",
+            "password": "edstaffpassword",
+            "role": "ed_staff",
+            "name": "Bob Brown",
+            "dob": "1985-11-10",
+            "address": "321 Emergency St, Metropolis, ST 22222",
+            "email": "bob.brown@hospital.com",
+            "phone": "555-444-4444"
+        },
+        {
+            "username": "admin1",
+            "password": "adminpassword",
+            "role": "system_admin",
+            "name": "Charlie Green",
+            "dob": "1975-03-25",
+            "address": "654 Admin Blvd, Capital City, ST 33333",
+            "email": "charlie.green@hospital.com",
+            "phone": "555-333-3333"
+        }
+    ]
+}
