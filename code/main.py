@@ -1,4 +1,5 @@
 import login
+import doctor_dashboard
 
 def main():
     while True:
@@ -28,6 +29,8 @@ def main():
             user = login.login()
             # Prompt credentails and verify user
             if user and user['role'] == 'doctor':
+                login.clear_terminal()
+                doctor_dashboard.doctor_dashboard()
                 break
         elif role == '3':
             # Prompt credentails and verify user
