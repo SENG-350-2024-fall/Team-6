@@ -261,6 +261,48 @@
             <mxPoint x="-20" y="830" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-26" value="&amp;nbsp;D2&amp;nbsp; &amp;nbsp; Triage Assessment" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];" vertex="1" parent="1">
+          <mxGeometry x="350" y="600" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-27" value="Diagnosis Result" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Bff2i-X7J1a3gPwycmxD-22" target="aXVEYFe5cARRdrmqYQfY-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="560" as="sourcePoint" />
+            <mxPoint x="310" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-28" value="&amp;nbsp;D2&amp;nbsp; &amp;nbsp; Triage Assessment" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];" vertex="1" parent="1">
+          <mxGeometry x="840" y="-110" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-29" value="Request Diagnosis Result" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.01;exitY=0.57;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-9" target="aXVEYFe5cARRdrmqYQfY-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="10" as="sourcePoint" />
+            <mxPoint x="730" y="-40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-30" value="Send Diagnosis Results" style="endArrow=classic;html=1;rounded=0;exitX=0.581;exitY=1.033;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-28" target="aXVEYFe5cARRdrmqYQfY-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="870" y="30" as="sourcePoint" />
+            <mxPoint x="920" y="-20" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="730" y="10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-31" value="&amp;nbsp;D3&amp;nbsp; &amp;nbsp; Appointments" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];" vertex="1" parent="1">
+          <mxGeometry x="-300" y="555" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-32" value="Patient Appointment Confirmation details" style="endArrow=classic;html=1;rounded=0;entryX=0.725;entryY=0.967;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-18" target="aXVEYFe5cARRdrmqYQfY-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-270" y="700" as="sourcePoint" />
+            <mxPoint x="-220" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-33" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.027;entryY=0.327;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.4;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Bff2i-X7J1a3gPwycmxD-25" target="aXVEYFe5cARRdrmqYQfY-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="520" as="sourcePoint" />
+            <mxPoint x="540" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
