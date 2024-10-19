@@ -303,6 +303,69 @@
             <mxPoint x="540" y="490" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-34" value="&amp;nbsp;D3&amp;nbsp; &amp;nbsp; Appointments" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];" vertex="1" parent="1">
+          <mxGeometry x="980" y="-380" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-36" value="&amp;nbsp;D3&amp;nbsp; &amp;nbsp; Appointments" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];" vertex="1" parent="1">
+          <mxGeometry x="1030" y="-220" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-37" value="Request Patient Status" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.98;exitY=0.33;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-21" target="aXVEYFe5cARRdrmqYQfY-34">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="810" y="-420" as="sourcePoint" />
+            <mxPoint x="860" y="-470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-38" value="Send patient appointment status" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.67;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-34" target="aXVEYFe5cARRdrmqYQfY-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="-290" as="sourcePoint" />
+            <mxPoint x="950" y="-340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="920" y="-310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-39" value="Delete patient appointment request" style="endArrow=classic;html=1;rounded=0;entryX=-0.012;entryY=0.267;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.02;exitY=0.42;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-22" target="aXVEYFe5cARRdrmqYQfY-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="-140" as="sourcePoint" />
+            <mxPoint x="850" y="-190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-40" value="Send deletion confirmation message" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=-0.012;exitY=0.767;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-36" target="aXVEYFe5cARRdrmqYQfY-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="910" y="-130" as="sourcePoint" />
+            <mxPoint x="960" y="-180" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="890" y="-150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-41" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.02;exitY=0.41;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-18" target="aXVEYFe5cARRdrmqYQfY-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-380" y="870" as="sourcePoint" />
+            <mxPoint x="-330" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-42" value="4.1.1&lt;div&gt;Search Hospitals&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-513" y="770" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-43" value="4.1.1.1&lt;div&gt;Call Hospital staff/Live chat&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-289" y="880" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-44" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.02;entryY=0.44;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-42" target="aXVEYFe5cARRdrmqYQfY-43">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-400" y="920" as="sourcePoint" />
+            <mxPoint x="-350" y="870" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-45" value="4.1.1.2&lt;div&gt;ED wait time and queue&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-630" y="940" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="aXVEYFe5cARRdrmqYQfY-46" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="aXVEYFe5cARRdrmqYQfY-42" target="aXVEYFe5cARRdrmqYQfY-45">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-650" y="910" as="sourcePoint" />
+            <mxPoint x="-600" y="860" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
