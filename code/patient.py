@@ -5,7 +5,7 @@ from datetime import date
 import os
 
 
-class Patient:
+class patient:
 
     status = "Triage is Not Taken"
     triageStatus = "Idle"
