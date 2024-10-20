@@ -5,61 +5,78 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+
+        <!-- GUI Component -->
+        <mxCell id="gui" value="GUI (User Interface Component)" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="200" height="80" as="geometry" />
+        </mxCell>
+
         <!-- User Management Component -->
         <mxCell id="userMgmt" value="User Management Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="20" y="20" width="160" height="80" as="geometry" />
+          <mxGeometry x="260" y="20" width="200" height="80" as="geometry" />
         </mxCell>
+
         <!-- Patient Management Component -->
         <mxCell id="patientMgmt" value="Patient Management Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="220" y="20" width="160" height="80" as="geometry" />
+          <mxGeometry x="500" y="20" width="200" height="80" as="geometry" />
         </mxCell>
+
         <!-- Triage Component -->
         <mxCell id="triage" value="Triage Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="420" y="20" width="160" height="80" as="geometry" />
+          <mxGeometry x="20" y="150" width="200" height="80" as="geometry" />
         </mxCell>
+
         <!-- Medical Records Component -->
         <mxCell id="medRecords" value="Medical Records Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="620" y="20" width="160" height="80" as="geometry" />
+          <mxGeometry x="260" y="150" width="200" height="80" as="geometry" />
         </mxCell>
+
         <!-- Appointment Management Component -->
         <mxCell id="appointmentMgmt" value="Appointment Management Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="820" y="20" width="160" height="80" as="geometry" />
+          <mxGeometry x="500" y="150" width="200" height="80" as="geometry" />
         </mxCell>
+
         <!-- System Administration Component -->
         <mxCell id="sysAdmin" value="System Administration Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="20" y="150" width="160" height="80" as="geometry" />
+          <mxGeometry x="20" y="280" width="200" height="80" as="geometry" />
         </mxCell>
-        <!-- User Interface Component -->
-        <mxCell id="uiComponent" value="User Interface Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="220" y="150" width="160" height="80" as="geometry" />
+
+        <!-- Hospital Component -->
+        <mxCell id="hospital" value="Hospital Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="260" y="280" width="200" height="80" as="geometry" />
         </mxCell>
+
         <!-- Database Component -->
         <mxCell id="database" value="Database Component" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="420" y="150" width="160" height="80" as="geometry" />
+          <mxGeometry x="500" y="280" width="200" height="80" as="geometry" />
         </mxCell>
+
         <!-- Connections -->
-        <mxCell id="edge1" value="" edge="1" parent="1" source="userMgmt" target="uiComponent">
+        <mxCell id="edge1" value="login/register" edge="1" parent="1" source="gui" target="userMgmt">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge2" value="" edge="1" parent="1" source="patientMgmt" target="uiComponent">
+        <mxCell id="edge2" value="display patient info" edge="1" parent="1" source="gui" target="patientMgmt">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge3" value="" edge="1" parent="1" source="triage" target="patientMgmt">
+        <mxCell id="edge3" value="update triage status" edge="1" parent="1" source="triage" target="patientMgmt">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge4" value="" edge="1" parent="1" source="medRecords" target="patientMgmt">
+        <mxCell id="edge4" value="add/view records" edge="1" parent="1" source="medRecords" target="patientMgmt">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge5" value="" edge="1" parent="1" source="appointmentMgmt" target="patientMgmt">
+        <mxCell id="edge5" value="schedule appointments" edge="1" parent="1" source="appointmentMgmt" target="gui">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge6" value="" edge="1" parent="1" source="sysAdmin" target="database">
+        <mxCell id="edge6" value="configuration management" edge="1" parent="1" source="sysAdmin" target="database">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge7" value="" edge="1" parent="1" source="uiComponent" target="database">
+        <mxCell id="edge7" value="update capacity" edge="1" parent="1" source="hospital" target="appointmentMgmt">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge8" value="" edge="1" parent="1" source="sysAdmin" target="userMgmt">
+        <mxCell id="edge8" value="data storage" edge="1" parent="1" source="database" target="userMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="data storage" edge="1" parent="1" source="database" target="patientMgmt">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
