@@ -3,6 +3,7 @@ import doctor_dashboard
 import nurse
 import admin
 import ed_staff_dashboard
+import patient
 
 def role_login(portal_name, dashboard=None):
     login.clear_terminal()
