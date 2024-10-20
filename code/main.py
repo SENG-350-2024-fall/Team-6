@@ -16,7 +16,7 @@ def role_login(portal_name, dashboard=None):
 
 def main():
     roles = {
-        '1': ('Patient', patient.initiate_actions),
+        '1': ('Patient', "Patient Dashboard"),
         '2': ('Doctor', doctor_dashboard.doctor_dashboard),
         '3': ('Nurse', nurse.run_nurse_portal),
         '4': ('ED Staff', ed_staff_dashboard.ed_staff_dashboard),
@@ -41,8 +41,7 @@ def main():
         elif role == '5':
             role_login('System Administrator', admin.run_admin_portal)    
         elif role == '1':
-            pt = patient()
-            pt.initiate_actions()
+            patient().initiate_actions()
             
         elif role in roles:
             portal, dashboard = roles[role]
