@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from csv import writer
 from datetime import date
-import os
 
 
 class patient:
@@ -46,9 +45,9 @@ class patient:
 
             x = input("Please re-enter credentials or input 1 register! ")
             if x == str(1):
-                patient_register()
+                self.register()
             else:
-                patient_login()
+                self.login()
                 check = 0
 
     def register(self):
@@ -114,14 +113,18 @@ class patient:
                 and data["full_name"].iloc[i] == full_name
             ):
                 data["answers"].iloc[i] = answers
-                status = "Triage is taken."
                 data.to_csv("triage.csv", sep=",", index=False, encoding="utf-8")
                 print("\nAnswers Are Saved Successfully!")
                 registered = 1
                 break
+            
         if(registered == 0):
             print("\nPlease Register for the Triage First!")
-            
+        else:
+            self.status = "Triage is taken."
+
+        status = self.status   
+
         return status
 
     def registerForTriage(self):
@@ -144,8 +147,10 @@ class patient:
             )
             print("\nYour Request Have Been Submitted!")
             csv_file.close()
-            triageStatus = "Registeration Confirmed"
+            self.triageStatus = "Registeration Confirmed"
 
+        triageStatus = self.triageStatus
+        
         return triageStatus
         
     def initiate_actions(self):
