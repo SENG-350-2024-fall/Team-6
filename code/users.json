@@ -33,7 +33,7 @@
         {
             "username": "edstaff1",
             "password": "edstaffpassword",
-            "role": "ed_staff",
+            "role": "ed staff",
             "name": "Bob Brown",
             "dob": "1985-11-10",
             "address": "321 Emergency St, Metropolis, ST 22222",
@@ -43,7 +43,7 @@
         {
             "username": "admin1",
             "password": "adminpassword",
-            "role": "system_admin",
+            "role": "system administrator",
             "name": "Charlie Green",
             "dob": "1975-03-25",
             "address": "654 Admin Blvd, Capital City, ST 33333",

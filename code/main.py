@@ -1,6 +1,7 @@
 import login
 import doctor_dashboard
 import nurse
+import admin
 
 def role_login(portal_name, dashboard=None):
     login.clear_terminal()
@@ -17,7 +18,7 @@ def main():
         '2': ('Doctor', doctor_dashboard.doctor_dashboard),
         '3': ('Nurse', nurse.run_nurse_portal),
         '4': ('ED Staff', None),
-        '5': ('System Administrator', None),
+        '5': ('System Administrator', admin.run_admin_portal),
     }
     while True:
         print(" =============================")
