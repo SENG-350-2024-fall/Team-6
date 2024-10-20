@@ -1,59 +1,80 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net">
-  <diagram name="Component Diagram">
-    <mxGraphModel dx="800" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" math="0" shadow="0">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.8.0">
+  <diagram name="Component Diagram" id="0">
+    <mxGraphModel dx="1674" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        
-        <!-- Scheduler Component -->
-        <mxCell id="scheduler" value="Scheduler" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="160" y="60" width="140" height="60" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-1" value="«Annotation»&lt;br&gt;&lt;b&gt;GUI&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="270" width="180" height="90" as="geometry" />
         </mxCell>
-        
-        <!-- Planner Component -->
-        <mxCell id="planner" value="Planner" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="160" y="180" width="140" height="60" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-2" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-1">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
         </mxCell>
-        
-        <!-- GUI Component -->
-        <mxCell id="gui" value="GUI" style="shape=component;" vertex="1" parent="1">
-          <mxGeometry x="160" y="300" width="140" height="60" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-3" value="«Annotation»&lt;br&gt;&lt;div&gt;&lt;b&gt;User Management&lt;/b&gt;&lt;/div&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="290" y="70" width="180" height="90" as="geometry" />
         </mxCell>
-        
-        <!-- UML Interface for Scheduler -->
-        <mxCell id="schedulerInterface" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="90" width="16" height="16" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-4" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-3">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="schedulerLabel" value="reservations" style="text;html=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="90" width="80" height="20" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-5" value="«Annotation»&lt;br&gt;&lt;b&gt;Patient Management&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="290" y="210" width="180" height="90" as="geometry" />
         </mxCell>
-        
-        <!-- UML Interface for Planner -->
-        <mxCell id="plannerInterface" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="210" width="16" height="16" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-6" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-5">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="plannerLabel" value="update" style="text;html=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="210" width="60" height="20" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-7" value="«Annotation»&lt;br&gt;&lt;b&gt;Triage&amp;nbsp;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="540" y="180" width="180" height="90" as="geometry" />
         </mxCell>
-        
-        <!-- UML Interface for GUI -->
-        <mxCell id="guiInterface" style="shape=ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="330" width="16" height="16" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-8" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-7">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="guiLabel" value="interface" style="text;html=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="330" width="60" height="20" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-9" value="«Annotation»&lt;br&gt;&lt;b&gt;Medical Records&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="540" y="320" width="180" height="90" as="geometry" />
         </mxCell>
-        
-        <!-- Dependencies -->
-        <mxCell id="edge1" value="" edge="1" parent="1" source="scheduler" target="schedulerInterface">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-10" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-9">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="edge2" value="" edge="1" parent="1" source="planner" target="plannerInterface">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-11" value="«Annotation»&lt;br&gt;&lt;b&gt;Appointment Management&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="300" y="330" width="180" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="edge3" value="" edge="1" parent="1" source="gui" target="guiInterface">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-12" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-11">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-13" value="«Annotation»&lt;br&gt;&lt;b&gt;System Administration&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="310" y="450" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-14" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-13">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-15" value="«Annotation»&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="550" y="450" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-16" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-15">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-17" value="«Annotation»&lt;br&gt;&lt;b&gt;Hospital&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="530" y="70" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s4dvAF2hhasnWOjqTfLs-18" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="s4dvAF2hhasnWOjqTfLs-17">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-27" y="7" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
