@@ -10,7 +10,7 @@ class patient:
     status = "Triage is Not Taken"
     triageStatus = "Idle"
 
-    def __init__(self, username: str, password: str):
+    def __init__(self):
         pass
 
     def login(self):
@@ -25,7 +25,7 @@ class patient:
         try:
             data = pd.read_csv("patients_credentials.csv")
         except:
-            print("Patient Credential File is Not Found!!")
+            print("\nPatients Credential File is Not Found!!")
             return
         
         check = 0
@@ -40,7 +40,7 @@ class patient:
 
         if check == 1:
 
-            print("You have logged in successfully!")
+            print("\nYou have logged in successfully!")
 
         else:
 
@@ -65,7 +65,7 @@ class patient:
         try:
             data = pd.read_csv("patients_credentials.csv")
         except:
-            print("Patient Credential File is Not Found!!")
+            print("\nPatients Credential File is Not Found!!")
             return
 
         for un, pas in list(data[["username", "password"]].values):
@@ -73,12 +73,12 @@ class patient:
             if str.lower(username) == str.lower(un) and str.lower(pas) == str.lower(
                 password
             ):
-                return "You are already registered!"
+                return "\nYou are already registered!"
 
         with open("patients_credentials.csv", "a", newline="") as csv_file:
             writer_obj = writer(csv_file)
             writer_obj.writerow([username, password, address, phoneNumber])
-            print("You have been registered successfully!")
+            print("\nYou have been registered successfully!")
             csv_file.close()
 
             return 1
@@ -102,7 +102,7 @@ class patient:
         try:
             data = pd.read_csv("triage.csv")
         except:
-            print("Triag File is Not Found!!")
+            print("\nTriag File is Not Found!!")
             return
         
         registered = 0
@@ -116,11 +116,11 @@ class patient:
                 data["answers"].iloc[i] = answers
                 status = "Triage is taken."
                 data.to_csv("triage.csv", sep=",", index=False, encoding="utf-8")
-                print("Answers Are Saved Successfully!")
+                print("\nAnswers Are Saved Successfully!")
                 registered = 1
                 break
         if(registered == 0):
-            print("Please Register for the Triage First!")
+            print("\nPlease Register for the Triage First!")
             
         return status
 
@@ -142,7 +142,7 @@ class patient:
             writer_obj.writerow(
                 [username, full_name, age, reason, diagnosed_diseases, today, "NA"]
             )
-            print("Your Request Have Been Submitted!")
+            print("\nYour Request Have Been Submitted!")
             csv_file.close()
             triageStatus = "Registeration Confirmed"
 
