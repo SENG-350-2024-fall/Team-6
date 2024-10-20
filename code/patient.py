@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from csv import writer
 from datetime import date
+import warnings
+warnings.filterwarnings("ignore")
 
 
 class patient:
@@ -30,8 +32,8 @@ class patient:
         check = 0
 
         for un, pas in list(data[["username", "password"]].values):
-            if str.lower(username) == str.lower(un) and str.lower(pas) == str.lower(
-                password
+            if str.lower(username) == str.lower(un) and str.lower(str(pas)) == str.lower(
+                str(password)
             ):
 
                 check = 1
@@ -69,8 +71,8 @@ class patient:
 
         for un, pas in list(data[["username", "password"]].values):
 
-            if str.lower(username) == str.lower(un) and str.lower(pas) == str.lower(
-                password
+            if str.lower(username) == str.lower(un) and str.lower(str(pas)) == str.lower(
+                str(password)
             ):
                 return "\nYou are already registered!"
 
