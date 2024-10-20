@@ -1,65 +1,48 @@
 import login
 import doctor_dashboard
+import nurse
+
+def role_login(portal_name, dashboard=None):
+    login.clear_terminal()
+    print(f"\n{portal_name} Login Portal\n")
+    if dashboard:
+        dashboard()
+    else:
+        print(f"Welcome to the {portal_name} Portal!")
+
 
 def main():
+    roles = {
+        '1': ('Patient', None),
+        '2': ('Doctor', doctor_dashboard.doctor_dashboard),
+        '3': ('Nurse', nurse.run_nurse_portal),
+        '4': ('ED Staff', None),
+        '5': ('System Administrator', None),
+    }
     while True:
         print(" =============================")
         print("|| Welcome to the ED Portal  ||")
         print(" =============================\n")
         print("Select a Portal based on your Role:\n ")
-        print("1. Patient")
-        print("2. Doctor")
-        print("3. Nurse")
-        print("4. ED Staff")
-        print("5. System Administrator")
+        for num, (name, dashboard) in roles.items():
+            print(f"{num}. {name}")
         print("6. Exit\n")
 
         role = input("Please enter the number corresponding to your Portal:\n")
 
-        if role == '1':
-            login.clear_terminal()
-            # Prompt credentails and verify user
-            print("\nPatient Login Portal\n")
-            user = login.login()
-            if user and user['role'] == 'patient':
-                break
-        elif role == '2':
-            login.clear_terminal()
-            print("\nDoctor Login Portal\n")
-            user = login.login()
-            # Prompt credentails and verify user
-            if user and user['role'] == 'doctor':
-                login.clear_terminal()
-                doctor_dashboard.doctor_dashboard()
-                break
-        elif role == '3':
-            # Prompt credentails and verify user
-            login.clear_terminal()
-            print("\nNurse Login Portal\n")
-            user = login.login()
-            if user and user['role'] == 'nurse':
-                print("Nurse Portal")
-                break
-        elif role == '4':
-            # Prompt credentails and verify user
-            login.clear_terminal()
-            print("\nED Staff Login Portal\n")
-            user = login.login()
-            if user and user['role'] == 'ed_staff':
-                break
-        elif role == '5':
-            # Prompt credentails and verify user
-            login.clear_terminal()
-            print("\nSystem Administrator Login Portal\n")
-            user = login.login()
-            if user and user['role'] == 'system_admin':
-                break
-        elif role == '6':
+        if role == '6':
             print("***** Thank you for using the ED Portal :) *****")
             break
+        elif role in roles:
+            portal, dashboard = roles[role]
+            user = login.login()
+            if user and user['role'].lower() == portal.lower():
+                role_login(portal, dashboard)
+                break
+            else: 
+                print('Invalid login. Please try again \n')
         else:
             print("\n\nInvalid option. Please try again.\n\n")
-            continue
 
 if __name__ == "__main__":
     main()
