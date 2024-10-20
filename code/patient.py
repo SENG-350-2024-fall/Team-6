@@ -147,3 +147,26 @@ class patient:
             triageStatus = "Registeration Confirmed"
 
         return triageStatus
+        
+    def initiate_actions(self):
+        
+        print()
+        print("       Patient Welcome Page          ")
+        print("-------------------------------------")
+        op = input("Choose an Option:\n\n 1 = Login, 2 = Register, 3 = Register for Triage, 4 = Undergo Triage  ")
+        
+        pt = patient()
+        
+        if op == "1":
+            pt.login()
+        elif  op == "2":
+            pt.register()
+        elif op == "3":
+            pt.registerForTriage()
+        elif op == "4":
+            pt.undergoTriage()
+        else:
+            print("Please Pick a Valid Input!!")
+            self.initiate_actions()
+        
+        return
