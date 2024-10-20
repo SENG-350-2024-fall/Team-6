@@ -1,9 +1,67 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.8.0">
-  <diagram name="Page-1" id="X12M1sKU2YiNekc0ypt4">
-    <mxGraphModel>
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Component Diagram">
+    <mxGraphModel dx="600" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <!-- User Management Component -->
+        <mxCell id="userMgmt" value="User Management Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- Patient Management Component -->
+        <mxCell id="patientMgmt" value="Patient Management Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="220" y="20" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- Triage Component -->
+        <mxCell id="triage" value="Triage Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="420" y="20" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- Medical Records Component -->
+        <mxCell id="medRecords" value="Medical Records Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="620" y="20" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- Appointment Management Component -->
+        <mxCell id="appointmentMgmt" value="Appointment Management Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="820" y="20" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- System Administration Component -->
+        <mxCell id="sysAdmin" value="System Administration Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="20" y="150" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- User Interface Component -->
+        <mxCell id="uiComponent" value="User Interface Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="220" y="150" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- Database Component -->
+        <mxCell id="database" value="Database Component" style="shape=component;" vertex="1" parent="1">
+          <mxGeometry x="420" y="150" width="160" height="80" as="geometry" />
+        </mxCell>
+        <!-- Connections -->
+        <mxCell id="edge1" value="" edge="1" parent="1" source="userMgmt" target="uiComponent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="patientMgmt" target="uiComponent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="" edge="1" parent="1" source="triage" target="patientMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="" edge="1" parent="1" source="medRecords" target="patientMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="" edge="1" parent="1" source="appointmentMgmt" target="patientMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="" edge="1" parent="1" source="sysAdmin" target="database">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="uiComponent" target="database">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="" edge="1" parent="1" source="sysAdmin" target="userMgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
