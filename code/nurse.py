@@ -35,6 +35,14 @@ class Nurse:
         self.can_conduct_triage = True
         self.shifts = []
 
+    def view_assigned_patients(self):
+        print("Assigned Patients:")
+        if not self.assigned_patients:
+            print("No patients assigned.")
+        else:
+            for patient in self.assigned_patients:
+                print(f"- {patient}")
+
     def add_patient(self, patient):
         self.assigned_patients.append(patient)
         add_notification(f"Patient {patient} has been assigned to you.")
@@ -99,7 +107,7 @@ def nurse_dashboard(nurse):
     """Displays the nurse's dashboard and handles task selection."""
     tasks = {
         '1': view_notifications,
-        '2': lambda: view_assigned_patients(nurse),
+        '2': lambda: nurse.view_assigned_patients(),
         '3': conduct_triage,
         '4': check_shifts,
         '5': schedule_appointment,
@@ -115,7 +123,7 @@ def nurse_dashboard(nurse):
 
     while True:
         print(f"\n--- Nurse Dashboard for {nurse.username} ---")
-        print("""\
+        print("""
 1.  View Notifications
 2.  View Assigned Patients
 3.  Conduct Triage
@@ -142,15 +150,6 @@ def nurse_dashboard(nurse):
             print("Invalid selection. Please try again.")
         time.sleep(1)
 
-
-def view_assigned_patients(nurse):
-    """Displays the patients assigned to the nurse."""
-    if nurse.assigned_patients:
-        print("Assigned Patients:")
-        for patient in nurse.assigned_patients:
-            print(f"- {patient}")
-    else:
-        print("No patients assigned.")
 
 
 def discharge_patient(nurse):
