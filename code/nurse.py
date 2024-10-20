@@ -89,7 +89,6 @@ class Nurse:
     def __str__(self):
         return f"Nurse: {self.username}"
 
-
 def authenticate_nurse():
     """Authenticates nurse login using username and password."""
     print("\n--- Nurse Login ---")
@@ -102,7 +101,6 @@ def authenticate_nurse():
             return Nurse(username)
         else:
             print("Invalid credentials. Please try again.")
-
 
 def nurse_dashboard(nurse):
     """Displays the nurse's dashboard and handles task selection."""
@@ -221,7 +219,6 @@ def update_patient_records():
 
 def log_patient_vitals():
     print("Logging patient vitals...")
-
 
 def run_nurse_portal():
     """Starts the nurse portal after successful login."""
