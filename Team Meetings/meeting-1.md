@@ -45,3 +45,9 @@ During the meeting, we focused on the class diagram. All team members collaborat
 In today’s meeting, we finalized the class diagram and are satisfied with its current state. From here, we planned how to proceed by dividing the remaining diagrams among team members, with each person responsible for about 4-5 diagrams. This ensures that the workload is distributed evenly across the team.
 
 We briefly discussed the diagrams to clarify any questions, and we aim to have them completed by Sunday or Monday. After that, we’ve scheduled another meeting to review the diagrams and start planning the coding phase, which we will begin working on afterward.
+
+**Meeting 6 - Oct 17**
+
+In this meeting, we focused on finalizing our diagrams. Each team member had completed their assigned diagrams, and we reviewed them collectively to ensure accuracy and consistency. Once everything was checked for correctness, we uploaded our work to the project wiki.
+
+Next, we shifted our discussion to the implementation phase. After considering various options, we decided to use a terminal interface for the UI. This approach allows us to concentrate more on the design and functionality. We agreed to complete the UI portion during this sprint, which covers approximately 35% of the overall code. The major design work will be tackled in the next milestone, giving us more time to plan and ensure quality.
