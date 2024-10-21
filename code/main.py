@@ -1,4 +1,3 @@
-
 import login
 import doctor_dashboard
 import nurse
@@ -17,7 +16,7 @@ def role_login(portal_name, dashboard=None):
 
 def main():
     roles = {
-        '1': ('Patient', lambda: patient.patient().initiate_actions()),
+        '1': ('Patient', "Patient Dashboard"),
         '2': ('Doctor', doctor_dashboard.doctor_dashboard),
         '3': ('Nurse', nurse.run_nurse_portal),
         '4': ('ED Staff', ed_staff_dashboard.ed_staff_dashboard),
@@ -36,7 +35,14 @@ def main():
 
         if role == '6':
             print("***** Thank you for using the ED Portal :) *****")
-            break  
+            break
+        elif role == '3':
+            role_login('Nurse', nurse.run_nurse_portal)
+        elif role == '5':
+            role_login('System Administrator', admin.run_admin_portal)    
+        elif role == '1':
+            patient.patient().initiate_actions()
+            
         elif role in roles:
             portal, dashboard = roles[role]
             user = login.login()
