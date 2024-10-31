@@ -17,7 +17,7 @@ def check_credentials(role, username, password):
     # Check if the username and password exist in the DataFram
     user = users[(users["Username"] == username) & (users["Password"] == password)]
     if not user.empty:
-        return user['Name']
+        return user.iloc[0]['Name']
     return None
 
 def login(role):
@@ -26,7 +26,7 @@ def login(role):
 
 
     user = check_credentials(role, username, password)
-    if user is not None:
+    if user:
         clear_terminal()
         time.sleep(1)
         print(f"Welcome, {user}!")

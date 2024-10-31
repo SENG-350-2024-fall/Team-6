@@ -1,5 +1,17 @@
 import time
 import pandas as pd
+import notification
+
+def notify_action(message_template):
+    """Decorator to add a notification based on an action."""
+    def decorator(func):
+        def wrapper(self, *args, **kwargs):
+            result = func(self, *args, **kwargs)
+            message = message_template.format(*args)
+            self.notifications.add_notification(message)
+            return result
+        return wrapper
+    return decorator
 
 def load_nurse_data(nurse_name):
     """Load nurse data from nurse.csv based on the name."""
@@ -20,14 +32,53 @@ def load_nurse_data(nurse_name):
             username=record["Username"],
             assigned_patients=assigned_patients,
             available=record["Availability"],
-            can_conduct_triage=record["TriageReady"],
-            notifications=notifications
+            can_conduct_triage=record["TriageReady"]
         )
+
+        # Manually add notifications if necessary
+        for notification_msg in notifications:
+            nurse.notifications.add_notification(notification_msg)
+
         return nurse
 
     except FileNotFoundError:
         print("nurse.csv file not found.")
         return None
+
+import pandas as pd
+
+def update_nurse_data(nurse):
+    """Updates the nurse's information in the nurse.csv file."""
+    try:
+        # Load the CSV into a DataFrame
+        nurses_df = pd.read_csv("nurse.csv")
+        
+        # Check if the nurse exists in the CSV
+        nurse_index = nurses_df.index[nurses_df["Username"] == nurse.username].tolist()
+        
+        if not nurse_index:
+            print(f"No record found for nurse {nurse.username}. Cannot update.")
+            return
+        
+        # Get the first index of the matched nurse
+        nurse_index = nurse_index[0]
+
+        # Update the necessary fields
+        nurses_df.at[nurse_index, "AssignedPatients"] = ";".join(nurse.assigned_patients)
+        nurses_df.at[nurse_index, "Availability"] = nurse.available
+        nurses_df.at[nurse_index, "TriageReady"] = nurse.can_conduct_triage
+        nurses_df.at[nurse_index, "Notifications"] = ";".join(
+            [n['message'] for n in nurse.notifications.notifications]
+        )
+
+        # Save the updated DataFrame back to CSV
+        nurses_df.to_csv("nurse.csv", index=False)
+        print(f"Nurse {nurse.username}'s information updated successfully.")
+
+    except FileNotFoundError:
+        print("nurse.csv file not found.")
+    except Exception as e:
+        print(f"An error occurred while updating the nurse data: {e}")
 
 # Sample data for patients and their records with multiple symptoms
 PATIENT_RECORDS = {
@@ -45,15 +96,20 @@ PATIENT_RECORDS = {
     }
 }
 
-class Nurse:
+class Nurse(notification.Observer):
     """Represents a Nurse."""
-    def __init__(self, username):
+    def __init__(self, username, assigned_patients=None, available=True, can_conduct_triage=True):
         self.username = username
-        self.assigned_patients = []
-        self.notifications = []
-        self.available = True
-        self.can_conduct_triage = True
+        self.assigned_patients = assigned_patients if assigned_patients is not None else []
+        self.notifications = notification.Notification()
+        self.notifications.add_observer(self)
+        self.available = available
+        self.can_conduct_triage = can_conduct_triage
         self.shifts = []
+
+    def update(self, message):
+        print(f"New update for {self.username}")
+        update_nurse_data(self)
 
     def view_assigned_patients(self):
         print("Assigned Patients:")
@@ -63,71 +119,37 @@ class Nurse:
             for patient in self.assigned_patients:
                 print(f"- {patient}")
 
+    @notify_action("Patient {} has been assigned to you.")
     def add_patient(self, patient):
         self.assigned_patients.append(patient)
-        self.add_notification(f"Patient {patient} has been assigned to you.")
 
+    @notify_action("Patient {} has been removed from your care.")
     def remove_patient(self, patient):
         """Removes a discharged patient from the assigned list."""
         if patient in self.assigned_patients:
             self.assigned_patients.remove(patient)
-            self.add_notification(f"Patient {patient} has been removed from your care.")
         else:
             print(f"Patient {patient} is not in your assigned list.")
-    
-    def add_notification(self, message):
-        """
-        Adds notifications specific to Nurse
-        """
-        self.notifications.append((message, True))
-
-    def view_notifications(self):
-        new_notifications_count = sum(1 for _, is_new in self.notifications if is_new)
-        print(f"\nYou have {new_notifications_count} new notification(s).")
-        """Display and mark notifications as read."""
-        if self.notifications:
-            print(f"\n--- Notifications for {self.username} ---")
-            for i, (message, is_new) in enumerate(self.notifications, 1):
-                status = "[NEW]" if is_new else "[READ]"
-                print(f"{i}. {message} {status}")
-
-            # Mark all notifications as read
-            self.mark_notifications_as_read()
-
-            if input("Clear notifications? (y/n): ").strip().lower() == 'y':
-                self.clear_notifications()
-        else:
-            print(f"\nNo new notifications for {self.username}.")
-
-    def mark_notifications_as_read(self):
-        """Marks all notifications as read."""
-        self.notifications = [(msg, False) for msg, _ in self.notifications]
-
-    def clear_notifications(self):
-        """Clears all notifications."""
-        self.notifications.clear()
-        print(f"All notifications cleared for {self.username}!")
-    
+     
     def __str__(self):
         return f"Nurse: {self.username}"
 
-def authenticate_nurse():
-    """Authenticates nurse login using username and password."""
-    print("\n--- Nurse Login ---")
-    while True:
-        username = input("Enter your username: ").strip()
-        password = input("Enter your password: ").strip()
-
-        if NURSE_CREDENTIALS.get(username) == password:
-            print(f"Welcome, {username}!")
-            return Nurse(username)
-        else:
-            print("Invalid credentials. Please try again.")
+def handle_task_selection(choice, tasks, nurse):
+    """Executes the selected task based on user choice."""
+    if choice == '15':
+        if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
+            print("Logging out...")
+            return False
+    elif choice in tasks:
+        tasks[choice]()
+    else:
+        print("Invalid selection. Please try again.")
+    return True
 
 def nurse_dashboard(nurse):
     """Displays the nurse's dashboard and handles task selection."""
     tasks = {
-        '1': nurse.view_notifications,
+        '1': nurse.notifications.view_notifications,
         '2': nurse.view_assigned_patients,
         '3': conduct_triage,
         '4': check_shifts,
@@ -140,6 +162,7 @@ def nurse_dashboard(nurse):
         '11': lambda: discharge_patient(nurse),
         '12': lambda: request_medical_supplies(nurse),
         '13': view_patient_history,
+        '14': nurse.notifications.clear_notifications,
     }
 
     while True:
@@ -158,26 +181,20 @@ def nurse_dashboard(nurse):
 11. Discharge Patient
 12. Request Medical Supplies
 13. View Patient History
-14. Logout""")
+14. Clear Notifications
+15. Logout""")
 
-        choice = input("Select a task (1-14): ").strip()
-        if choice == '14':
-            if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
-                print("Logging out...")
-                break
-        elif choice in tasks:
-            tasks[choice]()
-        else:
-            print("Invalid selection. Please try again.")
+        choice = input("Select a task (1-15): ").strip()
+        if not handle_task_selection(choice, tasks, nurse):
+            break
         time.sleep(1)
 
-def discharge_patient(nurse):
+@notify_action("Patient {} has been discharged.")
+def discharge_patient(nurse, patient):
     """Handles patient discharge and removes the patient from the nurse's list."""
-    patient = input("Enter the patient's name to discharge: ").strip()
-    if patient in PATIENT_RECORDS:
+    if patient in nurse.assigned_patients:
         print(f"Patient {patient} has been discharged.")
-        nurse.remove_patient(patient)  # Remove from nurse's assigned list
-        nurse.add_notification(f"Patient {patient} has been discharged.")
+        nurse.remove_patient(patient)
     else:
         print("Patient not found.")
 
@@ -211,7 +228,7 @@ def request_medical_supplies(nurse):
     item = input("Enter the item to request: ").strip()
     quantity = input("Enter the quantity: ").strip()
     print(f"Requested {quantity} of {item}.")
-    nurse.add_notification(f"Requested {quantity} of {item}.")
+    nurse.notifications.add_notification(f"Requested {quantity} of {item}.")
 
 def view_patient_history():
     """Displays the medical history of a specific patient."""
@@ -255,4 +272,4 @@ def run_nurse_portal(nurse_name):
             print("Error loading nurse dashboard.")
 
 if __name__ == "__main__":
-    run_nurse_portal("Alice Smith")
+    run_nurse_portal("Carol Lee")
