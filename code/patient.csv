@@ -1,2 +1,2 @@
-Name,Age,Address,Phone,Username,Password
-John Doe,28,"123 Maple St, Springfield",555-0123,patient,password
+Name,Age,Address,Phone,Password,Username,Reason,Diagnosed diseases,Date,Answers,Mode,Priority,Nurse
+John Doe,28,"123 Maple St, Springfield",555-0123,password,JD28,chest pain,heart attack,2024-10-18,"['1   ', '11   ', '111   ', '1111   ']",Zoom,Low,
