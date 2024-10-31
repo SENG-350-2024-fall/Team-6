@@ -38,6 +38,10 @@ def assign_patient_to_nurse():
     time.sleep(2)
 
 def log_incoming_patient():
+    if len(patients) + 1 >= ed_capacity:
+        print("ED is at full capacity! Cannot log new patient.")
+        time.sleep(2)
+        return
     name = input("Enter the patient's name: ")
     age = input("Enter the patient's age: ")
     medical_record = input("Enter the patient's medical record number: ")
@@ -49,12 +53,8 @@ def log_incoming_patient():
         "medical_record": medical_record,
         "assigned_nurse": None
     }
-
-    if len(patients) < ed_capacity:
-        patients.append(new_patient)
-        print(f"Logged new patient: {name} (ID: {new_patient['id']}).")
-    else:
-        print("ED is at full capacity! Cannot log new patient.")
+    patients.append(new_patient)
+    print(f"Logged new patient: {name} (ID: {new_patient['id']}).")
     time.sleep(2)
 
 def log_out():
