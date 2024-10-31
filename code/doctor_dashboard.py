@@ -1,44 +1,49 @@
 import os
 import time
+import pandas as pd
 
-# Sample patient data
-patients = [
-    {"id": 1, "name": "John Doe", "age": 30, "medical_record": "MRN001"},
-    {"id": 2, "name": "Jane Smith", "age": 25, "medical_record": "MRN002"},
-    {"id": 3, "name": "Alice Johnson", "age": 40, "medical_record": "MRN003"}
-]
+# Load patient data from CSV file using pandas
+def load_patients_from_csv(file_path):
+    try:
+        df = pd.read_csv(file_path)
+        # Keep only the relevant columns and rename them
+        df = df[['Name', 'Age', 'Address', 'Phone']]  # Selecting only the required columns
+        df.columns = ['name', 'age', 'address', 'phone']
+        patients = df.to_dict(orient='records')
+        return patients
+    except FileNotFoundError:
+        print(f"Error: {file_path} not found.")
+        return []
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def view_patient_list():
+def view_patient_list(patients):
     print("Patient List:")
-    for patient in patients:
-        print(f"ID: {patient['id']}, Name: {patient['name']}, Age: {patient['age']}, Medical Record: {patient['medical_record']}")
-    time.sleep(2)  # Simulating a delay for viewing the list
+    for i, patient in enumerate(patients, start=1):
+        print(f"{i}. Name: {patient['name']}, Age: {patient['age']}, Address: {patient['address']}, Phone: {patient['phone']}")
+    time.sleep(2)
 
-def search_patient():
-    patient_id = input("Enter the Patient ID to search: ")
+def search_patient(patients):
+    patient_name = input("Enter the Patient Name to search: ")  # Search by name instead
     for patient in patients:
-        if str(patient['id']) == patient_id:
-            print(f"Found Patient: ID: {patient['id']}, Name: {patient['name']}, Age: {patient['age']}, Medical Record: {patient['medical_record']}")
-            time.sleep(2)  # Simulating a delay for viewing patient details
+        if patient['name'].lower() == patient_name.lower():  # Case-insensitive search
+            print(f"Found Patient: Name: {patient['name']}, Age: {patient['age']}, Address: {patient['address']}, Phone: {patient['phone']}")
+            time.sleep(2)
             return
     print("Patient not found.")
     time.sleep(2)
 
 def serve_patient():
     print("Serving Patient...")
-    # Here you would implement the logic to serve a patient
     time.sleep(2)
 
-def update_patient_record():
-    patient_id = input("Enter the Patient ID to update: ")
+def update_patient_record(patients):
+    patient_name = input("Enter the Patient Name to update: ")  # Update by name instead
     for patient in patients:
-        if str(patient['id']) == patient_id:
-            # Here you would implement the logic to update the patient's record
+        if patient['name'].lower() == patient_name.lower():
             print(f"Updating record for {patient['name']}...")
-            time.sleep(2)  # Simulating a delay for updating
+            time.sleep(2)
             return
     print("Patient not found.")
     time.sleep(2)
@@ -46,9 +51,17 @@ def update_patient_record():
 def log_out():
     print("Logging out...")
     time.sleep(1)
-    return False  # Return False to indicate the user is logging out
+    return False
 
 def doctor_dashboard():
+    # Load patient data from CSV
+    file_path = 'patient.csv'  # Updated to match your new CSV filename
+    patients = load_patients_from_csv(file_path)
+    
+    if not patients:
+        print("No patients found in the file. Exiting.")
+        return
+
     logged_in = True
     while logged_in:
         clear_terminal()
@@ -65,13 +78,13 @@ def doctor_dashboard():
         choice = input("Enter the number corresponding to your choice:\n")
 
         if choice == '1':
-            view_patient_list()
+            view_patient_list(patients)
         elif choice == '2':
-            search_patient()
+            search_patient(patients)
         elif choice == '3':
             serve_patient()
         elif choice == '4':
-            update_patient_record()
+            update_patient_record(patients)
         elif choice == '5':
             logged_in = log_out()
         else:
