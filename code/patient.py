@@ -1,179 +1,141 @@
 import pandas as pd
-import numpy as np
 from csv import writer
 from datetime import date
 import warnings
+from triage import *
 warnings.filterwarnings("ignore")
 
+tr = Triage()
+password = "password"
 
-class patient:
-
-    status = "Triage is Not Taken"
-    triageStatus = "Idle"
-
-    def __init__(self):
+# Strategy interface
+class TriageStrategy:
+    # Skeleton method
+    def execute(self, patient_data):
         pass
 
-    def login(self):
 
-        print()
-        print("    Patient Login Page      ")
-        print("----------------------------")
-
-        username = input("Username: ")
-        password = input("Password: ")
-
-        try:
-            data = pd.read_csv("patients_credentials.csv")
-        except:
-            print("\nPatients Credential File is Not Found!!")
-            return
+# Concrete strategy for registration
+class RegisterForTriage(TriageStrategy):
+    
+    def __init__(self):
+        pass
         
-        check = 0
-
-        for un, pas in list(data[["username", "password"]].values):
-            if str.lower(username) == str.lower(un) and str.lower(str(pas)) == str.lower(
-                str(password)
-            ):
-
-                check = 1
-                break
-
-        if check == 1:
-
-            print("\nYou have logged in successfully!")
-
-        else:
-
-            x = input("Please re-enter credentials or input 1 register! ")
-            if x == str(1):
-                self.register()
-            else:
-                self.login()
-                check = 0
-
-    def register(self):
-
+    # Body 1
+    def execute(self, patient_data):
         print()
-        print("    Patient Registering Page      ")
-        print("-----------------------------------")
-
+        print("    Virtual Triage Registration   ")
+        print("-------------------------------------")
+        
+        ## Calling Triage Class Fucntion
+        tr.perform_triage()
+        ##
+        
         username = input("Username: ")
-        password = input("Password: ")
+        name = input("Full Name: ")
+        age = input("Age: ")
         address = input("Address: ")
-        phoneNumber = input("Phone Number: ")
+        phone = input("Phone: ")
+        reason = input("Reason: ")
+        diagnosed_diseases = input("Diagnosed Diseases: ")
+        today = date.today()
+        print()
         
-        try:
-            data = pd.read_csv("patients_credentials.csv")
-        except:
-            print("\nPatients Credential File is Not Found!!")
-            return
-
-        for un, pas in list(data[["username", "password"]].values):
-
-            if str.lower(username) == str.lower(un) and str.lower(str(pas)) == str.lower(
-                str(password)
-            ):
-                return "\nYou are already registered!"
-
-        with open("patients_credentials.csv", "a", newline="") as csv_file:
+        ## Notifying Patient and Nurse
+        tr.notify_patient_nurse()
+        ##
+        
+        with open("patient.csv", "a", newline="") as csv_file:
             writer_obj = writer(csv_file)
-            writer_obj.writerow([username, password, address, phoneNumber])
-            print("\nYou have been registered successfully!")
-            csv_file.close()
+            writer_obj.writerow(
+                [name, age, address, phone, password, username, reason, diagnosed_diseases, today, "NA","NA","NA","NA"]
+            )
+            print("\nYour Request Has Been Submitted!")
 
-            return 1
+        patient_data['triageStatus'] = "Registration Confirmed"
 
-    def undergoTriage(self):
 
+# Concrete strategy for undergoing triage
+class UndergoTriage(TriageStrategy):
+    # Body 2
+    def execute(self, patient_data):
         print()
         print("    Virtual Triage Page   ")
         print("-------------------------------------")
 
         username = input("Username: ")
-        full_name = input("Full Name: ")
+        name = input("Full Name: ")
 
-        q1 = input("What are your symptomps?  ")
-        q2 = input("How long you have been experiencing them?  ")
+        q1 = input("What are your symptoms?  ")
+        q2 = input("How long have you been experiencing them?  ")
         q3 = input("Have you experienced this symptom before?  ")
         q4 = input("Has this issue affected your daily activities or work?  ")
-
-        answers = [q1 + "   ", q2 + "   ", q3 + "   ", q4 + "   "]
         
+        answers = [q1 + "   ", q2 + "   ", q3 + "   ", q4 + "   "]
+
         try:
-            data = pd.read_csv("triage.csv")
-        except:
-            print("\nTriag File is Not Found!!")
+            data = pd.read_csv("patient.csv")
+        except FileNotFoundError:
+            print("\nTriage File is Not Found!!")
             return
         
-        registered = 0
+        registered = False
         
         for i in range(len(data)):
+            if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
+                
+                data["Answers"].iloc[i] = answers
+                data["Priority"] = tr.get_priority()
+                data["Mode"] = tr.get_mode()
 
-            if (
-                data["username"].iloc[i] == username
-                and data["full_name"].iloc[i] == full_name
-            ):
-                data["answers"].iloc[i] = answers
-                data.to_csv("triage.csv", sep=",", index=False, encoding="utf-8")
+                # Write to CSV file
+                data.to_csv("patient.csv", sep=",", index=False, encoding="utf-8")
+                
                 print("\nAnswers Are Saved Successfully!")
-                registered = 1
+                registered = True
                 break
             
-        if(registered == 0):
+        if not registered:
             print("\nPlease Register for the Triage First!")
         else:
-            self.status = "Triage is taken."
+            patient_data['status'] = "Triage is taken."
 
-        status = self.status   
 
-        return status
+# Context for the patient
+class Patient:
+    def __init__(self):
+        self.patient_data = {
+            "status": "Triage is Not Taken",
+            "triageStatus": "Idle"
+        }
+        self.strategy = None
 
-    def registerForTriage(self):
+    def set_strategy(self, strategy: TriageStrategy):
+        self.strategy = strategy
 
-        print()
-        print("    Virtual Triage Registration   ")
-        print("-------------------------------------")
+    def execute_strategy(self):
+        if self.strategy:
+            self.strategy.execute(self.patient_data)
 
-        username = input("Username: ")
-        full_name = input("Full Name: ")
-        age = input("Age: ")
-        reason = input("Reason: ")
-        diagnosed_diseases = input("Diagnosed Diseases: ")
-        today = date.today()
-
-        with open("triage.csv", "a", newline="") as csv_file:
-            writer_obj = writer(csv_file)
-            writer_obj.writerow(
-                [username, full_name, age, reason, diagnosed_diseases, today, "NA"]
-            )
-            print("\nYour Request Have Been Submitted!")
-            csv_file.close()
-            self.triageStatus = "Registeration Confirmed"
-
-        triageStatus = self.triageStatus
-        
-        return triageStatus
-        
     def initiate_actions(self):
-        
         print()
         print("       Patient Welcome Page          ")
         print("-------------------------------------")
-        op = input("Choose an Option:\n\n 1 = Login, 2 = Register, 3 = Register for Triage, 4 = Undergo Triage  ")
-        
-        pt = patient()
-        
+        op = input("Choose an Option:\n\n 1 = Register for Triage, 2 = Undergo Triage  ")
+
         if op == "1":
-            pt.login()
-        elif  op == "2":
-            pt.register()
-        elif op == "3":
-            pt.registerForTriage()
-        elif op == "4":
-            pt.undergoTriage()
+            self.set_strategy(RegisterForTriage())
+        elif op == "2":
+            self.set_strategy(UndergoTriage())
         else:
             print("Please Pick a Valid Input!!")
             self.initiate_actions()
-        
-        return
+            return
+
+        self.execute_strategy()
+
+
+# Entry point
+if __name__ == "__main__":
+    patient_instance = Patient()
+    patient_instance.initiate_actions()
