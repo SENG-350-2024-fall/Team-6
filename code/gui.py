@@ -5,7 +5,7 @@ import admin
 import ed_staff_dashboard
 import patient
 
-def role_login(portal_name, dashboard=None):
+def role_login(portal_name, dashboard, user):
     """
     Clears the terminal and displays the login portal for the specified role.
     If a dashboard function is provided, it calls that dashboard after login.
@@ -13,27 +13,9 @@ def role_login(portal_name, dashboard=None):
     login.clear_terminal()
     print(f"\n{portal_name} Login Portal\n")
     if dashboard:
-        dashboard()
+        dashboard(user)
     else:
         print(f"Welcome to the {portal_name} Portal!")
-
-def display_dashboard(portal):
-    """
-    Redirects the user to the appropriate dashboard based on their role.
-    """
-    roles = {
-        'Patient': patient.patient().initiate_actions,
-        'Doctor': doctor_dashboard.doctor_dashboard,
-        'Nurse': nurse.run_nurse_portal,
-        'ED Staff': ed_staff_dashboard.ed_staff_dashboard,
-        'System Administrator': admin.run_admin_portal,
-    }
-
-    if portal:
-        print(f"Accessing {portal} Dashboard...")
-       
-    else:
-        print("Unknown role. Access denied.")
 
 def main():
     """
@@ -65,8 +47,7 @@ def main():
             portal, dashboard = roles[role_choice]
             user = login.login(portal.lower().replace(" ", "_"))  # Prompt user to log in
             if user is not None and not user.empty:
-                role_login(portal, dashboard)
-                display_dashboard(portal)  # Show the specific dashboard based on role
+                role_login(portal, dashboard, user)
             else:
                 print("Invalid login or role mismatch. Please try again.\n")
         else:

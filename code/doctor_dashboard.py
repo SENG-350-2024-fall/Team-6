@@ -53,7 +53,7 @@ def log_out():
     time.sleep(1)
     return False
 
-def doctor_dashboard():
+def doctor_dashboard(user):
     # Load patient data from CSV
     file_path = 'patient.csv'  # Updated to match your new CSV filename
     patients = load_patients_from_csv(file_path)
@@ -65,6 +65,8 @@ def doctor_dashboard():
     logged_in = True
     while logged_in:
         clear_terminal()
+        print("Welcome " + user + " !!\n")
+        time.sleep(2)
         print(" =============================")
         print("|| Welcome to the Doctor's Dashboard ||")
         print(" =============================\n")
