@@ -1,36 +1,39 @@
-import pandas as pd
 import os
 import time
+from data_stores import all_users  # Import all_users from data_stores
 
 def load_credentials(role):
-    filename = f"{role}.csv"  # Assuming CSV files are named after the role
-    try:
-        # Load the CSV file into a DataFrame
-        df = pd.read_csv(filename)
-        return df  # Return the DataFrame containing user data
-    except FileNotFoundError:
-        print(f"No user credentials file found for role: {role}.")
-        return pd.DataFrame()  # Return an empty DataFrame
+    """
+    Fetch users of a specific role from all_users.
+    Returns a list of user dictionaries for the specified role.
+    """
+    return all_users.get(role, [])
 
 def check_credentials(role, username, password):
+    """
+    Check if the username and password match for the given role in all_users.
+    """
     users = load_credentials(role)
-    # Check if the username and password exist in the DataFram
-    user = users[(users["Username"] == username) & (users["Password"] == password)]
-    if not user.empty:
-        return user.iloc[0]['Name']
+    # Find the user with matching username and password
+    for user in users:
+        if user.username == username and user.password == password:
+            return user.iloc[0].name
     return None
 
 def login(role):
+    """
+    Prompt for login credentials and verify against all_users data.
+    """
     username = input("Enter your username: ")
     password = input("Enter your password: ")
 
 
     user = check_credentials(role, username, password)
-    if user:
+    if user is not None:
         clear_terminal()
         time.sleep(1)
-        print(f"Welcome, {user}!")
-        return user  # Return the user object for further use
+        print(f"Welcome, {user_name}!")
+        return user_name  # Return the user name for further use
     else:
         clear_terminal()
         time.sleep(1)
@@ -39,7 +42,9 @@ def login(role):
         return None
 
 def clear_terminal():
-    # Clear the terminal screen based on the operating system
+    """
+    Clear the terminal screen based on the operating system.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Example usage:

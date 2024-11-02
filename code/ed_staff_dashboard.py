@@ -1,60 +1,72 @@
 import os
 import time
-
-patients = [
-    {"id": 1, "name": "John Doe", "age": 30, "medical_record": "MRN001", "assigned_nurse": None},
-    {"id": 2, "name": "Jane Smith", "age": 25, "medical_record": "MRN002", "assigned_nurse": None},
-    {"id": 3, "name": "Alice Johnson", "age": 40, "medical_record": "MRN003", "assigned_nurse": None}
-]
-
-nurses = ["Nurse Alice", "Nurse Bob", "Nurse Charlie"]
-ed_capacity = 10
+from user import Patient
+from data_stores import all_users
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def view_ed_capacity():
+    patients = all_users.get('patient', [])
+    ed_capacity = 10  # Assuming fixed capacity; this could be dynamic
     print(f"Current ED Capacity: {len(patients)}/{ed_capacity} patients.")
     time.sleep(2)
 
 def assign_patient_to_nurse():
-    patient_id = input("Enter the Patient ID to assign to a nurse: ")
-    for patient in patients:
-        if str(patient['id']) == patient_id:
-            print("Available Nurses:")
-            for i, nurse in enumerate(nurses, 1):
-                print(f"{i}. {nurse}")
-            nurse_choice = int(input("Enter the number corresponding to the nurse:\n"))
-            if 1 <= nurse_choice <= len(nurses):
-                patient['assigned_nurse'] = nurses[nurse_choice - 1]
-                print(f"Assigned {nurses[nurse_choice - 1]} to {patient['name']}.")
-                time.sleep(2)
-                return
-            else:
-                print("Invalid nurse selection.")
-                time.sleep(2)
-                return
+    patients = all_users.get('patient', [])
+    nurses = all_users.get('nurse', [])  # Retrieve the list of nurses
+    patient_username = input("Enter the Patient Username to assign to a nurse: ")
+    
+    # Find the patient by username
+    patient = next((p for p in patients if p.username.lower() == patient_username.lower()), None)
+    
+    if patient:
+        print("Available Nurses:")
+        for i, nurse in enumerate(nurses, 1):
+            print(f"{i}. {nurse.name}")  # Access the nurse's name
+        nurse_choice = int(input("Enter the number corresponding to the nurse:\n"))
+        
+        if 1 <= nurse_choice <= len(nurses):
+            patient.assigned_nurse = nurses[nurse_choice - 1].name  # Assign nurse by name
+            print(f"Assigned {nurses[nurse_choice - 1].name} to {patient.username}.")
+            time.sleep(2)
+            return
+        else:
+            print("Invalid nurse selection.")
+            time.sleep(2)
+            return
     print("Patient not found.")
     time.sleep(2)
 
 def log_incoming_patient():
-    if len(patients) + 1 >= ed_capacity:
+    patients = all_users.get('patient', [])
+    ed_capacity = 10  # Assuming fixed capacity
+    if len(patients) >= ed_capacity:
         print("ED is at full capacity! Cannot log new patient.")
         time.sleep(2)
         return
+    
     name = input("Enter the patient's name: ")
     age = input("Enter the patient's age: ")
-    medical_record = input("Enter the patient's medical record number: ")
+    address = input("Enter the patient's address: ")
+    phone_number = input("Enter the patient's phone number: ")
+    username = input("Enter the patient's username: ")  # Add username input
+    password = input("Enter the patient's password: ")  # Add password input
 
-    new_patient = {
-        "id": len(patients) + 1,
-        "name": name,
-        "age": int(age),
-        "medical_record": medical_record,
-        "assigned_nurse": None
-    }
+    # Create new patient object
+    new_patient = Patient(
+        name=name,
+        age=int(age),
+        address=address,
+        phone_number=phone_number,
+        username=username,
+        password=password
+    )
+    
+    # Append new patient to the all_users structure
     patients.append(new_patient)
-    print(f"Logged new patient: {name} (ID: {new_patient['id']}).")
+    all_users['patient'] = patients  # Update all_users with the new patient
+    print(f"Logged new patient: {name} (Username: {new_patient.username}).")
     time.sleep(2)
 
 def log_out():
@@ -62,10 +74,11 @@ def log_out():
     time.sleep(1)
     return False
 
-def ed_staff_dashboard():
+def ed_staff_dashboard(user):
     logged_in = True
     while logged_in:
         clear_terminal()
+        print(f"Welcome {user} !!\n")
         print(" =============================")
         print("|| Welcome to the ED Staff Dashboard ||")
         print(" =============================\n")
