@@ -50,4 +50,10 @@ We briefly discussed the diagrams to clarify any questions, and we aim to have t
 
 In this meeting, we focused on finalizing our diagrams. Each team member had completed their assigned diagrams, and we reviewed them collectively to ensure accuracy and consistency. Once everything was checked for correctness, we uploaded our work to the project wiki.
 
-Next, we shifted our discussion to the implementation phase. After considering various options, we decided to use a terminal interface for the UI. This approach allows us to concentrate more on the design and functionality. We agreed to complete the UI portion during this sprint, which covers approximately 35% of the overall code. The major design work will be tackled in the next milestone, giving us more time to plan and ensure quality.
+**Meeting 7 - Oct 24**
+
+In this meeting, we developed a plan for progressing with our codebase, which is currently about 35% complete. We decided on the design patterns to incorporate into the project, divided the tasks, and discussed key ideas to guide our work. This week, we will begin work on Milestone 3, applying these design patterns to ensure a robust and scalable structure moving forward.
+
+**Meeting 8 - Oct 31**
+
+This week, since our team has implemented some of the design patterns, we still need to refine them and verify their correctness. We discussed the availability tactics we need to add to the code and divided the work accordingly. We may hold another meeting before the submission to review our progress.
