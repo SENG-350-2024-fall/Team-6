@@ -61,12 +61,12 @@ class UserFactory:
             # Create instances of the class for each row in the DataFrame
             for _, row in df.iterrows():
                 user = user_class(
-                    row['name'],
-                    row['age'],
-                    row['address'],
-                    row['phone_number'],
-                    row['username'],
-                    row['password']
+                    row['Name'],
+                    row['Age'],
+                    row['Address'],
+                    row['Phone'],
+                    row['Username'],
+                    row['Password']
                 )
                 users.append(user)
 
@@ -74,3 +74,18 @@ class UserFactory:
         except FileNotFoundError:
             print(f"No user credentials file found for role: {role}.")
             return []
+    
+    @staticmethod
+    def load_all_users():
+        """Load users for all roles and return them as a dictionary with roles as keys."""
+        roles = ['doctor', 'patient', 'nurse', 'system_administrator', 'ed_staff']
+        all_users = {}
+        
+        for role in roles:
+            users = UserFactory.load_users(role)
+            if users:
+                all_users[role] = users
+            else:
+                print(f"No users found for role: {role}.")
+                
+        return all_users

@@ -29,6 +29,8 @@ def main():
         '5': ('System Administrator', admin.run_admin_portal),
     }
 
+    #doctors = all_users.get('doctor', [])
+
     while True:
         print(" =============================")
         print("|| Welcome to the ED Portal  ||")
@@ -46,7 +48,7 @@ def main():
         elif role_choice in roles:
             portal, dashboard = roles[role_choice]
             user = login.login(portal.lower().replace(" ", "_"))  # Prompt user to log in
-            if user is not None and not user.empty:
+            if user is not None:
                 role_login(portal, dashboard, user)
             else:
                 print("Invalid login or role mismatch. Please try again.\n")

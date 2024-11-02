@@ -1,19 +1,6 @@
 import os
 import time
-import pandas as pd
-
-# Load patient data from CSV file using pandas
-def load_patients_from_csv(file_path):
-    try:
-        df = pd.read_csv(file_path)
-        # Keep only the relevant columns and rename them
-        df = df[['Name', 'Age', 'Address', 'Phone']]  # Selecting only the required columns
-        df.columns = ['name', 'age', 'address', 'phone']
-        patients = df.to_dict(orient='records')
-        return patients
-    except FileNotFoundError:
-        print(f"Error: {file_path} not found.")
-        return []
+from data_stores import all_users
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -21,14 +8,14 @@ def clear_terminal():
 def view_patient_list(patients):
     print("Patient List:")
     for i, patient in enumerate(patients, start=1):
-        print(f"{i}. Name: {patient['name']}, Age: {patient['age']}, Address: {patient['address']}, Phone: {patient['phone']}")
+        print(f"{i}. Name: {patient.name}, Age: {patient.age}, Address: {patient.address}, Phone: {patient.phone_number}")
     time.sleep(2)
 
 def search_patient(patients):
-    patient_name = input("Enter the Patient Name to search: ")  # Search by name instead
+    patient_name = input("Enter the Patient Name to search: ").strip()
     for patient in patients:
-        if patient['name'].lower() == patient_name.lower():  # Case-insensitive search
-            print(f"Found Patient: Name: {patient['name']}, Age: {patient['age']}, Address: {patient['address']}, Phone: {patient['phone']}")
+        if patient.name.lower() == patient_name.lower():
+            print(f"Found Patient: Name: {patient.name}, Age: {patient.age}, Address: {patient.address}, Phone: {patient.phone_number}")
             time.sleep(2)
             return
     print("Patient not found.")
@@ -39,10 +26,15 @@ def serve_patient():
     time.sleep(2)
 
 def update_patient_record(patients):
-    patient_name = input("Enter the Patient Name to update: ")  # Update by name instead
+    patient_name = input("Enter the Patient Name to update: ").strip()
     for patient in patients:
-        if patient['name'].lower() == patient_name.lower():
-            print(f"Updating record for {patient['name']}...")
+        if patient.name.lower() == patient_name.lower():
+            print(f"Updating record for {patient.name}...")
+            # Example of updating patient details
+            new_phone = input("Enter new phone number (leave blank to keep current): ")
+            if new_phone:
+                patient.phone_number = new_phone
+                print("Patient phone number updated.")
             time.sleep(2)
             return
     print("Patient not found.")
@@ -54,18 +46,17 @@ def log_out():
     return False
 
 def doctor_dashboard(user):
-    # Load patient data from CSV
-    file_path = 'patient.csv'  # Updated to match your new CSV filename
-    patients = load_patients_from_csv(file_path)
+    # Retrieve all patient instances from all_users
+    patients = all_users.get('patient', [])
     
     if not patients:
-        print("No patients found in the file. Exiting.")
+        print("No patients found in the system. Exiting.")
         return
 
     logged_in = True
     while logged_in:
         clear_terminal()
-        print("Welcome " + user + " !!\n")
+        print(f"Welcome Dr.{user} !!\n")
         time.sleep(2)
         print(" =============================")
         print("|| Welcome to the Doctor's Dashboard ||")
@@ -94,4 +85,5 @@ def doctor_dashboard(user):
             time.sleep(2)
 
 if __name__ == "__main__":
-    doctor_dashboard()
+    # Replace 'User' in the print statement with the actual username of the doctor
+    doctor_dashboard("Doctor")  # Replace with actual username if needed
