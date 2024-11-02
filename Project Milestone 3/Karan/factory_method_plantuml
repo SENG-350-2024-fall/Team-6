@@ -1,0 +1,93 @@
+@startuml
+
+' Box around the User and its subclasses
+package "User Classes" {
+    ' Abstract User class
+    abstract class User {
+        - name: str
+        - age: int
+        - address: str
+        - phone_number: str
+        - username: str
+        - password: str
+        + get_role(): str
+    }
+
+
+    ' Concrete user classes
+    class Doctor {
+        - available: bool
+        + get_role(): str
+    }
+
+    class Patient {
+        - status: str
+        + get_role(): str
+    }
+
+    class Nurse {
+        - shift: str
+        + get_role(): str
+    }
+
+    class SystemAdmin {
+        - admin_level: str
+        + get_role(): str
+    }
+
+    class EdStaff {
+        + get_role(): str
+    }
+}
+
+' Factories
+abstract class UserFactory {
+    + create_user(name: str, age: int, address: str, phone_number: str, username: str, password: str): User
+}
+
+class DoctorFactory {
+    + create_user(): Doctor
+}
+
+class PatientFactory {
+    + create_user(): Patient
+}
+
+class NurseFactory {
+    + create_user(): Nurse
+}
+
+class SystemAdminFactory {
+    + create_user(): SystemAdmin
+}
+
+class EdStaffFactory {
+    + create_user(): EdStaff
+}
+
+' UserLoader class
+class UserLoader {
+    - role_factory_map
+    + load_users(role: str): list<User>
+    + load_all_users(): dict[str, list<User>]
+}
+
+' Relationships
+User <|-- Doctor
+User <|-- Patient
+User <|-- Nurse
+User <|-- SystemAdmin
+User <|-- EdStaff
+
+UserFactory <|-- DoctorFactory
+UserFactory <|-- PatientFactory
+UserFactory <|-- NurseFactory
+UserFactory <|-- SystemAdminFactory
+UserFactory <|-- EdStaffFactory
+
+UserLoader --|> UserFactory : "Asks"
+
+' Arrow from UserFactory to the User Classes box
+UserFactory ..> "User Classes" : "Creates"
+
+@enduml
