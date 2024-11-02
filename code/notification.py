@@ -1,6 +1,8 @@
+from abc import ABC, abstractmethod
 
-class Observer:
+class Observer(ABC):
     """Observer interface for all user classes."""
+    @abstractmethod
     def update(self, message):
         raise NotImplementedError("Subclasses must implement this method.")
   

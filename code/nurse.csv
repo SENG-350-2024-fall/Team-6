@@ -1,4 +1,5 @@
 Name,Username,Password,Availability,TriageReady,AssignedPatients,Notifications
-Alice Smith,alice,password123,True,True,John Doe;Jane Smith,Patient John Doe has been assigned;Requested additional supplies
-Bob Johnson,bob,securepass,False,True,,Mandatory training session
-Carol Lee,carol,nurse456,True,False,Mary Brown,
+Carol Lee,nurse_carol,nurse456,True,False,Mary Brown;Liam Fox,
+Alice Smith,nurse_alice,password123,True,True,John Doe;Jane Smith,Patient John Doe has been assigned;Requested additional supplies
+Bob Johnson,nurse_bob,securepass,False,True,,Mandatory training session
+
