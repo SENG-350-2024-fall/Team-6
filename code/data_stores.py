@@ -1,4 +1,4 @@
-from user import UserFactory
+from user import UserLoader
 
 global all_users
-all_users = UserFactory.load_all_users()
+all_users = UserLoader.load_all_users()
