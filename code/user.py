@@ -119,20 +119,36 @@ class UserLoader:
 
             # Use the factory to create instances of the class for each row in the DataFrame
             for _, row in df.iterrows():
-                user = user_factory.create_user(
-                    row['Name'],
-                    row['Age'],
-                    row['Address'],
-                    row['Phone'],
-                    row['Username'],
-                    row['Password']
-                )
-                users.append(user)
+                try:
+                    # Exception detection on data integrity during user creation
+                    user = user_factory.create_user(
+                        row['Name'],
+                        row['Age'],
+                        row['Address'],
+                        row['Phone'],
+                        row['Username'],
+                        row['Password']
+                    )
+                    users.append(user)
+                except KeyError as e:
+                    print(f"Missing field in {role}.csv: {e}")
+                except ValueError as e:
+                    print(f"Invalid data type in {role}.csv: {e}")
+                except Exception as e:
+                    print(f"Unexpected error while creating user: {e}")
 
             return users
         except FileNotFoundError:
             print(f"No user credentials file found for role: {role}.")
-            return []
+        except pd.errors.EmptyDataError:
+            print(f"The file {filename} is empty.")
+        except pd.errors.ParserError as e:
+            print(f"Error parsing {filename}: {e}")
+        except Exception as e:
+            print(f"An unexpected error occurred while loading users: {e}")
+        
+        return []
+
     
     @staticmethod
     def load_all_users():
