@@ -110,25 +110,70 @@ class UserLoader:
         try:
             df = pd.read_csv(filename)
             users = []
-            
-            # Get the factory for the role
+
+            # Check the role and adjust user creation logic as needed
             user_factory = UserLoader.role_factory_map.get(role.lower())
             if not user_factory:
                 print(f"No factory defined for role: {role}.")
                 return []
 
-            # Use the factory to create instances of the class for each row in the DataFrame
             for _, row in df.iterrows():
                 try:
-                    # Exception detection on data integrity during user creation
-                    user = user_factory.create_user(
-                        row['Name'],
-                        row['Age'],
-                        row['Address'],
-                        row['Phone'],
-                        row['Username'],
-                        row['Password']
-                    )
+                    # Role-specific handling for attributes
+                    if role.lower() == 'doctor':
+                        user = user_factory.create_user(
+                            row['Name'],
+                            row['Age'],
+                            row['Address'],
+                            row['Phone'],
+                            row['Username'],
+                            row['Password']
+                            # Additional Doctor-specific attributes could be added here
+                        )
+                    elif role.lower() == 'patient':
+                        user = user_factory.create_user(
+                            row['Name'],
+                            row['Age'],
+                            row['Address'],
+                            row['Phone'],
+                            row['Username'],
+                            row['Password']
+                            # Additional Patient-specific attributes could be added here
+                        )
+                    elif role.lower() == 'nurse':
+                        user = user_factory.create_user(
+                            row['Name'],
+                            row['Age'],
+                            row['Address'],
+                            row['Phone'],
+                            row['Username'],
+                            row['Password']
+                            # Additional Nurse-specific attributes could be added here
+                        )
+                    elif role.lower() == 'system_administrator':
+                        user = user_factory.create_user(
+                            row['Name'],
+                            row['Age'],
+                            row['Address'],
+                            row['Phone'],
+                            row['Username'],
+                            row['Password']
+                            # Additional SystemAdmin-specific attributes could be added here
+                        )
+                    elif role.lower() == 'ed_staff':
+                        user = user_factory.create_user(
+                            row['Name'],
+                            row['Age'],
+                            row['Address'],
+                            row['Phone'],
+                            row['Username'],
+                            row['Password']
+                            # Additional EdStaff-specific attributes could be added here
+                        )
+                    else:
+                        print(f"Role-specific logic not implemented for: {role}")
+                        continue
+
                     users.append(user)
                 except KeyError as e:
                     print(f"Missing field in {role}.csv: {e}")
@@ -146,7 +191,7 @@ class UserLoader:
             print(f"Error parsing {filename}: {e}")
         except Exception as e:
             print(f"An unexpected error occurred while loading users: {e}")
-        
+
         return []
 
     
