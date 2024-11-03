@@ -1,5 +1,4 @@
 Name,Username,Password,Availability,TriageReady,AssignedPatients,Notifications
-Carol Lee,nurse_carol,nurse456,True,False,Mary Brown;Liam Fox,
+Carol Lee,nurse_carol,nurse456,True,False,Mary Brown,Patient Liam Fox has been removed from your care.
 Alice Smith,nurse_alice,password123,True,True,John Doe;Jane Smith,Patient John Doe has been assigned;Requested additional supplies
 Bob Johnson,nurse_bob,securepass,False,True,,Mandatory training session
-

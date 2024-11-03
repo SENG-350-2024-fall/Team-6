@@ -60,3 +60,18 @@ class Notification:
         """Clear all notifications."""
         self.notifications.clear()
         self.notify_observers("All notifications have been cleared.")
+        
+def notify_action(message_template):
+    """Decorator to add a notification based on an action."""
+    def decorator(func):
+        def wrapper(self, *args, **kwargs):
+            result = func(self, *args, **kwargs)
+            # Check if args exist to prevent IndexError
+            if args:
+                message = message_template.format(*args)
+            else:
+                message = message_template
+            self.notifications.add_notification(message)
+            return result
+        return wrapper
+    return decorator

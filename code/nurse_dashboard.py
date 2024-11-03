@@ -2,17 +2,47 @@ import time
 import pandas as pd
 import notification
 
-def notify_action(message_template):
-    """Decorator to add a notification based on an action."""
-    def decorator(func):
-        def wrapper(self, *args, **kwargs):
-            result = func(self, *args, **kwargs)
-            message = message_template.format(*args)
-            self.notifications.add_notification(message)
-            return result
-        return wrapper
-    return decorator
+# Sample data for patients and their records with multiple symptoms
+PATIENT_RECORDS = {
+    "Mary Brown": {
+        "age": 67,
+        "symptoms": ["Shortness of breath", "Fatigue", "Swollen ankles"],
+        "vitals": {"heart_rate": 88, "blood_pressure": "140/90", "oxygen_saturation": "92%"},
+        "history": ["Diagnosed with congestive heart failure", "Undergoing diuretic therapy", "Hospitalized twice in the last year"]
+    },
+    "Liam Fox": {
+        "age": 54,
+        "symptoms": ["Frequent headaches", "Blurred vision"],
+        "vitals": {"heart_rate": 76, "blood_pressure": "150/95"},
+        "history": ["History of high blood pressure", "Prescribed antihypertensive medication", "Routine eye exams advised"]
+    },
+    "John Doe": {
+        "age": 45,
+        "symptoms": ["Dizziness", "High Blood Pressure", "Chest Pain"],
+        "vitals": {"heart_rate": 72, "blood_pressure": "130/85"},
+        "history": ["Admitted for dizziness", "Prescribed blood pressure medication"]
+    },
+    "Jane Smith": {
+        "age": 32,
+        "symptoms": ["Fractured Arm", "Bruising", "Pain"],
+        "vitals": {"heart_rate": 78, "blood_pressure": "120/80"},
+        "history": ["X-ray taken", "Arm placed in a cast"]
+    },
+    "Daniel Green": {
+        "age": 29,
+        "symptoms": ["Abdominal pain", "Nausea", "Vomiting"],
+        "vitals": {"heart_rate": 85, "blood_pressure": "118/75"},
+        "history": ["Possible food poisoning", "Administered anti-nausea medication"]
+    },
+    "Emily White": {
+        "age": 73,
+        "symptoms": ["Joint pain", "Stiffness", "Swelling"],
+        "vitals": {"heart_rate": 68, "blood_pressure": "125/80"},
+        "history": ["Arthritis diagnosis", "Under physical therapy for joint flexibility"]
+    }
+}
 
+#CSV Management
 def load_nurse_data(nurse_name):
     """Load nurse data from nurse.csv based on the name."""
     try:
@@ -44,8 +74,6 @@ def load_nurse_data(nurse_name):
     except FileNotFoundError:
         print("nurse.csv file not found.")
         return None
-
-import pandas as pd
 
 def update_nurse_data(nurse):
     """Updates the nurse's information in the nurse.csv file."""
@@ -80,22 +108,7 @@ def update_nurse_data(nurse):
     except Exception as e:
         print(f"An error occurred while updating the nurse data: {e}")
 
-# Sample data for patients and their records with multiple symptoms
-PATIENT_RECORDS = {
-    "John Doe": {
-        "age": 45,
-        "symptoms": ["Dizziness", "High Blood Pressure", "Chest Pain"],
-        "vitals": {"heart_rate": 72, "blood_pressure": "130/85"},
-        "history": ["Admitted for dizziness", "Prescribed blood pressure medication"]
-    },
-    "Jane Smith": {
-        "age": 32,
-        "symptoms": ["Fractured Arm", "Bruising", "Pain"],
-        "vitals": {"heart_rate": 78, "blood_pressure": "120/80"},
-        "history": ["X-ray taken", "Arm placed in a cast"]
-    }
-}
-
+#Nurse class (includes adding and removing patients)
 class Nurse(notification.Observer):
     """Represents a Nurse."""
     def __init__(self, username, assigned_patients=None, available=True, can_conduct_triage=True):
@@ -119,11 +132,11 @@ class Nurse(notification.Observer):
             for patient in self.assigned_patients:
                 print(f"- {patient}")
 
-    @notify_action("Patient {} has been assigned to you.")
+    @notification.notify_action("Patient {} has been assigned to you.")
     def add_patient(self, patient):
         self.assigned_patients.append(patient)
 
-    @notify_action("Patient {} has been removed from your care.")
+    @notification.notify_action("Patient {} has been removed from your care.")
     def remove_patient(self, patient):
         """Removes a discharged patient from the assigned list."""
         if patient in self.assigned_patients:
@@ -145,6 +158,11 @@ def handle_task_selection(choice, tasks, nurse):
     else:
         print("Invalid selection. Please try again.")
     return True
+
+def get_patient_name_input(prompt="Enter the patient's name: "):
+    """Prompt for and return a patient name input."""
+    return input(prompt).strip()
+
 
 def nurse_dashboard(nurse):
     """Displays the nurse's dashboard and handles task selection."""
@@ -189,14 +207,19 @@ def nurse_dashboard(nurse):
             break
         time.sleep(1)
 
-@notify_action("Patient {} has been discharged.")
-def discharge_patient(nurse, patient):
+def discharge_patient(nurse, patient=None):
     """Handles patient discharge and removes the patient from the nurse's list."""
+    if not patient:
+        patient = get_patient_name_input("Enter the patient's name to discharge: ")
+    
     if patient in nurse.assigned_patients:
+        # Notify and remove the patient from the assigned list
         print(f"Patient {patient} has been discharged.")
         nurse.remove_patient(patient)
+        return patient  # Return patient for the decorator to capture
     else:
-        print("Patient not found.")
+        print(f"Patient {patient} not found in the assigned list.")
+        return None
 
 def view_patient_records():
     """Displays detailed records of a specific patient."""
@@ -214,7 +237,7 @@ def view_patient_records():
 
 def view_patient_vitals():
     """Displays the vitals of a specific patient."""
-    patient = input("Enter the patient's name: ").strip()
+    patient = get_patient_name_input()
     if patient in PATIENT_RECORDS:
         vitals = PATIENT_RECORDS[patient]["vitals"]
         print(f"\n--- Vitals for {patient} ---")
@@ -232,7 +255,7 @@ def request_medical_supplies(nurse):
 
 def view_patient_history():
     """Displays the medical history of a specific patient."""
-    patient = input("Enter the patient's name: ").strip()
+    patient = get_patient_name_input()
     if patient in PATIENT_RECORDS:
         print(f"\n--- Medical History for {patient} ---")
         for event in PATIENT_RECORDS[patient]["history"]:
