@@ -1,6 +1,48 @@
 import time
 import pandas as pd
+import notification
 
+# Sample data for patients and their records with multiple symptoms
+PATIENT_RECORDS = {
+    "Mary Brown": {
+        "age": 67,
+        "symptoms": ["Shortness of breath", "Fatigue", "Swollen ankles"],
+        "vitals": {"heart_rate": 88, "blood_pressure": "140/90", "oxygen_saturation": "92%"},
+        "history": ["Diagnosed with congestive heart failure", "Undergoing diuretic therapy", "Hospitalized twice in the last year"]
+    },
+    "Liam Fox": {
+        "age": 54,
+        "symptoms": ["Frequent headaches", "Blurred vision"],
+        "vitals": {"heart_rate": 76, "blood_pressure": "150/95"},
+        "history": ["History of high blood pressure", "Prescribed antihypertensive medication", "Routine eye exams advised"]
+    },
+    "John Doe": {
+        "age": 45,
+        "symptoms": ["Dizziness", "High Blood Pressure", "Chest Pain"],
+        "vitals": {"heart_rate": 72, "blood_pressure": "130/85"},
+        "history": ["Admitted for dizziness", "Prescribed blood pressure medication"]
+    },
+    "Jane Smith": {
+        "age": 32,
+        "symptoms": ["Fractured Arm", "Bruising", "Pain"],
+        "vitals": {"heart_rate": 78, "blood_pressure": "120/80"},
+        "history": ["X-ray taken", "Arm placed in a cast"]
+    },
+    "Daniel Green": {
+        "age": 29,
+        "symptoms": ["Abdominal pain", "Nausea", "Vomiting"],
+        "vitals": {"heart_rate": 85, "blood_pressure": "118/75"},
+        "history": ["Possible food poisoning", "Administered anti-nausea medication"]
+    },
+    "Emily White": {
+        "age": 73,
+        "symptoms": ["Joint pain", "Stiffness", "Swelling"],
+        "vitals": {"heart_rate": 68, "blood_pressure": "125/80"},
+        "history": ["Arthritis diagnosis", "Under physical therapy for joint flexibility"]
+    }
+}
+
+#CSV Management
 def load_nurse_data(nurse_name):
     """Load nurse data from nurse.csv based on the name."""
     try:
@@ -20,40 +62,67 @@ def load_nurse_data(nurse_name):
             username=record["Username"],
             assigned_patients=assigned_patients,
             available=record["Availability"],
-            can_conduct_triage=record["TriageReady"],
-            notifications=notifications
+            can_conduct_triage=record["TriageReady"]
         )
+
+        # Manually add notifications if necessary
+        for notification_msg in notifications:
+            nurse.notifications.add_notification(notification_msg)
+
         return nurse
 
     except FileNotFoundError:
         print("nurse.csv file not found.")
         return None
 
-# Sample data for patients and their records with multiple symptoms
-PATIENT_RECORDS = {
-    "John Doe": {
-        "age": 45,
-        "symptoms": ["Dizziness", "High Blood Pressure", "Chest Pain"],
-        "vitals": {"heart_rate": 72, "blood_pressure": "130/85"},
-        "history": ["Admitted for dizziness", "Prescribed blood pressure medication"]
-    },
-    "Jane Smith": {
-        "age": 32,
-        "symptoms": ["Fractured Arm", "Bruising", "Pain"],
-        "vitals": {"heart_rate": 78, "blood_pressure": "120/80"},
-        "history": ["X-ray taken", "Arm placed in a cast"]
-    }
-}
+def update_nurse_data(nurse):
+    """Updates the nurse's information in the nurse.csv file."""
+    try:
+        # Load the CSV into a DataFrame
+        nurses_df = pd.read_csv("nurse.csv")
+        
+        # Check if the nurse exists in the CSV
+        nurse_index = nurses_df.index[nurses_df["Username"] == nurse.username].tolist()
+        
+        if not nurse_index:
+            print(f"No record found for nurse {nurse.username}. Cannot update.")
+            return
+        
+        # Get the first index of the matched nurse
+        nurse_index = nurse_index[0]
 
-class Nurse:
+        # Update the necessary fields
+        nurses_df.at[nurse_index, "AssignedPatients"] = ";".join(nurse.assigned_patients)
+        nurses_df.at[nurse_index, "Availability"] = nurse.available
+        nurses_df.at[nurse_index, "TriageReady"] = nurse.can_conduct_triage
+        nurses_df.at[nurse_index, "Notifications"] = ";".join(
+            [n['message'] for n in nurse.notifications.notifications]
+        )
+
+        # Save the updated DataFrame back to CSV
+        nurses_df.to_csv("nurse.csv", index=False)
+        print(f"Nurse {nurse.username}'s information updated successfully.")
+
+    except FileNotFoundError:
+        print("nurse.csv file not found.")
+    except Exception as e:
+        print(f"An error occurred while updating the nurse data: {e}")
+
+#Nurse class (includes adding and removing patients)
+class Nurse(notification.Observer):
     """Represents a Nurse."""
-    def __init__(self, username):
+    def __init__(self, username, assigned_patients=None, available=True, can_conduct_triage=True):
         self.username = username
-        self.assigned_patients = []
-        self.notifications = []
-        self.available = True
-        self.can_conduct_triage = True
+        self.assigned_patients = assigned_patients if assigned_patients is not None else []
+        self.notifications = notification.Notification()
+        self.notifications.add_observer(self)
+        self.available = available
+        self.can_conduct_triage = can_conduct_triage
         self.shifts = []
+
+    def update(self, message):
+        print(f"New update for {self.username}")
+        update_nurse_data(self)
 
     def view_assigned_patients(self):
         print("Assigned Patients:")
@@ -63,71 +132,42 @@ class Nurse:
             for patient in self.assigned_patients:
                 print(f"- {patient}")
 
+    @notification.notify_action("Patient {} has been assigned to you.")
     def add_patient(self, patient):
         self.assigned_patients.append(patient)
-        self.add_notification(f"Patient {patient} has been assigned to you.")
 
+    @notification.notify_action("Patient {} has been removed from your care.")
     def remove_patient(self, patient):
         """Removes a discharged patient from the assigned list."""
         if patient in self.assigned_patients:
             self.assigned_patients.remove(patient)
-            self.add_notification(f"Patient {patient} has been removed from your care.")
         else:
             print(f"Patient {patient} is not in your assigned list.")
-    
-    def add_notification(self, message):
-        """
-        Adds notifications specific to Nurse
-        """
-        self.notifications.append((message, True))
-
-    def view_notifications(self):
-        new_notifications_count = sum(1 for _, is_new in self.notifications if is_new)
-        print(f"\nYou have {new_notifications_count} new notification(s).")
-        """Display and mark notifications as read."""
-        if self.notifications:
-            print(f"\n--- Notifications for {self.username} ---")
-            for i, (message, is_new) in enumerate(self.notifications, 1):
-                status = "[NEW]" if is_new else "[READ]"
-                print(f"{i}. {message} {status}")
-
-            # Mark all notifications as read
-            self.mark_notifications_as_read()
-
-            if input("Clear notifications? (y/n): ").strip().lower() == 'y':
-                self.clear_notifications()
-        else:
-            print(f"\nNo new notifications for {self.username}.")
-
-    def mark_notifications_as_read(self):
-        """Marks all notifications as read."""
-        self.notifications = [(msg, False) for msg, _ in self.notifications]
-
-    def clear_notifications(self):
-        """Clears all notifications."""
-        self.notifications.clear()
-        print(f"All notifications cleared for {self.username}!")
-    
+     
     def __str__(self):
         return f"Nurse: {self.username}"
 
-def authenticate_nurse():
-    """Authenticates nurse login using username and password."""
-    print("\n--- Nurse Login ---")
-    while True:
-        username = input("Enter your username: ").strip()
-        password = input("Enter your password: ").strip()
+def handle_task_selection(choice, tasks, nurse):
+    """Executes the selected task based on user choice."""
+    if choice == '15':
+        if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
+            print("Logging out...")
+            return False
+    elif choice in tasks:
+        tasks[choice]()
+    else:
+        print("Invalid selection. Please try again.")
+    return True
 
-        if NURSE_CREDENTIALS.get(username) == password:
-            print(f"Welcome, {username}!")
-            return Nurse(username)
-        else:
-            print("Invalid credentials. Please try again.")
+def get_patient_name_input(prompt="Enter the patient's name: "):
+    """Prompt for and return a patient name input."""
+    return input(prompt).strip()
+
 
 def nurse_dashboard(nurse):
     """Displays the nurse's dashboard and handles task selection."""
     tasks = {
-        '1': nurse.view_notifications,
+        '1': nurse.notifications.view_notifications,
         '2': nurse.view_assigned_patients,
         '3': conduct_triage,
         '4': check_shifts,
@@ -140,6 +180,7 @@ def nurse_dashboard(nurse):
         '11': lambda: discharge_patient(nurse),
         '12': lambda: request_medical_supplies(nurse),
         '13': view_patient_history,
+        '14': nurse.notifications.clear_notifications,
     }
 
     while True:
@@ -158,28 +199,27 @@ def nurse_dashboard(nurse):
 11. Discharge Patient
 12. Request Medical Supplies
 13. View Patient History
-14. Logout""")
+14. Clear Notifications
+15. Logout""")
 
-        choice = input("Select a task (1-14): ").strip()
-        if choice == '14':
-            if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
-                print("Logging out...")
-                break
-        elif choice in tasks:
-            tasks[choice]()
-        else:
-            print("Invalid selection. Please try again.")
+        choice = input("Select a task (1-15): ").strip()
+        if not handle_task_selection(choice, tasks, nurse):
+            break
         time.sleep(1)
 
-def discharge_patient(nurse):
+def discharge_patient(nurse, patient=None):
     """Handles patient discharge and removes the patient from the nurse's list."""
-    patient = input("Enter the patient's name to discharge: ").strip()
-    if patient in PATIENT_RECORDS:
+    if not patient:
+        patient = get_patient_name_input("Enter the patient's name to discharge: ")
+    
+    if patient in nurse.assigned_patients:
+        # Notify and remove the patient from the assigned list
         print(f"Patient {patient} has been discharged.")
-        nurse.remove_patient(patient)  # Remove from nurse's assigned list
-        nurse.add_notification(f"Patient {patient} has been discharged.")
+        nurse.remove_patient(patient)
+        return patient  # Return patient for the decorator to capture
     else:
-        print("Patient not found.")
+        print(f"Patient {patient} not found in the assigned list.")
+        return None
 
 def view_patient_records():
     """Displays detailed records of a specific patient."""
@@ -197,7 +237,7 @@ def view_patient_records():
 
 def view_patient_vitals():
     """Displays the vitals of a specific patient."""
-    patient = input("Enter the patient's name: ").strip()
+    patient = get_patient_name_input()
     if patient in PATIENT_RECORDS:
         vitals = PATIENT_RECORDS[patient]["vitals"]
         print(f"\n--- Vitals for {patient} ---")
@@ -211,11 +251,11 @@ def request_medical_supplies(nurse):
     item = input("Enter the item to request: ").strip()
     quantity = input("Enter the quantity: ").strip()
     print(f"Requested {quantity} of {item}.")
-    nurse.add_notification(f"Requested {quantity} of {item}.")
+    nurse.notifications.add_notification(f"Requested {quantity} of {item}.")
 
 def view_patient_history():
     """Displays the medical history of a specific patient."""
-    patient = input("Enter the patient's name: ").strip()
+    patient = get_patient_name_input()
     if patient in PATIENT_RECORDS:
         print(f"\n--- Medical History for {patient} ---")
         for event in PATIENT_RECORDS[patient]["history"]:
@@ -255,4 +295,4 @@ def run_nurse_portal(nurse_name):
             print("Error loading nurse dashboard.")
 
 if __name__ == "__main__":
-    run_nurse_portal("Alice Smith")
+    run_nurse_portal("Carol Lee")

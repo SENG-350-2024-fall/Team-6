@@ -1,6 +1,8 @@
 import os
 import time
 from data_stores import all_users
+from notification import Notification
+doctor_notifications = Notification()
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -24,7 +26,7 @@ def search_patient(patients):
 def serve_patient():
     print("Serving Patient...")
     time.sleep(2)
-
+    
 def update_patient_record(patients):
     patient_name = input("Enter the Patient Name to update: ").strip()
     for patient in patients:
@@ -35,9 +37,16 @@ def update_patient_record(patients):
             if new_phone:
                 patient.phone_number = new_phone
                 print("Patient phone number updated.")
+            # Add a notification for the updated patient record
+            doctor_notifications.add_notification(f"Updated record for patient {patient.name}")
             time.sleep(2)
             return
     print("Patient not found.")
+    time.sleep(2)
+
+def view_notifications():
+    """View notifications for the doctor."""
+    doctor_notifications.view_notifications()
     time.sleep(2)
 
 def log_out():
@@ -66,7 +75,8 @@ def doctor_dashboard(user):
         print("2. Search Patient")
         print("3. Serve Patient")
         print("4. Update Patient Record")
-        print("5. Log Out\n")
+        print("5. View Notifications")
+        print("6. Log Out\n")
 
         choice = input("Enter the number corresponding to your choice:\n")
 
@@ -79,6 +89,8 @@ def doctor_dashboard(user):
         elif choice == '4':
             update_patient_record(patients)
         elif choice == '5':
+            view_notifications()
+        elif choice == '6':
             logged_in = log_out()
         else:
             print("\nInvalid option. Please try again.")

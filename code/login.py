@@ -17,7 +17,7 @@ def check_credentials(role, username, password):
     # Find the user with matching username and password
     for user in users:
         if user.username == username and user.password == password:
-            return user.name
+            return user
     return None
 
 def login(role):
@@ -27,12 +27,13 @@ def login(role):
     username = input("Enter your username: ")
     password = input("Enter your password: ")
 
-    user_name = check_credentials(role, username, password)
-    if user_name is not None:
+
+    user = check_credentials(role, username, password)
+    if user is not None:
         clear_terminal()
         time.sleep(1)
-        print(f"Welcome, {user_name}!")
-        return user_name  # Return the user name for further use
+        print(f"Welcome, {user.name}!")
+        return user  # Return the user name for further use
     else:
         clear_terminal()
         time.sleep(1)

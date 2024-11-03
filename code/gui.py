@@ -1,6 +1,6 @@
 import login  # Import your login module
 import doctor_dashboard
-import nurse
+import nurse_dashboard
 import admin
 import ed_staff_dashboard
 import patient
@@ -12,7 +12,7 @@ def role_login(portal_name, dashboard, user):
     """
     login.clear_terminal()
     print(f"\n{portal_name} Login Portal\n")
-    if dashboard:
+    if user and dashboard:
         dashboard(user)
     else:
         print(f"Welcome to the {portal_name} Portal!")
@@ -24,7 +24,7 @@ def main():
     roles = {
         '1': ('Patient', "Patient Dashboard"),
         '2': ('Doctor', doctor_dashboard.doctor_dashboard),
-        '3': ('Nurse', nurse.run_nurse_portal),
+        '3': ('Nurse', nurse_dashboard.run_nurse_portal),
         '4': ('ED Staff', ed_staff_dashboard.ed_staff_dashboard),
         '5': ('System Administrator', admin.run_admin_portal),
     }
