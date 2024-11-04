@@ -2,7 +2,7 @@ import os
 import time
 import re
 from data_stores import all_users
-from appointment import load_appointments
+from appointment import Appointment
 from notification import Notification
 doctor_notifications = Notification()
 
@@ -116,7 +116,7 @@ def log_out():
 def doctor_dashboard(user):
     # Retrieve all patient instances from all_users
     patients = all_users.get('patient', [])
-    doctor_appointments = load_appointments()
+    doctor_appointments = Appointment.all_appointments
     doctor_appointments = [appt for appt in doctor_appointments if appt.doctor.username == user.username]
 
     logged_in = True

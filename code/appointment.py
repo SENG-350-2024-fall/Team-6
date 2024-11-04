@@ -1,19 +1,19 @@
 import pandas as pd
-import time
 from data_stores import all_users
 
 class Appointment:
+    all_appointments = []  # Class attribute to store all appointments
+
     def __init__(self, patient, doctor, date_time):
         self.patient = patient
         self.doctor = doctor
         self.date_time = date_time
         self.status = "Scheduled"  # Automatically set status to "Scheduled"
+        Appointment.all_appointments.append(self)  # Add new appointment to shared list
 
     @staticmethod
     def schedule(patient_username, doctor_username, date_time, patient_list, doctor_list):
-        # Find the patient by username
         patient = next((p for p in patient_list if p.username == patient_username), None)
-        # Find the doctor by username
         doctor = next((d for d in doctor_list if d.username == doctor_username), None)
 
         if patient is None:
@@ -21,29 +21,24 @@ class Appointment:
         if doctor is None:
             raise ValueError(f"Doctor with username '{doctor_username}' not found.")
 
-        # Create and return a new appointment
+        # Create a new appointment and add it to the shared list automatically
         return Appointment(patient, doctor, date_time)
 
     def cancel(self):
-        # Logic to cancel the appointment
         self.status = "Cancelled"
 
     def reschedule(self, new_date_time):
-        # Logic to reschedule the appointment
         self.date_time = new_date_time
         self.status = "Rescheduled"
         return True
 
     def get_status(self):
-        # Returns the current status of the appointment
         return self.status
 
     def set_status(self, status):
-        # Updates the status of the appointment
         self.status = status
 
     def show_details(self):
-        # Displays detailed information about the appointment
         print("\n" + "=" * 40)
         print("         Appointment Details        ")
         print("=" * 40)
@@ -62,36 +57,20 @@ class Appointment:
 
 
 def load_appointments():
-    # Load patients and doctors from a predefined function or database
     patients, doctors = all_users.get('patient', {}), all_users.get('doctor', {})
-    
-    # Read the CSV file into a DataFrame
     df = pd.read_csv("appointment.csv")
 
-    appointments = []
-
-    # Helper function to find a user by username in a list
     def find_user_by_username(users, username):
-        for user in users:
-            if user.username == username:
-                return user
-        return None
+        return next((user for user in users if user.username == username), None)
     
-    # Iterate over each row of the DataFrame
     for _, row in df.iterrows():
-        patient_username = row['patient_username']
-        doctor_username = row['doctor_username']
-        date_time = row['date_time']  # Make sure this matches your CSV header
+        patient = find_user_by_username(patients, row['patient_username'])
+        doctor = find_user_by_username(doctors, row['doctor_username'])
         
-        # Retrieve the patient and doctor objects from the lists
-        patient = find_user_by_username(patients, patient_username)
-        doctor = find_user_by_username(doctors, doctor_username)
-
-        # Only create an Appointment if both patient and doctor are found
-        if patient is not None and doctor is not None:
-            appointment = Appointment(patient, doctor, date_time)
-            appointments.append(appointment)
+        if patient and doctor:
+            Appointment(patient, doctor, row['date_time'])
         else:
-            print(f"Patient or Doctor not found for usernames: {patient_username}, {doctor_username}")
-    
-    return appointments
+            print(f"Patient or Doctor not found for usernames: {row['patient_username']}, {row['doctor_username']}")
+
+# This populates the Appointment.all_appointments list
+load_appointments()
