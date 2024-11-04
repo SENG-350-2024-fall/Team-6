@@ -113,7 +113,13 @@ def admin_dashboard(admin):
 
     while True:
         terminal_clear()
-        print(f"\n--- Admin Dashboard for {admin.name} ---")
+        print(f"\n Welcome {admin.name} ")
+        time.sleep(1)
+        terminal_clear()
+        print(" =============================")
+        print(f"|| {admin.name}'s Dashboard ||")
+        print(" =============================\n")
+        print("Please select an option:\n")
         print("""\
 1.  View Notifications
 2.  View User Accounts
@@ -122,7 +128,7 @@ def admin_dashboard(admin):
 5.  Perform Security Check
 6.  Logout""")
 
-        choice = input("Select a task (1-6): ").strip()
+        choice = input("Enter the number corresponding to your choice: ").strip()
         if choice == '6':
             if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
                 print("Logging out...")
