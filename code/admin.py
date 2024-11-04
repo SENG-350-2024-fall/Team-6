@@ -1,4 +1,5 @@
 import time
+import os
 
 # Constants
 ADMIN_CREDENTIALS = {
@@ -15,11 +16,15 @@ USER_ACCOUNTS = {
     "Jane Smith": {"role": "User", "status": "Inactive", "permission_level": "Read"},
 }
 
+def terminal_clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 class SystemAdministrator:
     
-    def __init__(self, username):
+    def __init__(self, username, name):
         self.username = username
+        self.name = name
         self.admin_level = "Super Admin"
         self.tasks = []
 
@@ -69,19 +74,6 @@ class SystemAdministrator:
         return f"System Administrator: {self.username}"
 
 
-def authenticate_admin():
-    print("\n--- Admin Login ---")
-    while True:
-        username = input("Enter your username: ").strip()
-        password = input("Enter your password: ").strip()
-
-        if ADMIN_CREDENTIALS.get(username) == password:
-            print(f"Welcome, {username}!")
-            return SystemAdministrator(username)
-        else:
-            print("Invalid credentials. Please try again.")
-
-
 def view_notifications():
     global new_notification
     if notifications:
@@ -120,7 +112,8 @@ def admin_dashboard(admin):
     }
 
     while True:
-        print(f"\n--- Admin Dashboard for {admin.username} ---")
+        terminal_clear()
+        print(f"\n--- Admin Dashboard for {admin.name} ---")
         print("""\
 1.  View Notifications
 2.  View User Accounts
@@ -177,11 +170,12 @@ def logout():
     print("Logged out successfully.")
 
 
-def run_admin_portal():
-    admin = authenticate_admin()
-    time.sleep(1)
-    view_notifications()
-    time.sleep(0.5)
+def run_admin_portal(user):
+    # admin = authenticate_admin()
+    admin = SystemAdministrator(user.username,user.name)
+    # time.sleep(1)
+    # view_notifications()
+    # time.sleep(0.5)
     admin_dashboard(admin)
 
 

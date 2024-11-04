@@ -15,7 +15,7 @@ class GUI:
             '2': ('Doctor', doctor_dashboard.doctor_dashboard),
             '3': ('Nurse', nurse_dashboard.run_nurse_portal),
             '4': ('ED Staff', ed_staff_dashboard.ed_staff_dashboard),
-            '5': ('System Administrator', admin.run_admin_portal),
+            '5': ('System Administrator', lambda user: admin.run_admin_portal(user)),
         }
 
     def role_login(self, portal_name, dashboard, user):
