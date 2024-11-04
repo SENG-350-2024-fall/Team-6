@@ -43,7 +43,7 @@
         <mxCell id="QHcA-1QilDFWebVEuCo4-26" value="&amp;lt;&amp;lt;Class&amp;gt;&amp;gt;&lt;br&gt;PatientNotifier" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-25">
           <mxGeometry width="140" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="QHcA-1QilDFWebVEuCo4-27" value="-notifier : Notifier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=1;whiteSpace=wrap;html=1;movable=1;resizable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-26">
+        <mxCell id="QHcA-1QilDFWebVEuCo4-27" value="-patient_info : Notifier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=1;whiteSpace=wrap;html=1;movable=1;resizable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-26">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="QHcA-1QilDFWebVEuCo4-52" value="&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap-mode: nowrap;&quot;&gt;+notify&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-25">
@@ -51,24 +51,6 @@
         </mxCell>
         <mxCell id="QHcA-1QilDFWebVEuCo4-54" value="+notify()" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-25">
           <mxGeometry x="5" y="60" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="QHcA-1QilDFWebVEuCo4-31" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="550" y="460" width="140" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="QHcA-1QilDFWebVEuCo4-57" value="" style="group" vertex="1" connectable="0" parent="QHcA-1QilDFWebVEuCo4-31">
-          <mxGeometry width="140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="QHcA-1QilDFWebVEuCo4-32" value="&amp;lt;&amp;lt;Class&amp;gt;&amp;gt;&lt;br&gt;NurseNotifier" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-57">
-          <mxGeometry width="140" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="QHcA-1QilDFWebVEuCo4-33" value="-notifier : Notifier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=1;whiteSpace=wrap;html=1;movable=1;resizable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-32">
-          <mxGeometry y="30" width="140" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="QHcA-1QilDFWebVEuCo4-55" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-57">
-          <mxGeometry y="60" width="140" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="QHcA-1QilDFWebVEuCo4-56" value="+notify()" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-57">
-          <mxGeometry y="60" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="QHcA-1QilDFWebVEuCo4-37" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="355" y="720" width="140" height="160" as="geometry" />
@@ -102,6 +84,18 @@
         </mxCell>
         <mxCell id="QHcA-1QilDFWebVEuCo4-49" value="+set_patient_info(patient_info: dict)&lt;br&gt;+set_nurse_info(nurse_info: dict)&lt;br&gt;+get_patient_info()&lt;br&gt;+get_nurse_info()&lt;br&gt;+get_priority()&lt;br&gt;+get_mode()&lt;br&gt;+perform_triage()&lt;br&gt;+notify_patient_nurse()&lt;div&gt;+notify()&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-51">
           <mxGeometry x="3" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="QHcA-1QilDFWebVEuCo4-58" value="&amp;lt;&amp;lt;Class&amp;gt;&amp;gt;&lt;br&gt;PatientNotifier" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QHcA-1QilDFWebVEuCo4-59" value="-nurse_info : Notifier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=1;whiteSpace=wrap;html=1;movable=1;resizable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="QHcA-1QilDFWebVEuCo4-58">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QHcA-1QilDFWebVEuCo4-60" value="&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap-mode: nowrap;&quot;&gt;+notify&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="520" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QHcA-1QilDFWebVEuCo4-61" value="+notify()" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="555" y="520" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
