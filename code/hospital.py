@@ -2,7 +2,7 @@ import csv
 import os
 from notification import Notification
 
-
+# Creating hospital class using singleton pattern
 class Hospital:
     instance = None
     csv_file_path = "hospital.csv"
