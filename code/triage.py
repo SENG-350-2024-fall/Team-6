@@ -8,10 +8,11 @@ warnings.filterwarnings("ignore")
 # Base class for notifying
 class Notifier:
     def notify(self):
-        raise NotImplementedError("Notify method not implemented.")
+        print("Both Patient and Nurse are Notified.")
+        return
 
     def additional_notification(self):
-        raise NotImplementedError("Notify method not implemented.")
+        print("Both Patient and Nurse are Notified.")
 
 
 # Concrete Notifier for Patient
@@ -80,10 +81,12 @@ class Triage:
 
     def set_nurse_info(self, nurse_info):
         self.nurse_info = nurse_info
-
+    
+    #This returns a dictionary
     def get_patient_info(self):
         return self.patient_info
-
+    
+    #This returns a dictionary
     def get_nurse_info(self):
         return self.nurse_info
         
@@ -94,17 +97,17 @@ class Triage:
         return self.triage_type
         
     def perform_triage(self):
-        mode = input("Input Mode Number: 1. Zoom   2. Phone Call:  ")
+        mode = input("Input Mode Number: 1 = Zoom, 2 = Phone Call  ")
         self.triage_type = "Zoom" if mode == "1" else "Phone Call"
 
-        self.priority = input("Priority: 1. Low   2. Meduim   3. High  ")
+        self.priority = input("Priority: 1 = Low, 2 = Meduim, 3 = High  ")
 
         if self.priority == "3":
             print("Please Call 911 or Go to Hospital!!")
             exit(0)
 
         self.priorities = ["Low", "Meduim", "High"]
-        self.priority = self.priorities[int(self.priority)]
+        self.priority = self.priorities[int(self.priority) - 1]
         
     def notify_patient_nurse(self):
         # Create notifiers
@@ -115,8 +118,9 @@ class Triage:
         simultaneous_notifier = SimultaneousNotifier(patient_notifier, nurse_notifier)
         simultaneous_notifier.notify()
 
-
+'''
 # Entry point
 if __name__ == "__main__":
     triage_instance = Triage()
     triage_instance.perform_triage()
+'''
