@@ -67,7 +67,7 @@
         <mxCell id="vd-E9_taxdwKmEMfAn4B-25" value="&lt;span style=&quot;&quot;&gt;-patient_data : dictionary&lt;/span&gt;&lt;div style=&quot;&quot;&gt;-strategy: TriageStrategy&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=1" parent="vd-E9_taxdwKmEMfAn4B-27" vertex="1">
           <mxGeometry y="40" width="249.99999999999994" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="vd-E9_taxdwKmEMfAn4B-26" value="&lt;div style=&quot;&quot;&gt;+set_strategy(strategy : TriageStrategy)&lt;div&gt;+execute_strategy()&lt;/div&gt;&lt;div&gt;+initiate_actions&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=1" parent="vd-E9_taxdwKmEMfAn4B-27" vertex="1">
+        <mxCell id="vd-E9_taxdwKmEMfAn4B-26" value="&lt;div style=&quot;&quot;&gt;+set_strategy(strategy : TriageStrategy)&lt;div&gt;+execute_strategy()&lt;/div&gt;&lt;div&gt;+initiate_actions()&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=1" parent="vd-E9_taxdwKmEMfAn4B-27" vertex="1">
           <mxGeometry y="99.99999999999999" width="249.99999999999994" height="69.99999999999999" as="geometry" />
         </mxCell>
         <mxCell id="vd-E9_taxdwKmEMfAn4B-29" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;entryX=0.164;entryY=-0.083;entryDx=0;entryDy=0;entryPerimeter=0;fontStyle=1" parent="1" target="vd-E9_taxdwKmEMfAn4B-22" edge="1">
