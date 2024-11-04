@@ -27,7 +27,7 @@ class RegisterForTriage(TriageStrategy):
         print("    Virtual Triage Registration   ")
         print("-------------------------------------")
         
-        ## Calling Triage Class Fucntion
+        ## Calling Triage Class Function
         tr.perform_triage()
         ##
         
