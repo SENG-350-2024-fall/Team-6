@@ -18,9 +18,10 @@ class User(ABC):
 
 # Concrete User Subclasses
 class Doctor(User):
-    def __init__(self, name, age, address, phone_number, username, password):
+    def __init__(self, name, age, address, phone_number, username, password, specialization, available=True):
         super().__init__(name, age, address, phone_number, username, password)
-        self.available = True
+        self.specialization = specialization
+        self.available = available
 
     def get_role(self):
         return "Doctor"
@@ -69,9 +70,8 @@ class UserFactory(ABC):
 
 # Concrete Factories for each User role
 class DoctorFactory(UserFactory):
-    def create_user(self, name, age, address, phone_number, username, password):
-        return Doctor(name, age, address, phone_number, username, password)
-
+    def create_user(self, name, age, address, phone_number, username, password, specialization, available=True):
+        return Doctor(name, age, address, phone_number, username, password, specialization, available)
 
 class PatientFactory(UserFactory):
     def create_user(self, name, age, address, phone_number, username, password):
@@ -127,7 +127,9 @@ class UserLoader:
                             row['Address'],
                             row['Phone'],
                             row['Username'],
-                            row['Password']
+                            row['Password'],
+                            row['Specialization'],
+                            row['Available']
                             # Additional Doctor-specific attributes could be added here
                         )
                     elif role.lower() == 'patient':

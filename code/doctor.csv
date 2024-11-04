@@ -1,2 +1,3 @@
-Name,Age,Address,Phone,Username,Password
-John Doe,28,"123 Maple St, Springfield",555-0123,doctor,password
+Name,Age,Address,Phone,Username,Password,Available,Specialization
+John Doe,28,"123 Maple St, Springfield",555-0123,doctor,password,FALSE,Radiologist
+Sidhu Moose,29,"2562 Sangrur, Victoria",901-245-1235,smw,password,TRUE,Medicine
