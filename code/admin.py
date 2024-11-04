@@ -1,11 +1,9 @@
 import time
 import os
+from notification import Notification
 
-# Constants
-ADMIN_CREDENTIALS = {
-    "admin01": "adminpassword1",
-    "admin02": "adminpassword2",
-}
+admin_notification = Notification()
+
 
 new_notification = 0
 notifications = []
@@ -33,13 +31,12 @@ class SystemAdministrator:
             print(f"User {user} already exists.")
         else:
             USER_ACCOUNTS[user] = {"role": role, "status": "Active", "permission_level": "Read"}
-            add_notification(f"User {user} has been added with {role} role.")
-            print(f"User {user} added successfully.")
+            admin_notification.add_notification(f"User {user} has been added with {role} role.")
 
     def remove_user_account(self, user):
         if user in USER_ACCOUNTS:
             del USER_ACCOUNTS[user]
-            add_notification(f"User {user} has been removed from the system.")
+            admin_notification.add_notification(f"User {user} has been removed from the system.")
             print(f"User {user} removed successfully.")
         else:
             print(f"User {user} does not exist.")
@@ -47,7 +44,7 @@ class SystemAdministrator:
     def update_user_account(self, user, updates):
         if user in USER_ACCOUNTS:
             USER_ACCOUNTS[user].update(updates)
-            add_notification(f"User {user}'s account has been updated.")
+            admin_notification.add_notification(f"User {user}'s account has been updated.")
             print(f"User {user} updated successfully.")
         else:
             print(f"User {user} does not exist.")
@@ -177,11 +174,7 @@ def logout():
 
 
 def run_admin_portal(user):
-    # admin = authenticate_admin()
     admin = SystemAdministrator(user.username,user.name)
-    # time.sleep(1)
-    # view_notifications()
-    # time.sleep(0.5)
     admin_dashboard(admin)
 
 
