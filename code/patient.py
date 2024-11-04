@@ -27,7 +27,7 @@ class RegisterForTriage(TriageStrategy):
         print("    Virtual Triage Registration   ")
         print("-------------------------------------")
         
-        ## Calling Triage Class Fucntion
+        ## Calling Triage Class Function
         tr.perform_triage()
         ##
         
@@ -41,6 +41,22 @@ class RegisterForTriage(TriageStrategy):
         today = date.today()
         print()
         
+        if (len(username) == 0 or len(name) == 0 or len(age) == 0 or len(address) == 0 or len(phone) == 0 \
+        or len(reason) == 0 or len(diagnosed_diseases) == 0):
+            print("Please Don't Leave Any Field Empty!!\n")
+            return
+        
+        try:
+            data = pd.read_csv("patient.csv")
+        except FileNotFoundError:
+            print("\nPatients File is Not Found!!\n")
+            return
+        
+        for i in range(len(data)):
+            if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
+                print("You are Already Registered!!")
+                exit(0)
+                
         ## Notifying Patient and Nurse
         tr.notify_patient_nurse()
         ##
@@ -48,7 +64,7 @@ class RegisterForTriage(TriageStrategy):
         with open("patient.csv", "a", newline="") as csv_file:
             writer_obj = writer(csv_file)
             writer_obj.writerow(
-                [name, age, address, phone, password, username, reason, diagnosed_diseases, today, "NA","NA","NA","NA"]
+                [name, age, address, phone, password, username, reason, diagnosed_diseases, today, "NA",tr.get_mode(), tr.get_priority(),"NA"]
             )
             print("\nYour Request Has Been Submitted!")
 
@@ -71,12 +87,16 @@ class UndergoTriage(TriageStrategy):
         q3 = input("Have you experienced this symptom before?  ")
         q4 = input("Has this issue affected your daily activities or work?  ")
         
-        answers = [q1 + "   ", q2 + "   ", q3 + "   ", q4 + "   "]
-
+        answers = [q1 + " ", q2 + " ", q3 + " ", q4 + " "]
+        
+        if (len(q1) == 0 or len(q2) == 0 or len(q3) == 0 or len(q4) == 0):
+            print("Please Don't Leave Any Answer Empty!!")
+            return
+        
         try:
             data = pd.read_csv("patient.csv")
         except FileNotFoundError:
-            print("\nTriage File is Not Found!!")
+            print("\nPatients File is Not Found!!")
             return
         
         registered = False
@@ -85,8 +105,9 @@ class UndergoTriage(TriageStrategy):
             if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
                 
                 data["Answers"].iloc[i] = answers
-                data["Priority"] = tr.get_priority()
-                data["Mode"] = tr.get_mode()
+                data["Priority"].iloc[i] = tr.get_priority()
+                data["Mode"].iloc[i] = tr.get_mode()
+                data["Nurse"].iloc[i] = tr.get_nurse_info()['Name']
 
                 # Write to CSV file
                 data.to_csv("patient.csv", sep=",", index=False, encoding="utf-8")
@@ -95,10 +116,11 @@ class UndergoTriage(TriageStrategy):
                 registered = True
                 break
             
-        if not registered:
+        if registered == False:
             print("\nPlease Register for the Triage First!")
         else:
             patient_data['status'] = "Triage is taken."
+        
 
 
 # Context for the patient
@@ -135,7 +157,8 @@ class Patient:
         self.execute_strategy()
 
 
-# Entry point
+'''
 if __name__ == "__main__":
     patient_instance = Patient()
     patient_instance.initiate_actions()
+'''
