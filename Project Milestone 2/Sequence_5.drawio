@@ -262,10 +262,10 @@
             <mxPoint x="-23" y="-23" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="znmxHj2fb0v9j7xqJe4B-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.094;exitY=0.933;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b0ug8siEym2DbZe7Cz0L-79" target="b0ug8siEym2DbZe7Cz0L-11">
+        <mxCell id="znmxHj2fb0v9j7xqJe4B-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.094;exitY=0.933;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="410" y="980" as="sourcePoint" />
-            <mxPoint x="460" y="930" as="targetPoint" />
+            <mxPoint x="435.94000000000005" y="1024.6000000000001" as="sourcePoint" />
+            <mxPoint x="149.32352941176487" y="1024.6000000000001" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="znmxHj2fb0v9j7xqJe4B-4" value="Sends approval of&amp;nbsp; confirmation&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="znmxHj2fb0v9j7xqJe4B-3">
@@ -275,8 +275,8 @@
         </mxCell>
         <mxCell id="znmxHj2fb0v9j7xqJe4B-5" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="150" y="1083" as="sourcePoint" />
-            <mxPoint x="289.49999999999955" y="1083" as="targetPoint" />
+            <mxPoint x="152" y="1086" as="sourcePoint" />
+            <mxPoint x="291.49999999999955" y="1086" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="znmxHj2fb0v9j7xqJe4B-6" value="Notifies patient is tests&lt;br&gt;&amp;nbsp;are ready&lt;div&gt;&amp;nbsp;to be done&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="znmxHj2fb0v9j7xqJe4B-5">
