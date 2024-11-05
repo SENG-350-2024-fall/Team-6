@@ -1,5 +1,6 @@
 import pandas as pd
 from abc import ABC, abstractmethod
+import notification
 
 # Abstract Base Class for User
 class User(ABC):
@@ -36,10 +37,43 @@ class Patient(User):
         return "Patient"
 
 
-class Nurse(User):
-    def __init__(self, name, age, address, phone_number, username, password):
+class Nurse(User, notification.Observer):
+    """Represents a Nurse."""
+    def __init__(self, name, age, address, phone_number, username, password, assigned_patients=None, available=True,
+                 triage_ready=True, notifications=None, shift=""):
         super().__init__(name, age, address, phone_number, username, password)
-        self.shift = None
+        self.assigned_patients = assigned_patients if assigned_patients is not None else []
+        self.notifications = notifications if notifications else notification.Notification()
+        self.notifications.add_observer(self)
+        self.available = available
+        self.triage_ready = triage_ready
+        self.shift = shift
+
+    def update(self, message):
+        print(f"New update for {self.username}")
+
+    def view_assigned_patients(self):
+        print("Assigned Patients:")
+        if not self.assigned_patients:
+            print("No patients assigned.")
+        else:
+            for patient in self.assigned_patients:
+                print(f"- {patient}")
+
+    @notification.notify_action("Patient {} has been assigned to you.")
+    def add_patient(self, patient):
+        self.assigned_patients.append(patient)
+
+    @notification.notify_action("Patient {} has been removed from your care.")
+    def remove_patient(self, patient):
+        """Removes a discharged patient from the assigned list."""
+        if patient in self.assigned_patients:
+            self.assigned_patients.remove(patient)
+        else:
+            print(f"Patient {patient} is not in your assigned list.")
+     
+    def __str__(self):
+        return f"Nurse: {self.username}"
 
     def get_role(self):
         return "Nurse"
@@ -79,8 +113,11 @@ class PatientFactory(UserFactory):
 
 
 class NurseFactory(UserFactory):
-    def create_user(self, name, age, address, phone_number, username, password):
-        return Nurse(name, age, address, phone_number, username, password)
+    def create_user(self, name, age, address, phone_number, username, password, availability=True,
+                    triage_ready=True, assigned_patients=None, notifications=None, shift=""):
+        return Nurse(name, age, address, phone_number, username, password, assigned_patients,
+                     availability, triage_ready, notifications, shift)
+
 
 
 class SystemAdminFactory(UserFactory):
@@ -143,14 +180,22 @@ class UserLoader:
                             # Additional Patient-specific attributes could be added here
                         )
                     elif role.lower() == 'nurse':
+                        # Nurse-specific attributes
+                        assigned_patients = row["AssignedPatients"].split(";") if pd.notna(row["AssignedPatients"]) else []
+                        notifications = row["Notifications"].split(";") if pd.notna(row["Notifications"]) else []
+                        
                         user = user_factory.create_user(
                             row['Name'],
                             row['Age'],
                             row['Address'],
                             row['Phone'],
                             row['Username'],
-                            row['Password']
-                            # Additional Nurse-specific attributes could be added here
+                            row['Password'],
+                            availability=row['Availability'],
+                            triage_ready=row['TriageReady'],
+                            assigned_patients=assigned_patients,
+                            notifications=notifications,
+                            shift=row['Shift']
                         )
                     elif role.lower() == 'system_administrator':
                         user = user_factory.create_user(
