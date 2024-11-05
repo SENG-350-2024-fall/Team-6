@@ -1,9 +1,9 @@
-Name,Age,Address,Phone,Password,Username,Reason,Diagnosed diseases,Date,Answers,Mode,Priority,Nurse
-John Doe,28,"123 Maple St, Springfield",555-0123,password,johndoe,chest pain,heart attack,2024-10-18,"['Chest Pain ', 'One Week ', 'No ', 'Yes ']",Zoom,Low,Nurse Smith
-Jack Doe,33,Fairfield St.,333-333-3333,password,jackdoe,Fever,Brain damage,2024-11-04,"['Headache ', '2 weeks ', 'No ', 'Yes ']",Zoom,Low,Nurse Smith
-George Doe,40,Jame Bay St.,444-444-4444,password,georgedoe,Severe paralysis,Dementia,2024-11-04,NA,Phone Call,Meduim,NA
-Emily Brown,35,"789 Oak St, Rivertown",555-0456,password,emilybrown,Broken leg,Fracture,2024-10-20,"['Pain ', '1 week ', 'Yes ', 'No ']",Zoom,High,Nurse Johnson
-Ryan White,48,"456 Pine St, Laketown",555-0789,password,ryanwhite,"Coughing, Fever",Pneumonia,2024-11-02,"['Coughing ', '2 days ', 'No ', 'Yes ']",Phone Call,Medium,Nurse Lee
-Mary Adams,45,"456 Pine Ave, Rivertown",555-0173,password,maryadams,Back Pain,Arthritis,2024-11-03,"['Back Pain ', 'Three Days ', 'No ', 'No ']",In-Person,High,Nurse Johnson
-Sarah Mills,37,"789 Oak St, Mapleville",555-0189,password,sarahmills,Headache,Migraine,2024-11-03,"['Headache ', 'One Day ', 'Yes ', 'No ']",Phone Call,Low,Nurse Lee
-David Brooks,50,"101 Cedar Rd, Hillside",555-0190,password,davidbrooks,Dizziness,Hypertension,2024-11-03,"['Dizziness ', 'One Week ', 'No ', 'Yes ']",Zoom,Medium,Nurse Johnsonsfs,fsf,sf,ssf,password,sf,sf,sfs,2024-11-05,NA,Zoom,Meduim,NA
+Name,Age,Address,Phone,Password,Username,Reason,Diagnosed diseases,Date,Answers,Mode,Priority,Nurse,,,,,,,,,,,,,,,,
+John Doe,28,"123 Maple St, Springfield",555-0123,password,johndoe,chest pain,heart attack,2024-10-18,"['Chest Pain ', 'One Week ', 'No ', 'Yes ']",Zoom,Low,Nurse Smith,,,,,,,,,,,,,,,,
+Jack Doe,33,Fairfield St.,333-333-3333,password,jackdoe,Fever,Brain damage,2024-11-04,"['Headache ', '2 weeks ', 'No ', 'Yes ']",Zoom,Low,Nurse Smith,,,,,,,,,,,,,,,,
+George Doe,40,Jame Bay St.,444-444-4444,password,georgedoe,Severe paralysis,Dementia,2024-11-04,NA,Phone Call,Meduim,NA,,,,,,,,,,,,,,,,
+Emily Brown,35,"789 Oak St, Rivertown",555-0456,password,emilybrown,Broken leg,Fracture,2024-10-20,"['Pain ', '1 week ', 'Yes ', 'No ']",Zoom,High,Nurse Johnson,,,,,,,,,,,,,,,,
+Ryan White,48,"456 Pine St, Laketown",555-0789,password,ryanwhite,"Coughing, Fever",Pneumonia,2024-11-02,"['Coughing ', '2 days ', 'No ', 'Yes ']",Phone Call,Medium,Nurse Lee,,,,,,,,,,,,,,,,
+Mary Adams,45,"456 Pine Ave, Rivertown",555-0173,password,maryadams,Back Pain,Arthritis,2024-11-03,"['Back Pain ', 'Three Days ', 'No ', 'No ']",In-Person,High,Nurse Johnson,,,,,,,,,,,,,,,,
+Sarah Mills,37,"789 Oak St, Mapleville",555-0189,password,sarahmills,Headache,Migraine,2024-11-03,"['Headache ', 'One Day ', 'Yes ', 'No ']",Phone Call,Low,Nurse Lee,,,,,,,,,,,,,,,,
+David Brooks,50,"101 Cedar Rd, Hillside",555-0190,password,davidbrooks,Dizziness,Hypertension,2024-11-03,"['Dizziness ', 'One Week ', 'No ', 'Yes ']",Zoom,Medium,Nurse Johnsonsfs,,,,,,,,,,,,,,,,
