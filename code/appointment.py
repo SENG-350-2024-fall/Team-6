@@ -1,6 +1,8 @@
 import pandas as pd
 from data_stores import all_users
 
+
+# State Pattern is used here for managing status of appointments
 class Appointment:
     all_appointments = []  # Class attribute to store all appointments
 
