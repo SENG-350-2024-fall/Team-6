@@ -1,11 +1,12 @@
 # gui.py
-
+import threading
 import login  # Import your login module
 import doctor_dashboard
 import nurse_dashboard
 import admin
 import ed_staff_dashboard
 import patient
+from heartbeat import heartbeat
 
 class GUI:
     def __init__(self):
@@ -59,7 +60,8 @@ class GUI:
                 print("\n\nInvalid option. Please try again.\n\n")
 
 
-# Run the GUI if this script is executed directly
 if __name__ == "__main__":
+    heartbeat_thread = threading.Thread(target=heartbeat, args=(10,), daemon=True)
+    heartbeat_thread.start()
     gui = GUI()
     gui.main()
