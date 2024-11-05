@@ -11,7 +11,7 @@ class GUI:
     def __init__(self):
         # Define the roles and corresponding dashboards
         self.roles = {
-            '1': ('Patient', "Patient Dashboard"),
+            '1': ('Patient', lambda pat: patient.Patient().initiate_actions()),
             '2': ('Doctor', doctor_dashboard.doctor_dashboard),
             '3': ('Nurse', nurse_dashboard.run_nurse_portal),
             '4': ('ED Staff', ed_staff_dashboard.ed_staff_dashboard),
