@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import notification
+from user import Nurse
 
 # Sample data for patients and their records with multiple symptoms
 PATIENT_RECORDS = {
@@ -107,45 +108,6 @@ def update_nurse_data(nurse):
         print("nurse.csv file not found.")
     except Exception as e:
         print(f"An error occurred while updating the nurse data: {e}")
-
-#Nurse class (includes adding and removing patients)
-class Nurse(notification.Observer):
-    """Represents a Nurse."""
-    def __init__(self, username, assigned_patients=None, available=True, can_conduct_triage=True):
-        self.username = username
-        self.assigned_patients = assigned_patients if assigned_patients is not None else []
-        self.notifications = notification.Notification()
-        self.notifications.add_observer(self)
-        self.available = available
-        self.can_conduct_triage = can_conduct_triage
-        self.shifts = []
-
-    def update(self, message):
-        print(f"New update for {self.username}")
-        update_nurse_data(self)
-
-    def view_assigned_patients(self):
-        print("Assigned Patients:")
-        if not self.assigned_patients:
-            print("No patients assigned.")
-        else:
-            for patient in self.assigned_patients:
-                print(f"- {patient}")
-
-    @notification.notify_action("Patient {} has been assigned to you.")
-    def add_patient(self, patient):
-        self.assigned_patients.append(patient)
-
-    @notification.notify_action("Patient {} has been removed from your care.")
-    def remove_patient(self, patient):
-        """Removes a discharged patient from the assigned list."""
-        if patient in self.assigned_patients:
-            self.assigned_patients.remove(patient)
-        else:
-            print(f"Patient {patient} is not in your assigned list.")
-     
-    def __str__(self):
-        return f"Nurse: {self.username}"
 
 def handle_task_selection(choice, tasks, nurse):
     """Executes the selected task based on user choice."""
