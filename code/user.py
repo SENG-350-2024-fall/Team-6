@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 import notification
 
 # Abstract Base Class for User
-class User(ABC):
+class User(notification.Observer, ABC):
     def __init__(self, name, age, address, phone_number, username, password):
         self.name = name
         self.age = age
@@ -11,10 +11,15 @@ class User(ABC):
         self.phone_number = phone_number
         self.username = username
         self.password = password
+        self.notifications = notification.Notification()
+        self.notifications.add_observer(self)
 
     @abstractmethod
     def get_role(self):
         pass
+    def update(self, message):
+        pass
+
 
 
 # Concrete User Subclasses
@@ -37,20 +42,16 @@ class Patient(User):
         return "Patient"
 
 
-class Nurse(User, notification.Observer):
+class Nurse(User):
     """Represents a Nurse."""
     def __init__(self, name, age, address, phone_number, username, password, assigned_patients=None, available=True,
                  triage_ready=True, notifications=None, shift=""):
         super().__init__(name, age, address, phone_number, username, password)
         self.assigned_patients = assigned_patients if assigned_patients is not None else []
-        self.notifications = notification.Notification()
-        self.notifications.add_observer(self)
         self.available = available
         self.triage_ready = triage_ready
         self.shift = shift
-
-    def update(self, message):
-        pass
+        self.vitals_dict = {}
 
     def view_assigned_patients(self):
         print("Assigned Patients:")
@@ -114,9 +115,9 @@ class PatientFactory(UserFactory):
 
 class NurseFactory(UserFactory):
     def create_user(self, name, age, address, phone_number, username, password, availability=True,
-                    triage_ready=True, assigned_patients=None, notifications=None, shift=""):
+                    triage_ready=True, assigned_patients=None, notifications=None, shift="", vitals_dict=None):
         return Nurse(name, age, address, phone_number, username, password, assigned_patients,
-                     availability, triage_ready, notifications, shift)
+                     availability, triage_ready, shift, vitals_dict)
 
 
 

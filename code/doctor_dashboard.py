@@ -4,7 +4,6 @@ import re
 from data_stores import all_users
 from appointment import Appointment
 from notification import Notification
-doctor_notifications = Notification()
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -86,7 +85,7 @@ def serve_patient(doctor_appointments):
         time.sleep(1)
 
     
-def update_patient_record(patients):
+def update_patient_record(patients, doctor):
     patient_name = input("Enter the Patient Name to update: ").strip()
     for patient in patients:
         if patient.name.lower() == patient_name.lower():
@@ -97,15 +96,15 @@ def update_patient_record(patients):
                 patient.phone_number = new_phone
                 print("Patient phone number updated.")
             # Add a notification for the updated patient record
-            doctor_notifications.add_notification(f"Updated record for patient {patient.name}")
+            doctor.notifications.add_notification(f"Updated record for patient {patient.name}")
             time.sleep(1)
             return
     print("Patient not found.")
     time.sleep(2)
 
-def view_notifications():
+def view_notifications(doctor):
     """View notifications for the doctor."""
-    doctor_notifications.view_notifications()
+    doctor.notifications.view_notifications()
     time.sleep(2)
 
 def log_out():
@@ -147,9 +146,9 @@ def doctor_dashboard(user):
         elif choice == '3':
             serve_patient(doctor_appointments)
         elif choice == '4':
-            update_patient_record(patients)
+            update_patient_record(patients, user)
         elif choice == '5':
-            view_notifications()
+            view_notifications(user)
         elif choice == '6':
             view_profile(user)
         elif choice == '7':

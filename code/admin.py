@@ -1,9 +1,6 @@
 import time
 import os
-from notification import Notification
-
-admin_notification = Notification()
-
+from user import SystemAdmin
 
 new_notification = 0
 notifications = []
@@ -18,25 +15,23 @@ def terminal_clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-class SystemAdministrator:
+class SystemAdministrator(SystemAdmin):
     
     def __init__(self, username, name):
-        self.username = username
-        self.name = name
+        super().__init__(name, 0, '', '', username, 'password')
         self.admin_level = "Super Admin"
-        self.tasks = []
 
     def add_user_account(self, user, role):
         if user in USER_ACCOUNTS:
             print(f"User {user} already exists.")
         else:
             USER_ACCOUNTS[user] = {"role": role, "status": "Active", "permission_level": "Read"}
-            admin_notification.add_notification(f"User {user} has been added with {role} role.")
+            self.notifications.add_notification(f"User {user} has been added with {role} role.")
 
     def remove_user_account(self, user):
         if user in USER_ACCOUNTS:
             del USER_ACCOUNTS[user]
-            admin_notification.add_notification(f"User {user} has been removed from the system.")
+            self.notifications.add_notification(f"User {user} has been removed from the system.")
             print(f"User {user} removed successfully.")
         else:
             print(f"User {user} does not exist.")
@@ -44,7 +39,7 @@ class SystemAdministrator:
     def update_user_account(self, user, updates):
         if user in USER_ACCOUNTS:
             USER_ACCOUNTS[user].update(updates)
-            admin_notification.add_notification(f"User {user}'s account has been updated.")
+            self.notifications.add_notification(f"User {user}'s account has been updated.")
             print(f"User {user} updated successfully.")
         else:
             print(f"User {user} does not exist.")
@@ -100,7 +95,7 @@ def clear_notifications():
 
 def admin_dashboard(admin):
     tasks = {
-        '1': view_notifications,
+        '1': admin.notifications.view_notifications,
         '2': view_user_accounts,
         '3': lambda: manage_user_accounts(admin),
         '4': admin.maintain_system,
