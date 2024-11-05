@@ -4,6 +4,7 @@ import re
 from data_stores import all_users
 from appointment import Appointment
 from notification import Notification
+import datetime
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -77,6 +78,7 @@ def serve_patient(doctor_appointments):
             time.sleep(2)
             doctor_appointments.pop(choice)  # Remove the served appointment
             print("Appointment served and removed from the list.")
+            print(f"Treatment started at: {datetime.datetime.now()}")
         else:
             print("Invalid selection. Please try again.")
             time.sleep(1)

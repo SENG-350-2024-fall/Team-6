@@ -44,6 +44,7 @@ class RegisterForTriage(TriageStrategy):
         if (len(username) == 0 or len(name) == 0 or len(age) == 0 or len(address) == 0 or len(phone) == 0 \
         or len(reason) == 0 or len(diagnosed_diseases) == 0):
             print("Please Don't Leave Any Field Empty!!\n")
+            Patient().initiate_actions()
             return
         
         try:
@@ -54,19 +55,22 @@ class RegisterForTriage(TriageStrategy):
         
         for i in range(len(data)):
             if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
-                print("You are Already Registered!!")
-                exit(0)
+                print("\nYou are Already Registered!!\n")
+                Patient().initiate_actions()
+                return
                 
         ## Notifying Patient and Nurse
         tr.notify_patient_nurse()
         ##
         
+        '''
         with open("patient.csv", "a", newline="") as csv_file:
             writer_obj = writer(csv_file)
             writer_obj.writerow(
                 [name, age, address, phone, password, username, reason, diagnosed_diseases, today, "NA",tr.get_mode(), tr.get_priority(),"NA"]
             )
-            print("\nYour Request Has Been Submitted!")
+        '''
+        print("\nYour Request Has Been Submitted!")
 
         patient_data['triageStatus'] = "Registration Confirmed"
 
@@ -90,13 +94,14 @@ class UndergoTriage(TriageStrategy):
         answers = [q1 + " ", q2 + " ", q3 + " ", q4 + " "]
         
         if (len(q1) == 0 or len(q2) == 0 or len(q3) == 0 or len(q4) == 0):
-            print("Please Don't Leave Any Answer Empty!!")
+            print("\nPlease Don't Leave Any Answer Empty!!\n")
+            Patient().initiate_actions()
             return
         
         try:
             data = pd.read_csv("patient.csv")
         except FileNotFoundError:
-            print("\nPatients File is Not Found!!")
+            print("\nPatients File is Not Found!!\n")
             return
         
         registered = False
@@ -118,6 +123,8 @@ class UndergoTriage(TriageStrategy):
             
         if registered == False:
             print("\nPlease Register for the Triage First!")
+            Patient().initiate_actions()
+            return
         else:
             patient_data['status'] = "Triage is taken."
         
