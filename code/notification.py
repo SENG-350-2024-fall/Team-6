@@ -5,8 +5,22 @@ class Observer(ABC):
     @abstractmethod
     def update(self, message):
         raise NotImplementedError("Subclasses must implement this method.")
-  
-class Notification:
+
+class Subject(ABC):
+    """Subject interface for managing observers."""
+    @abstractmethod
+    def add_observer(self, observer):
+        pass
+
+    @abstractmethod
+    def remove_observer(self, observer):
+        pass
+
+    @abstractmethod
+    def notify_observers(self, message):
+        pass
+
+class Notification(Subject):
     def __init__(self):
         self.notifications = []
         self.observers = []
@@ -52,7 +66,7 @@ class Notification:
         for notification in self.notifications:
             notification["is_new"] = False
 
-        clear = input("Would you like to clear all notifications? y/n").lower().strip()
+        clear = input("Would you like to clear all notifications? y/n: ").lower().strip()
         if clear == 'y':
             self.clear_notifications()
    
