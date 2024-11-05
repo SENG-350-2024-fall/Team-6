@@ -279,7 +279,7 @@
             <mxPoint x="291.49999999999955" y="1086" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="znmxHj2fb0v9j7xqJe4B-6" value="Notifies patient is tests&lt;br&gt;&amp;nbsp;are ready&lt;div&gt;&amp;nbsp;to be done&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="znmxHj2fb0v9j7xqJe4B-5">
+        <mxCell id="znmxHj2fb0v9j7xqJe4B-6" value="Notifies patient that tests&lt;br&gt;&amp;nbsp;are ready to be done" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="znmxHj2fb0v9j7xqJe4B-5">
           <mxGeometry x="0.2985" y="-4" relative="1" as="geometry">
             <mxPoint x="-19" y="-31" as="offset" />
           </mxGeometry>
