@@ -273,6 +273,28 @@
             <mxPoint x="51" y="-5" as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="znmxHj2fb0v9j7xqJe4B-5" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="1083" as="sourcePoint" />
+            <mxPoint x="289.49999999999955" y="1083" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="znmxHj2fb0v9j7xqJe4B-6" value="Notifies patient is tests&lt;br&gt;&amp;nbsp;are ready&lt;div&gt;&amp;nbsp;to be done&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="znmxHj2fb0v9j7xqJe4B-5">
+          <mxGeometry x="0.2985" y="-4" relative="1" as="geometry">
+            <mxPoint x="-19" y="-31" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="znmxHj2fb0v9j7xqJe4B-7" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.663;entryY=0.962;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="b0ug8siEym2DbZe7Cz0L-12" target="b0ug8siEym2DbZe7Cz0L-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="980" as="sourcePoint" />
+            <mxPoint x="460" y="930" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="znmxHj2fb0v9j7xqJe4B-8" value="Notifies the doctor that&lt;br&gt;the tests are scheduled&lt;br&gt;&amp;nbsp;successfully" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="znmxHj2fb0v9j7xqJe4B-7">
+          <mxGeometry x="-0.2232" y="-1" relative="1" as="geometry">
+            <mxPoint x="-13" y="-31" as="offset" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
