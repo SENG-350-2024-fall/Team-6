@@ -162,14 +162,13 @@ def view_assigned_patients_details(nurse):
               f"Phone: {patient['Phone']}, Username: {patient['Username']}")
 
 def get_patient_name(nurse):
-    """Displays a list of patients assigned to the nurse and returns the selected patient's name."""
+    """Displays a list of patients assigned to the nurse and returns the selected patient's name with error handling."""
     if not nurse.assigned_patients:
         print("No patients assigned.")
         return None
 
     print("\n--- Patients Assigned to You ---")
     for idx, patient in enumerate(nurse.assigned_patients, start=1):
-        
         print(f"{idx}. {patient['Name']}")
 
     while True:
@@ -181,6 +180,8 @@ def get_patient_name(nurse):
                 print("Invalid number. Please choose a number from the list.")
         except ValueError:
             print("Invalid input. Please enter a number.")
+        except Exception as e:
+            print(f"An error occurred: {e}. Try selecting again.")
 
 def discharge_patient(nurse, patient=None):
     """Handles patient discharge and removes the patient from the nurse's list."""
@@ -317,7 +318,7 @@ def update_patient_records(nurse):
         print("Patient not found or not assigned to you.")
 
 def log_patient_vitals(nurse):
-    """Logs vitals for a specific patient with validation."""
+    """Logs vitals for a specific patient with validation and graceful degradation."""
     patient_name = get_patient_name(nurse)
     if not patient_name:
         return
@@ -329,15 +330,15 @@ def log_patient_vitals(nurse):
             raise ValueError("Heart rate must be between 30 and 200 bpm.")
 
         vitals["Blood Pressure"] = input("Enter blood pressure (e.g., 120/80): ")
-        # Add validation for blood pressure format if necessary
+        # Optionally, add format validation for blood pressure
 
         vitals["Temperature"] = float(input("Enter temperature (°C): "))
         if not (35 <= vitals["Temperature"] <= 42):
-            raise ValueError(f"Patient {patient_name}'s temperature in dangerous range!!")
-
+            raise ValueError("Temperature should be between 35°C and 42°C.")
+        
         vitals["Respiratory Rate"] = int(input("Enter respiratory rate: "))
         if not (10 <= vitals["Respiratory Rate"] <= 30):
-            raise ValueError(f"Patient {patient_name}'s Respitory Rate in dangerous range!!!")
+            raise ValueError("Respiratory rate should be between 10 and 30 breaths per minute.")
         
         # Log the vitals in the nurse's vitals dictionary
         if patient_name in nurse.vitals_dict:
@@ -346,9 +347,9 @@ def log_patient_vitals(nurse):
         else:
             print("Patient not found.")
     except ValueError as ve:
-        print(f"Invalid input: {ve}")
+        print(f"Invalid input: {ve}. Please enter valid data.")
     except Exception as e:
-        print(f"An error occurred while logging vitals: {e}")
+        print(f"An unexpected error occurred while logging vitals: {e}. Please try again.")
 
 # Placeholder functions for to be developed features
 def conduct_triage():
