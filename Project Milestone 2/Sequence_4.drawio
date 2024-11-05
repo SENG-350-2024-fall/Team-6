@@ -73,8 +73,8 @@
         </mxCell>
         <mxCell id="BnOWhrEO1M733YUDJ6N0-38" value="Notifies the nurse&lt;br&gt;that patient has&amp;nbsp;&lt;br&gt;joined the session&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;exitX=-0.105;exitY=0.982;exitDx=0;exitDy=0;exitPerimeter=0;" parent="7baba1c4bc27f4b0-8" edge="1">
           <mxGeometry x="-0.0072" y="12" relative="1" as="geometry">
-            <mxPoint x="55" y="762" as="targetPoint" />
-            <mxPoint x="183.95000000000005" y="761.3799999999999" as="sourcePoint" />
+            <mxPoint x="55" y="755" as="targetPoint" />
+            <mxPoint x="183.95000000000005" y="754.3799999999999" as="sourcePoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
