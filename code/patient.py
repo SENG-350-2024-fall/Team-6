@@ -63,12 +63,14 @@ class RegisterForTriage(TriageStrategy):
         tr.notify_patient_nurse()
         ##
         
+        '''
         with open("patient.csv", "a", newline="") as csv_file:
             writer_obj = writer(csv_file)
             writer_obj.writerow(
                 [name, age, address, phone, password, username, reason, diagnosed_diseases, today, "NA",tr.get_mode(), tr.get_priority(),"NA"]
             )
-            print("\nYour Request Has Been Submitted!")
+        '''
+        print("\nYour Request Has Been Submitted!")
 
         patient_data['triageStatus'] = "Registration Confirmed"
 
