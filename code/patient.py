@@ -1,7 +1,6 @@
 import pandas as pd
 from csv import writer
 from datetime import date
-import datetime
 import warnings
 from triage import *
 warnings.filterwarnings("ignore")
@@ -40,12 +39,12 @@ class RegisterForTriage(TriageStrategy):
         reason = input("Reason: ")
         diagnosed_diseases = input("Diagnosed Diseases: ")
         today = date.today()
-        print(f"Registration Time: {datetime.datetime.now()}")
         print()
         
         if (len(username) == 0 or len(name) == 0 or len(age) == 0 or len(address) == 0 or len(phone) == 0 \
         or len(reason) == 0 or len(diagnosed_diseases) == 0):
             print("Please Don't Leave Any Field Empty!!\n")
+            Patient().initiate_actions()
             return
         
         try:
@@ -56,8 +55,9 @@ class RegisterForTriage(TriageStrategy):
         
         for i in range(len(data)):
             if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
-                print("You are Already Registered!!")
-                exit(0)
+                print("\nYou are Already Registered!!\n")
+                Patient().initiate_actions()
+                return
                 
         ## Notifying Patient and Nurse
         tr.notify_patient_nurse()
@@ -92,13 +92,14 @@ class UndergoTriage(TriageStrategy):
         answers = [q1 + " ", q2 + " ", q3 + " ", q4 + " "]
         
         if (len(q1) == 0 or len(q2) == 0 or len(q3) == 0 or len(q4) == 0):
-            print("Please Don't Leave Any Answer Empty!!")
+            print("\nPlease Don't Leave Any Answer Empty!!\n")
+            Patient().initiate_actions()
             return
         
         try:
             data = pd.read_csv("patient.csv")
         except FileNotFoundError:
-            print("\nPatients File is Not Found!!")
+            print("\nPatients File is Not Found!!\n")
             return
         
         registered = False
@@ -120,6 +121,8 @@ class UndergoTriage(TriageStrategy):
             
         if registered == False:
             print("\nPlease Register for the Triage First!")
+            Patient().initiate_actions()
+            return
         else:
             patient_data['status'] = "Triage is taken."
         
@@ -133,7 +136,6 @@ class Patient:
             "triageStatus": "Idle"
         }
         self.strategy = None
-        self.registration_timestamp = datetime.datetime.now()
 
     def set_strategy(self, strategy: TriageStrategy):
         self.strategy = strategy
