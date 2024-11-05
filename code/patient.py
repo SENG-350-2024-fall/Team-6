@@ -1,6 +1,7 @@
 import pandas as pd
 from csv import writer
 from datetime import date
+import datetime
 import warnings
 from triage import *
 warnings.filterwarnings("ignore")
@@ -39,6 +40,7 @@ class RegisterForTriage(TriageStrategy):
         reason = input("Reason: ")
         diagnosed_diseases = input("Diagnosed Diseases: ")
         today = date.today()
+        print(f"Registration Time: {datetime.datetime.now()}")
         print()
         
         if (len(username) == 0 or len(name) == 0 or len(age) == 0 or len(address) == 0 or len(phone) == 0 \
@@ -131,6 +133,7 @@ class Patient:
             "triageStatus": "Idle"
         }
         self.strategy = None
+        self.registration_timestamp = datetime.datetime.now()
 
     def set_strategy(self, strategy: TriageStrategy):
         self.strategy = strategy
