@@ -43,14 +43,14 @@ class Nurse(User, notification.Observer):
                  triage_ready=True, notifications=None, shift=""):
         super().__init__(name, age, address, phone_number, username, password)
         self.assigned_patients = assigned_patients if assigned_patients is not None else []
-        self.notifications = notifications if notifications else notification.Notification()
+        self.notifications = notification.Notification()
         self.notifications.add_observer(self)
         self.available = available
         self.triage_ready = triage_ready
         self.shift = shift
 
     def update(self, message):
-        print(f"New update for {self.username}")
+        pass
 
     def view_assigned_patients(self):
         print("Assigned Patients:")
@@ -184,6 +184,7 @@ class UserLoader:
                         assigned_patients = row["AssignedPatients"].split(";") if pd.notna(row["AssignedPatients"]) else []
                         notifications = row["Notifications"].split(";") if pd.notna(row["Notifications"]) else []
                         
+                        # Create a Nurse instance
                         user = user_factory.create_user(
                             row['Name'],
                             row['Age'],
@@ -194,9 +195,13 @@ class UserLoader:
                             availability=row['Availability'],
                             triage_ready=row['TriageReady'],
                             assigned_patients=assigned_patients,
-                            notifications=notifications,
                             shift=row['Shift']
                         )
+
+                        # Ensure notifications instance exists and add CSV notifications
+                        for notification_msg in notifications:
+                            user.notifications.add_notification(notification_msg)
+                   
                     elif role.lower() == 'system_administrator':
                         user = user_factory.create_user(
                             row['Name'],

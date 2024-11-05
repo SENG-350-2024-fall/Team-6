@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import notification
+from user import Nurse, UserLoader, NurseFactory
 
 # Sample data for patients and their records with multiple symptoms
 PATIENT_RECORDS = {
@@ -43,109 +44,48 @@ PATIENT_RECORDS = {
 }
 
 #CSV Management
-def load_nurse_data(nurse_name):
-    """Load nurse data from nurse.csv based on the name."""
-    try:
-        nurses_df = pd.read_csv("nurse.csv")
-        nurse_data = nurses_df[nurses_df["Name"] == nurse_name]
-        if nurse_data.empty:
-            print("No nurse data found for the provided name.")
-            return None
+def load_nurse_data(nurse):
+    """Load nurse data using UserLoader."""
+    nurses = UserLoader.load_users("nurse")
 
-        # Extracting the necessary data from the CSV row
-        record = nurse_data.iloc[0]
-        assigned_patients = record["AssignedPatients"].split(";") if pd.notna(record["AssignedPatients"]) else []
-        notifications = record["Notifications"].split(";") if pd.notna(record["Notifications"]) else []
+    # Extract the username from the nurse_username parameter
+    nurse_username = nurse.username  # Assuming nurse_username is a Nurse object
 
-        # Create a Nurse object with loaded data
-        nurse = Nurse(
-            username=record["Username"],
-            assigned_patients=assigned_patients,
-            available=record["Availability"],
-            can_conduct_triage=record["TriageReady"]
-        )
+    # Find nurse by name
+    for nurse in nurses:
+        if nurse.username == nurse_username:  # Compare with the extracted username
+            return nurse
+            
+    print("No nurse data found for the provided username.")
+    return None
 
-        # Manually add notifications if necessary
-        for notification_msg in notifications:
-            nurse.notifications.add_notification(notification_msg)
-
-        return nurse
-
-    except FileNotFoundError:
-        print("nurse.csv file not found.")
-        return None
 
 def update_nurse_data(nurse):
-    """Updates the nurse's information in the nurse.csv file."""
+    """Updates the nurse's information in nurse.csv using data from the Nurse object."""
     try:
-        # Load the CSV into a DataFrame
+        # Load the CSV
         nurses_df = pd.read_csv("nurse.csv")
         
-        # Check if the nurse exists in the CSV
+        # Find the nurse by username
         nurse_index = nurses_df.index[nurses_df["Username"] == nurse.username].tolist()
-        
         if not nurse_index:
             print(f"No record found for nurse {nurse.username}. Cannot update.")
             return
         
-        # Get the first index of the matched nurse
+        # Update fields
         nurse_index = nurse_index[0]
-
-        # Update the necessary fields
         nurses_df.at[nurse_index, "AssignedPatients"] = ";".join(nurse.assigned_patients)
         nurses_df.at[nurse_index, "Availability"] = nurse.available
-        nurses_df.at[nurse_index, "TriageReady"] = nurse.can_conduct_triage
-        nurses_df.at[nurse_index, "Notifications"] = ";".join(
-            [n['message'] for n in nurse.notifications.notifications]
-        )
+        nurses_df.at[nurse_index, "TriageReady"] = nurse.triage_ready
+        nurses_df.at[nurse_index, "Notifications"] = ";".join([notif['message'] for notif in nurse.notifications.notifications])
 
-        # Save the updated DataFrame back to CSV
+        # Save back to CSV
         nurses_df.to_csv("nurse.csv", index=False)
         print(f"Nurse {nurse.username}'s information updated successfully.")
-
     except FileNotFoundError:
         print("nurse.csv file not found.")
     except Exception as e:
         print(f"An error occurred while updating the nurse data: {e}")
-
-#Nurse class (includes adding and removing patients)
-class Nurse(notification.Observer):
-    """Represents a Nurse."""
-    def __init__(self, username, assigned_patients=None, available=True, can_conduct_triage=True):
-        self.username = username
-        self.assigned_patients = assigned_patients if assigned_patients is not None else []
-        self.notifications = notification.Notification()
-        self.notifications.add_observer(self)
-        self.available = available
-        self.can_conduct_triage = can_conduct_triage
-        self.shifts = []
-
-    def update(self, message):
-        print(f"New update for {self.username}")
-        update_nurse_data(self)
-
-    def view_assigned_patients(self):
-        print("Assigned Patients:")
-        if not self.assigned_patients:
-            print("No patients assigned.")
-        else:
-            for patient in self.assigned_patients:
-                print(f"- {patient}")
-
-    @notification.notify_action("Patient {} has been assigned to you.")
-    def add_patient(self, patient):
-        self.assigned_patients.append(patient)
-
-    @notification.notify_action("Patient {} has been removed from your care.")
-    def remove_patient(self, patient):
-        """Removes a discharged patient from the assigned list."""
-        if patient in self.assigned_patients:
-            self.assigned_patients.remove(patient)
-        else:
-            print(f"Patient {patient} is not in your assigned list.")
-     
-    def __str__(self):
-        return f"Nurse: {self.username}"
 
 def handle_task_selection(choice, tasks, nurse):
     """Executes the selected task based on user choice."""
@@ -282,13 +222,13 @@ def update_patient_records():
 def log_patient_vitals():
     print("Logging patient vitals...")
 
-def run_nurse_portal(nurse_name):
+def run_nurse_portal(nurse):
     """Runs the nurse portal after a successful login."""
     # Call login function from login.py
-    if nurse_name:
-        nurse = load_nurse_data(nurse_name)
+    if nurse:
+        nurse = load_nurse_data(nurse)
         if nurse:
-            print(f"Welcome, Nurse {nurse.username}!")
+            print(f"Welcome, User {nurse.username}!")
             time.sleep(1)
             nurse_dashboard(nurse)
         else:
