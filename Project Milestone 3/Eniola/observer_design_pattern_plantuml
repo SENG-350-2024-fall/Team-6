@@ -1,0 +1,77 @@
+@startuml
+
+' Subject interface
+abstract class Subject {
+    + add_observer(observer: Observer)
+    + remove_observer(observer: Observer)
+    + notify_observers(message: str)
+}
+
+' Concrete Subject class
+class Notification {
+    - notifications: list
+    - observers: list
+    + add_observer(observer: Observer)
+    + remove_observer(observer: Observer)
+    + notify_observers(message: str)
+    + add_notification(message: str)
+    + view_notifications()
+    + clear_notifications()
+}
+
+' Observer interface
+abstract class Observer {
+    + update(message: str)
+}
+
+' User class representing the Observer
+class User {
+    - name: str
+    - age: int
+    - address: str
+    - phone_number: str
+    - username: str
+    - password: str
+    + get_role(): str
+    + update(message: str)
+}
+
+' Concrete User classes
+class Doctor {
+    + get_role(): str
+    + update(): 
+}
+
+class Patient {
+    + get_role(): str
+    + update(): 
+}
+
+class Nurse {
+    + get_role(): str
+    + update(): 
+}
+
+class SystemAdmin {
+    + get_role(): str
+    + update(): 
+}
+
+class EdStaff {
+    + get_role(): str
+    + update(): 
+}
+
+' Relationships
+Subject <|-- Notification
+Observer <|-- User
+User <|-- Doctor
+User <|-- Patient
+User <|-- Nurse
+User <|-- SystemAdmin
+User <|-- EdStaff
+
+Notification o-- "0..*" Observer : "maintains"
+Notification --> Observer : "Notifies"
+
+@enduml
