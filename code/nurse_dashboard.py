@@ -4,6 +4,26 @@ import notification
 from user import Nurse, UserLoader, NurseFactory
 from appointment import Appointment
 
+def run_nurse_portal(nurse):
+    """Runs the nurse portal after a successful login."""
+    # Call login function from login.py
+    if nurse:
+        nurse = load_nurse_data(nurse)
+        if nurse:
+            assigned_patients, vitals_dict = load_patient_data_for_nurse(nurse.name)
+            nurse.assigned_patients = assigned_patients
+            nurse.vitals_dict = vitals_dict
+        
+            print(f"Welcome, User {nurse.username}!")
+            time.sleep(1)
+            nurse_dashboard(nurse)
+        else:
+            print("Error loading nurse dashboard.")
+
+if __name__ == "__main__":
+    run_nurse_portal("Carol Lee")
+ 
+
 #CSV Management
 def load_nurse_data(nurse):
     """Load nurse data using UserLoader."""
@@ -79,7 +99,7 @@ def load_patient_data_for_nurse(nursename):
 
 def handle_task_selection(choice, tasks, nurse):
     """Executes the selected task based on user choice."""
-    if choice == '16':
+    if choice == '14':
         if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
             print("Logging out...")
             return False
@@ -89,32 +109,12 @@ def handle_task_selection(choice, tasks, nurse):
         print("Invalid selection. Please try again.")
     return True
 
-def run_nurse_portal(nurse):
-    """Runs the nurse portal after a successful login."""
-    # Call login function from login.py
-    if nurse:
-        nurse = load_nurse_data(nurse)
-        if nurse:
-            assigned_patients, vitals_dict = load_patient_data_for_nurse(nurse.name)
-            nurse.assigned_patients = assigned_patients
-            nurse.vitals_dict = vitals_dict
-            print("patients: ", nurse.assigned_patients)
-            print("vitals: ", nurse.vitals_dict)
-        
-            print(f"Welcome, User {nurse.username}!")
-            time.sleep(1)
-            nurse_dashboard(nurse)
-        else:
-            print("Error loading nurse dashboard.")
-
-if __name__ == "__main__":
-    run_nurse_portal("Carol Lee")
-    
+#Dashboard
 def nurse_dashboard(nurse):
     """Displays the nurse's dashboard and handles task selection."""
     tasks = {
         '1': nurse.notifications.view_notifications,
-        '2': nurse.view_assigned_patients,
+        '2': lambda: view_assigned_patients_details(nurse),
         '3': conduct_triage,
         '4': check_shifts,
         '5': lambda: schedule_appointment(nurse),
@@ -150,6 +150,16 @@ def nurse_dashboard(nurse):
         if not handle_task_selection(choice, tasks, nurse):
             break
         time.sleep(1)
+def view_assigned_patients_details(nurse):
+    """Displays detailed information of assigned patients."""
+    if not nurse.assigned_patients:
+        print("No patients assigned.")
+        return
+
+    print("\n--- Patients Assigned to You ---")
+    for patient in nurse.assigned_patients:
+        print(f"Name: {patient['Name']}, Age: {patient['Age']}, Address: {patient['Address']}, "
+              f"Phone: {patient['Phone']}, Username: {patient['Username']}")
 
 def get_patient_name(nurse):
     """Displays a list of patients assigned to the nurse and returns the selected patient's name."""
@@ -178,17 +188,18 @@ def discharge_patient(nurse, patient=None):
         patient = get_patient_name(nurse)
     
     # Check if patient is a valid dictionary with the 'Name' key
-    if patient and 'Name' in patient:
-        patient_name = patient['Name']
+    if patient:
+        
         # Check if the patient is in the assigned patients list
         for assigned_patient in nurse.assigned_patients:
-            if assigned_patient['Name'] == patient_name:
+            print(assigned_patient['Name'])
+            print(patient)
+            if assigned_patient['Name'] == patient:
                 # Notify and remove the patient from the assigned list
-                print(f"Patient {patient_name} has been discharged.")
-                nurse.remove_patient(patient)  # Assuming this method takes the patient dict
-                nurse.vitals_dict.pop(patient_name, None)  # Safely remove from vitals dict
-                return patient  # Return patient for the decorator to capture
-    
+                print(f"Patient {patient} has been discharged.")
+                nurse.remove_patient(assigned_patient)  # Assuming this method takes the patient dict
+                nurse.vitals_dict.pop(patient, None)  # Safely remove from vitals dict
+                return
     print(f"Patient {patient} not found in the assigned list.")
     return None
 
@@ -230,8 +241,7 @@ def request_medical_supplies(nurse):
 def schedule_appointment(nurse):
     """Assigns a patient to a doctor and schedules an appointment."""
     patients = UserLoader.load_users("patient")  # Load the list of patients
-    patient_name = get_patient_name_input("Enter the patient's name to assign: ")
-    
+    patient_name = get_patient_name(nurse)
     # Find the patient by name
     selected_patient = next((p for p in patients if p.name == patient_name), None)
     if not selected_patient:
