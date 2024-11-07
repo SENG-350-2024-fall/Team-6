@@ -2,6 +2,8 @@ import pandas as pd
 from csv import writer
 from datetime import date
 import warnings
+import users
+import login
 from triage import *
 warnings.filterwarnings("ignore")
 
@@ -44,6 +46,7 @@ class RegisterForTriage(TriageStrategy):
         if (len(username) == 0 or len(name) == 0 or len(age) == 0 or len(address) == 0 or len(phone) == 0 \
         or len(reason) == 0 or len(diagnosed_diseases) == 0):
             print("Please Don't Leave Any Field Empty!!\n")
+            Patient().initiate_actions()
             return
         
         try:
@@ -54,19 +57,22 @@ class RegisterForTriage(TriageStrategy):
         
         for i in range(len(data)):
             if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
-                print("You are Already Registered!!")
-                exit(0)
+                print("\nYou are Already Registered!!\n")
+                Patient().initiate_actions()
+                return
                 
         ## Notifying Patient and Nurse
         tr.notify_patient_nurse()
         ##
         
+        '''
         with open("patient.csv", "a", newline="") as csv_file:
             writer_obj = writer(csv_file)
             writer_obj.writerow(
                 [name, age, address, phone, password, username, reason, diagnosed_diseases, today, "NA",tr.get_mode(), tr.get_priority(),"NA"]
             )
-            print("\nYour Request Has Been Submitted!")
+        '''
+        print("\nYour Request Has Been Submitted!")
 
         patient_data['triageStatus'] = "Registration Confirmed"
 
@@ -90,13 +96,14 @@ class UndergoTriage(TriageStrategy):
         answers = [q1 + " ", q2 + " ", q3 + " ", q4 + " "]
         
         if (len(q1) == 0 or len(q2) == 0 or len(q3) == 0 or len(q4) == 0):
-            print("Please Don't Leave Any Answer Empty!!")
+            print("\nPlease Don't Leave Any Answer Empty!!\n")
+            Patient().initiate_actions()
             return
         
         try:
             data = pd.read_csv("patient.csv")
         except FileNotFoundError:
-            print("\nPatients File is Not Found!!")
+            print("\nPatients File is Not Found!!\n")
             return
         
         registered = False
@@ -118,11 +125,11 @@ class UndergoTriage(TriageStrategy):
             
         if registered == False:
             print("\nPlease Register for the Triage First!")
+            Patient().initiate_actions()
+            return
         else:
             patient_data['status'] = "Triage is taken."
         
-
-
 # Context for the patient
 class Patient:
     def __init__(self):
@@ -132,6 +139,38 @@ class Patient:
         }
         self.strategy = None
 
+    def check_patient_status(self):
+    
+    	status = input("Please Input Your Status: 1 = New Patient  2 = Registered Patient")
+    	
+    	all_users = {}
+    	
+    	if status == "1":
+    	
+    	   ##Testing
+    	   all_users = user().UserLoader()
+    	   print(all_users)
+    	   exit(0)
+    	   
+    	   username = input("Please Input Your User Name: ")
+    	   password = input("Please Input Your Password ")
+    	   name = input("Please Input Your Full Name: ")
+    	   address = input("Please Input Your Address: ")
+    	   age = input("Please Input Your Age: ")
+    	   phone = input("Please Input Your Phone#: ")
+    	   
+    	elif status == "2":
+    	
+    	   login("Patient")
+    	   
+    	   print("\nPlease Login First\n")
+    	   
+    	else:
+	    print("\nInvalid Input!!\n")
+	    self.check_patient_status()
+	    return
+    		
+    	
     def set_strategy(self, strategy: TriageStrategy):
         self.strategy = strategy
 
