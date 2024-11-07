@@ -1,6 +1,8 @@
 import time
 import os
 from user import SystemAdmin
+from data_stores import all_users
+import pandas as pd
 
 new_notification = 0
 notifications = []
@@ -129,16 +131,74 @@ def admin_dashboard(admin):
             tasks[choice]()
         else:
             print("Invalid selection. Please try again.")
-        time.sleep(1)
+        time.sleep(30)
 
 
 def view_user_accounts():
-    if USER_ACCOUNTS:
-        print("\n--- User Accounts ---")
-        for user, details in USER_ACCOUNTS.items():
-            print(f"User: {user}, Role: {details['role']}, Status: {details['status']}, Permission: {details['permission_level']}")
-    else:
-        print("No user accounts found.")
+    terminal_clear()
+    print("Different User Types:\n")
+    print("""\
+1.  Doctors
+2.  Patients
+3.  Nurse
+4.  ED Staff
+5.  System Admin""")
+    
+    user_type = input("\nPlease enter the number corresponding to the to type of user account you want to see: ").strip()
+    roles = {
+        "1": "doctor",
+        "2": "patient",
+        "3": "nurse",
+        "4": "ed_staff",
+        "5": "system_administrator"
+    }
+
+    role_selected = roles.get(user_type)
+    if not role_selected:
+        print("Invalid selection. Please try again.")
+        return
+    
+    table_data = []
+    
+    if role_selected and all_users:
+        terminal_clear()
+        print(f"\n|| All {role_selected.capitalize()} Accounts ||\n")
+
+        for usertype in all_users[role_selected]:
+            userdata = {
+                "Name": usertype.name,
+                "Age": usertype.age,
+                "Address": usertype.address,
+                "Phone Number": usertype.phone_number,
+                "Username": usertype.username,
+                "Password": usertype.password
+            }
+            
+            if role_selected=="doctor":
+                userdata["Specialization"] = usertype.specialization
+                userdata["Availability"] = usertype.available
+            elif role_selected=="nurse":
+                userdata["Availability"] = usertype.available
+                userdata["Triage Ready"] = usertype.triage_ready
+                userdata["Patients Assigned"] = usertype.assigned_patients
+                userdata["Notifications"] = [notification.message for notification in usertype.notifications.messages]
+                userdata["Shifts"] = usertype.shift
+                userdata["Vitals"] = usertype.vitals_dict
+                
+            table_data.append(userdata)
+
+        df = pd.DataFrame(table_data)
+        print(df.to_string(index=False))
+               
+
+
+
+    # if USER_ACCOUNTS:
+    #     print("\n--- User Accounts ---")
+    #     for user, details in USER_ACCOUNTS.items():
+    #         print(f"User: {user}, Role: {details['role']}, Status: {details['status']}, Permission: {details['permission_level']}")
+    # else:
+    #     print("No user accounts found.")
 
 
 def manage_user_accounts(admin):
