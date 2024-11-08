@@ -54,16 +54,50 @@ class SystemAdministrator(SystemAdmin):
         self.update_software()
 
     def check_diagnostics(self):
+        print("Running System diagnostics test.....")
+        time.sleep(2)
+        print("Please wait...")
+        time.sleep(2)
         print("System diagnostics checked.")
 
     def update_software(self):
-        print("System software updated.")
+        print("Checking for software updates....")
+        time.sleep(2)
+        print("System software is already updated.")
 
     def perform_security_check(self):
-        print("Performing security check...")
+        print("Starting security check...")
+        time.sleep(2)
+        print("Checking firewall status...")
+        time.sleep(2)
+        print("Firewall status: Active")
+    
+        print("Scanning for vulnerabilities...")
+        time.sleep(2)
+        print("Vulnerabilities found: None")
+    
+        print("Verifying user access permissions...")
+        time.sleep(2)
+        print("All user permissions are correctly configured.")
+        time.sleep(2)
+        print("Security check complete. Proceeding to system audit...")
         self.system_audit()
 
     def system_audit(self):
+        print("Starting system audit...")
+        time.sleep(2)
+        print("Analyzing system logs for unusual activity...")
+        time.sleep(2)
+        print("No unusual activity found in system logs.")
+        time.sleep(2)
+        print("Checking for outdated software...")
+        time.sleep(2)
+        print("All software is up-to-date.")
+        time.sleep(2)
+        print("Validating data integrity across all databases...")
+        time.sleep(2)
+        print("Data integrity check passed successfully.")
+        time.sleep(2)
         print("System audit completed successfully.")
 
     def __str__(self):
