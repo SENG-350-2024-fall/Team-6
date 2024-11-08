@@ -3,6 +3,8 @@ import os
 from user import SystemAdmin
 from data_stores import all_users
 import pandas as pd
+from notification import Notification, notify_action, Observer
+
 
 new_notification = 0
 notifications = []
@@ -80,6 +82,8 @@ def view_notifications():
 
     if input("Clear notifications? (y/n): ").strip().lower() == 'y':
         clear_notifications()
+    
+    
 
 
 def add_notification(message):
@@ -126,12 +130,14 @@ def admin_dashboard(admin):
         if choice == '6':
             if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
                 print("Logging out...")
-                break
+                return False
         elif choice in tasks:
             tasks[choice]()
+            time.sleep(20)
         else:
             print("Invalid selection. Please try again.")
-        time.sleep(30)
+            time.sleep(5)
+        # time.sleep(30)
 
 
 def view_user_accounts():
@@ -180,15 +186,16 @@ def view_user_accounts():
             elif role_selected=="nurse":
                 userdata["Availability"] = usertype.available
                 userdata["Triage Ready"] = usertype.triage_ready
-                userdata["Patients Assigned"] = usertype.assigned_patients
-                userdata["Notifications"] = [notification.message for notification in usertype.notifications.messages]
+                userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
+                userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications]
                 userdata["Shifts"] = usertype.shift
-                userdata["Vitals"] = usertype.vitals_dict
+                userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
                 
             table_data.append(userdata)
 
         df = pd.DataFrame(table_data)
         print(df.to_string(index=False))
+        input("\nPress Enter to go back to the Dashboard...")
                
 
 
