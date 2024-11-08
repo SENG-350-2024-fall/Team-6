@@ -2,8 +2,8 @@ import pandas as pd
 from csv import writer
 from datetime import date
 import warnings
-import users
-import login
+from login import *
+from user import *
 from triage import *
 warnings.filterwarnings("ignore")
 
@@ -140,36 +140,44 @@ class Patient:
         self.strategy = None
 
     def check_patient_status(self):
+        
+        status = input("Please Input Your Status: 1 = New Patient,  2 = Registered Patient ")
+        
+        all_users = {}
     
-    	status = input("Please Input Your Status: 1 = New Patient  2 = Registered Patient")
-    	
-    	all_users = {}
-    	
-    	if status == "1":
-    	
-    	   ##Testing
-    	   all_users = user().UserLoader()
-    	   print(all_users)
-    	   exit(0)
-    	   
-    	   username = input("Please Input Your User Name: ")
-    	   password = input("Please Input Your Password ")
-    	   name = input("Please Input Your Full Name: ")
-    	   address = input("Please Input Your Address: ")
-    	   age = input("Please Input Your Age: ")
-    	   phone = input("Please Input Your Phone#: ")
-    	   
-    	elif status == "2":
-    	
-    	   login("Patient")
-    	   
-    	   print("\nPlease Login First\n")
-    	   
-    	else:
-	    print("\nInvalid Input!!\n")
-	    self.check_patient_status()
-	    return
-    		
+        if status == "1":
+            ##Testing           
+            username = input("Please Input Your User Name: ")
+            password = input("Please Input Your Password ")
+            name = input("Please Input Your Full Name: ")
+            address = input("Please Input Your Address: ")
+            age = input("Please Input Your Age: ")
+            phone = input("Please Input Your Phone#: ")
+
+            user_factory = UserLoader.role_factory_map.get("patient")
+            user_factory.create_user(
+                name,
+                age,
+                address,
+                phone,
+                username,
+                password
+            )
+            all_users = UserLoader.load_all_users()
+            print(all_users)
+            return all_users
+           
+        elif status == "2":
+            print("\nPlease Login First\n")
+            s = login("Patient")
+            if s == -1:
+               self.check_patient_status() 
+            
+        else:
+            print("\nInvalid Input!!\n")
+            self.check_patient_status()
+            return
+
     	
     def set_strategy(self, strategy: TriageStrategy):
         self.strategy = strategy
@@ -180,6 +188,9 @@ class Patient:
 
     def initiate_actions(self):
         print()
+
+        self.check_patient_status()
+
         print("       Patient Welcome Page          ")
         print("-------------------------------------")
         op = input("Choose an Option:\n\n 1 = Register for Triage, 2 = Undergo Triage  ")
