@@ -9,6 +9,7 @@ warnings.filterwarnings("ignore")
 
 tr = Triage()
 password = "password"
+new_users =[]
 
 # Strategy interface
 class TriageStrategy:
@@ -64,7 +65,11 @@ class RegisterForTriage(TriageStrategy):
         ## Notifying Patient and Nurse
         tr.notify_patient_nurse()
         ##
-        
+
+        ## Add the new user to the list
+        global new_users
+        new_users.append((username,name))
+
         '''
         with open("patient.csv", "a", newline="") as csv_file:
             writer_obj = writer(csv_file)
@@ -124,6 +129,14 @@ class UndergoTriage(TriageStrategy):
                 break
             
         if registered == False:
+
+            global new_users
+            # Simulate answer storage for newly added/registered users
+            for usn, n in new_users:
+                if (usn == username and n == name):
+                    print("\nAnswers Are Saved Successfully!\n")
+                    return
+
             print("\nPlease Register for the Triage First!\n")
             Patient().initiate_actions()
             return
