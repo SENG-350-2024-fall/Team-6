@@ -228,8 +228,10 @@ class UserLoader:
                     else:
                         print(f"Role-specific logic not implemented for: {role}")
                         continue
-
+                        
+                    global users
                     users.append(user)
+                    
                 except KeyError as e:
                     print(f"Missing field in {role}.csv: {e}")
                 except ValueError as e:
