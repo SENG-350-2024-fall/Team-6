@@ -51,11 +51,16 @@ class GUI:
                 break
             elif role_choice in self.roles:
                 portal, dashboard = self.roles[role_choice]
-                user = login.login(portal.lower().replace(" ", "_"))  # Prompt user to log in
-                if user is not None:
-                    self.role_login(portal, dashboard, user)
+                
+                if role_choice != "1":
+                    user = login.login(portal.lower().replace(" ", "_"))  # Prompt user to log in
+
+                    if user is not None:
+                        self.role_login(portal, dashboard, user)
+                    else:
+                        print("Invalid login or role mismatch. Please try again.\n")
                 else:
-                    print("Invalid login or role mismatch. Please try again.\n")
+                    patient.Patient().initiate_actions()
             else:
                 print("\n\nInvalid option. Please try again.\n\n")
 
