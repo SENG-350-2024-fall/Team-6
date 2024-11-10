@@ -163,7 +163,7 @@ class Patient:
                 username,
                 password
             )
-            ##Users list from users.py
+            ## Users list from users.py
             users.append(user)
             
             all_users = UserLoader.load_all_users()
@@ -172,8 +172,10 @@ class Patient:
            
         elif status == "2":
             print("\nPlease Login First\n")
-            s = login("patient")
-            if s == -1:
+            login("patient")
+
+            ## Accessing login_check from login.py
+            if get_invalid_login() == 1:
                self.check_patient_status() 
             
         else:
