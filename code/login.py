@@ -39,7 +39,7 @@ def login(role):
         time.sleep(1)
         print("Invalid username or password.")
         time.sleep(1)
-        return None
+        return -1
 
 def clear_terminal():
     """
