@@ -119,12 +119,12 @@ class UndergoTriage(TriageStrategy):
                 # Write to CSV file
                 data.to_csv("patient.csv", sep=",", index=False, encoding="utf-8")
                 
-                print("\nAnswers Are Saved Successfully!")
+                print("\nAnswers Are Saved Successfully!\n")
                 registered = True
                 break
             
         if registered == False:
-            print("\nPlease Register for the Triage First!")
+            print("\nPlease Register for the Triage First!\n")
             Patient().initiate_actions()
             return
         else:
@@ -141,7 +141,7 @@ class Patient:
 
     def check_patient_status(self):
         
-        status = input("Please Input Your Status: 1 = New Patient,  2 = Registered Patient ")
+        status = input("Please Input Your Status: 1 = New Patient,  2 = Registered Patient  ")
         
         all_users = {}
     
@@ -155,7 +155,7 @@ class Patient:
             phone = input("Please Input Your Phone#: ")
 
             user_factory = UserLoader.role_factory_map.get("patient")
-            user_factory.create_user(
+            user = user_factory.create_user(
                 name,
                 age,
                 address,
@@ -163,13 +163,16 @@ class Patient:
                 username,
                 password
             )
+            ##Users list from users.py
+            users.append(user)
+            
             all_users = UserLoader.load_all_users()
-            print(all_users)
+
             return all_users
            
         elif status == "2":
             print("\nPlease Login First\n")
-            s = login("Patient")
+            s = login("patient")
             if s == -1:
                self.check_patient_status() 
             
@@ -191,6 +194,7 @@ class Patient:
 
         self.check_patient_status()
 
+        print("\n")
         print("       Patient Welcome Page          ")
         print("-------------------------------------")
         op = input("Choose an Option:\n\n 1 = Register for Triage, 2 = Undergo Triage  ")
