@@ -2,6 +2,9 @@ import pandas as pd
 from abc import ABC, abstractmethod
 import notification
 
+## All users' list global variable
+users = []
+
 # Abstract Base Class for User
 class User(notification.Observer, ABC):
     def __init__(self, name, age, address, phone_number, username, password):
@@ -147,8 +150,7 @@ class UserLoader:
         filename = f"{role}.csv"  # CSV file assumed to be named after the role (e.g., Doctor.csv, Patient.csv)
         try:
             df = pd.read_csv(filename)
-            users = []
-
+            
             # Check the role and adjust user creation logic as needed
             user_factory = UserLoader.role_factory_map.get(role.lower())
             if not user_factory:
