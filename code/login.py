@@ -2,6 +2,8 @@ import os
 import time
 from data_stores import all_users  # Import all_users from data_stores
 
+login_check = 0
+
 def load_credentials(role):
     """
     Fetch users of a specific role from all_users.
@@ -33,13 +35,22 @@ def login(role):
         clear_terminal()
         time.sleep(1)
         print(f"Welcome, {user.name}!")
+        set_invalid_login(0)
         return user  # Return the user name for further use
     else:
         clear_terminal()
         time.sleep(1)
         print("Invalid username or password.")
+        set_invalid_login(1)
         time.sleep(1)
         return None
+    
+def set_invalid_login(val):
+    global login_check
+    login_check = val
+
+def get_invalid_login():
+    return login_check
 
 def clear_terminal():
     """
