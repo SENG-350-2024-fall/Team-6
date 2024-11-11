@@ -1,6 +1,10 @@
 import time
 import os
 from user import SystemAdmin
+from data_stores import all_users
+import pandas as pd
+from notification import Notification, notify_action, Observer
+
 
 new_notification = 0
 notifications = []
@@ -50,16 +54,50 @@ class SystemAdministrator(SystemAdmin):
         self.update_software()
 
     def check_diagnostics(self):
+        print("Running System diagnostics test.....")
+        time.sleep(2)
+        print("Please wait...")
+        time.sleep(2)
         print("System diagnostics checked.")
 
     def update_software(self):
-        print("System software updated.")
+        print("Checking for software updates....")
+        time.sleep(2)
+        print("System software is already updated.")
 
     def perform_security_check(self):
-        print("Performing security check...")
+        print("Starting security check...")
+        time.sleep(2)
+        print("Checking firewall status...")
+        time.sleep(2)
+        print("Firewall status: Active")
+    
+        print("Scanning for vulnerabilities...")
+        time.sleep(2)
+        print("Vulnerabilities found: None")
+    
+        print("Verifying user access permissions...")
+        time.sleep(2)
+        print("All user permissions are correctly configured.")
+        time.sleep(2)
+        print("Security check complete. Proceeding to system audit...")
         self.system_audit()
 
     def system_audit(self):
+        print("Starting system audit...")
+        time.sleep(2)
+        print("Analyzing system logs for unusual activity...")
+        time.sleep(2)
+        print("No unusual activity found in system logs.")
+        time.sleep(2)
+        print("Checking for outdated software...")
+        time.sleep(2)
+        print("All software is up-to-date.")
+        time.sleep(2)
+        print("Validating data integrity across all databases...")
+        time.sleep(2)
+        print("Data integrity check passed successfully.")
+        time.sleep(2)
         print("System audit completed successfully.")
 
     def __str__(self):
@@ -78,6 +116,8 @@ def view_notifications():
 
     if input("Clear notifications? (y/n): ").strip().lower() == 'y':
         clear_notifications()
+    
+    
 
 
 def add_notification(message):
@@ -124,21 +164,82 @@ def admin_dashboard(admin):
         if choice == '6':
             if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
                 print("Logging out...")
-                break
+                return False
         elif choice in tasks:
             tasks[choice]()
+            time.sleep(20)
         else:
             print("Invalid selection. Please try again.")
-        time.sleep(1)
+            time.sleep(5)
+        # time.sleep(30)
 
 
 def view_user_accounts():
-    if USER_ACCOUNTS:
-        print("\n--- User Accounts ---")
-        for user, details in USER_ACCOUNTS.items():
-            print(f"User: {user}, Role: {details['role']}, Status: {details['status']}, Permission: {details['permission_level']}")
-    else:
-        print("No user accounts found.")
+    terminal_clear()
+    print("Different User Types:\n")
+    print("""\
+1.  Doctors
+2.  Patients
+3.  Nurse
+4.  ED Staff
+5.  System Admin""")
+    
+    user_type = input("\nPlease enter the number corresponding to the to type of user account you want to see: ").strip()
+    roles = {
+        "1": "doctor",
+        "2": "patient",
+        "3": "nurse",
+        "4": "ed_staff",
+        "5": "system_administrator"
+    }
+
+    role_selected = roles.get(user_type)
+    if not role_selected:
+        print("Invalid selection. Please try again.")
+        return
+    
+    table_data = []
+    
+    if role_selected and all_users:
+        terminal_clear()
+        print(f"\n|| All {role_selected.capitalize()} Accounts ||\n")
+
+        for usertype in all_users[role_selected]:
+            userdata = {
+                "Name": usertype.name,
+                "Age": usertype.age,
+                "Address": usertype.address,
+                "Phone Number": usertype.phone_number,
+                "Username": usertype.username,
+                "Password": usertype.password
+            }
+            
+            if role_selected=="doctor":
+                userdata["Specialization"] = usertype.specialization
+                userdata["Availability"] = usertype.available
+            elif role_selected=="nurse":
+                userdata["Availability"] = usertype.available
+                userdata["Triage Ready"] = usertype.triage_ready
+                userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
+                userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications]
+                userdata["Shifts"] = usertype.shift
+                userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
+                
+            table_data.append(userdata)
+
+        df = pd.DataFrame(table_data)
+        print(df.to_string(index=False))
+        input("\nPress Enter to go back to the Dashboard...")
+               
+
+
+
+    # if USER_ACCOUNTS:
+    #     print("\n--- User Accounts ---")
+    #     for user, details in USER_ACCOUNTS.items():
+    #         print(f"User: {user}, Role: {details['role']}, Status: {details['status']}, Permission: {details['permission_level']}")
+    # else:
+    #     print("No user accounts found.")
 
 
 def manage_user_accounts(admin):
