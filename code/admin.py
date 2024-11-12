@@ -5,7 +5,6 @@ from data_stores import all_users
 import pandas as pd
 from notification import Notification, notify_action, Observer
 
-
 new_notification = 0
 notifications = []
 
@@ -167,7 +166,7 @@ def admin_dashboard(admin):
                 return False
         elif choice in tasks:
             tasks[choice]()
-            time.sleep(20)
+            time.sleep(100)
         else:
             print("Invalid selection. Please try again.")
             time.sleep(5)
@@ -189,21 +188,23 @@ def view_user_accounts():
         "1": "doctor",
         "2": "patient",
         "3": "nurse",
-        "4": "ed_staff",
-        "5": "system_administrator"
+        "4": "EDStaff",
+        "5": "SystemAdmin"
     }
 
     role_selected = roles.get(user_type)
+    print(role_selected)
     if not role_selected:
         print("Invalid selection. Please try again.")
         return
     
     table_data = []
-    
-    if role_selected and all_users:
-        terminal_clear()
+
+    if role_selected in all_users and all_users[role_selected]:
         print(f"\n|| All {role_selected.capitalize()} Accounts ||\n")
 
+        # Prepare table data for the selected role
+        table_data = []
         for usertype in all_users[role_selected]:
             userdata = {
                 "Name": usertype.name,
@@ -213,33 +214,220 @@ def view_user_accounts():
                 "Username": usertype.username,
                 "Password": usertype.password
             }
-            
-            if role_selected=="doctor":
+
+            # Add role-specific attributes
+            if role_selected == "doctor":
                 userdata["Specialization"] = usertype.specialization
                 userdata["Availability"] = usertype.available
-            elif role_selected=="nurse":
+            elif role_selected == "nurse":
                 userdata["Availability"] = usertype.available
                 userdata["Triage Ready"] = usertype.triage_ready
                 userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
                 userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications]
                 userdata["Shifts"] = usertype.shift
                 userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
-                
+            elif role_selected == "patient":
+                userdata["Status"] = usertype.status
+            elif role_selected == "system_administrator":
+                userdata["Admin Level"] = usertype.admin_level
+            elif role_selected == "ed_staff":
+                # Add any specific fields for EdStaff if needed
+                pass
+
             table_data.append(userdata)
 
+        # Convert to DataFrame for a formatted table view
         df = pd.DataFrame(table_data)
         print(df.to_string(index=False))
-        input("\nPress Enter to go back to the Dashboard...")
+
+
+
+
+    
+    # if role_selected and all_users:
+    #     # terminal_clear()
+    #     userdata = {}
+
+    #     # for doctor in all_users["doctor"]:
+    #     #     print(f"Name: {doctor.name}, Age: {doctor.age}, Specialization: {doctor.specialization}, Availability: {doctor.available}")
+
+    #     # if role_selected=="doctor":
+    #     #     for doctor in all_users['doctor']:
+    #     #         if isinstance(doctor,Doctor):
+    #     #             userdata["Name"] = doctor.name
+    #     #             userdata["Age"] = doctor.age
+    #     #             userdata["Address"] = doctor.address
+    #     #             userdata["Phone Number"] = doctor.phone_number
+    #     #             userdata["Username"] = doctor.username
+    #     #             userdata["Password"] = doctor.password
+    #     #             userdata["Specialization"] = doctor.specialization
+    #     #             userdata["Availability"] = doctor.available
+    #     #             table_data.append(userdata)
+
+        
+    #     # print(f"\n|| All {role_selected.capitalize()} Accounts ||\n")
+
+    #     # for usertype in all_users[role_selected]:
+    #         # print(f"User type: {type(user)}")  # Debugging line to confirm the object type
+            
+    #         # Basic user details
+    #         # print(f"Name: {user.name}")
+
+    #         # Role-specific details
+    #         # if role_selected == "doctor" and isinstance(usertype, Doctor):
+    #         #     # Ensure we only try to access Doctor-specific attributes for Doctor objects
+    #         #     print(f"Specialization: {usertype.specialization}, Availability: {usertype.available}")
+    #         #     userdata["Name"] = usertype.name
+    #         #     userdata["Age"] = usertype.age
+    #         #     userdata["Address"] = usertype.address
+    #         #     userdata["Phone Number"] = usertype.phone_number
+    #         #     userdata["Username"] = usertype.username
+    #         #     userdata["Password"] = usertype.password
+    #         #     userdata["Specialization"] = usertype.specialization
+    #         #     userdata["Availability"] = usertype.available
+    #         #     table_data.append(userdata)
+                
+    #         # else:
+    #         #     pass
+    #         # if role_selected == "patient" and isinstance(usertype, Patient):
+    #         #     # Patient-specific fields if any
+    #         #     # print(f"Status: {user.status}")
+    #         #     userdata["Name"] = usertype.name
+    #         #     userdata["Age"] = usertype.age
+    #         #     userdata["Address"] = usertype.address
+    #         #     userdata["Phone Number"] = usertype.phone_number
+    #         #     userdata["Username"] = usertype.username
+    #         #     userdata["Password"] = usertype.password
+    #         #     table_data.append(userdata)
+
+    #         # else:
+    #         #     pass
+
+    #         # if role_selected == "nurse" and isinstance(usertype, Nurse):
+    #         #     # Nurse-specific fields
+    #         #     # print(f"Shift: {user.shift}")
+    #         #     userdata["Name"] = usertype.name
+    #         #     userdata["Age"] = usertype.age
+    #         #     userdata["Address"] = usertype.address
+    #         #     userdata["Phone Number"] = usertype.phone_number
+    #         #     userdata["Username"] = usertype.username
+    #         #     userdata["Password"] = usertype.password
+    #         #     userdata["Availability"] = usertype.available
+    #         #     userdata["Triage Ready"] = usertype.triage_ready
+    #         #     userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
+    #         #     userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications]
+    #         #     userdata["Shifts"] = usertype.shift
+    #         #     userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
+    #         # else:
+    #         #     pass
+    #         # if role_selected == "system_administrator" and isinstance(usertype, SystemAdmin):
+    #         #     # SystemAdmin-specific fields
+    #         #     userdata["Name"] = usertype.name
+    #         #     userdata["Age"] = usertype.age
+    #         #     userdata["Address"] = usertype.address
+    #         #     userdata["Phone Number"] = usertype.phone_number
+    #         #     userdata["Username"] = usertype.username
+    #         #     userdata["Password"] = usertype.password
+    #         # else:
+    #         #     pass
+    #         # if role_selected=="ed_staff" and isinstance(user_type,EdStaff):
+    #         #     userdata["Name"] = usertype.name
+    #         #     userdata["Age"] = usertype.age
+    #         #     userdata["Address"] = usertype.address
+    #         #     userdata["Phone Number"] = usertype.phone_number
+    #         #     userdata["Username"] = usertype.username
+    #         #     userdata["Password"] = usertype.password
+
+           
+
+
+
+    #     for usertype in all_users[role_selected]:
+    #         print(usertype)
+    #     #     userdata = {
+    #     #         "Name": usertype.name,
+    #     #         "Age": usertype.age,
+    #     #         "Address": usertype.address,
+    #     #         "Phone Number": usertype.phone_number,
+    #     #         "Username": usertype.username,
+    #     #         "Password": usertype.password
+    #     #     }
+
+    #     #     if role_selected == "doctor" and isinstance(usertype):
+    #     # # Access only Doctor-specific details
+    #     #         userdata["Specialization"] = usertype.specialization
+    #     #         userdata["Availability"] = usertype.available
+            
+            
+    #         if role_selected == "doctor":
+    #              if hasattr(usertype, "name"):
+    #                  userdata["Name"] = usertype.name
+    #              if hasattr(usertype, "Age"):
+    #                  userdata["Age"] = usertype.age
+    #              if hasattr(usertype, "address"):
+    #                  userdata["Address"] = usertype.address
+    #              if hasattr(usertype, "phone_number"):
+    #                  userdata["Phone Number"] = usertype.phone_number
+    #              if hasattr(usertype, "username"):
+    #                  userdata["Username"] = usertype.username
+    #              if hasattr(usertype, "password"):
+    #                  userdata["Password"] = usertype.password
+    #              if hasattr(usertype, "specialization"):
+    #                  userdata["Specialization"] = usertype.specialization
+    #              if hasattr(usertype, "available"):
+    #                 userdata["Availability"] = usertype.available
+    #         table_data.append(userdata)
+
+    #     #         # userdata["Specialization"] = usertype.specialization
+    #     #         # userdata["Availability"] = usertype.available
+    #     #     elif role_selected == "nurse":
+
+    #     #         if hasattr(usertype, "name"):
+    #     #              userdata["Name"] = usertype.name
+    #     #         if hasattr(usertype, "Age"):
+    #     #              userdata["Age"] = usertype.age
+    #     #         if hasattr(usertype, "address"):
+    #     #             userdata["Address"] = usertype.address
+    #     #         if hasattr(usertype, "phone_number"):
+    #     #              userdata["Phone Number"] = usertype.phone_number
+    #     #         if hasattr(usertype, "username"):
+    #     #              userdata["Username"] = usertype.username
+    #     #         if hasattr(usertype, "password"):
+    #     #              userdata["Password"] = usertype.password
+    #     #         if hasattr(usertype, "available"):
+    #     #              userdata["Availability"] = usertype.available
+    #     #         if hasattr(usertype, "triage_ready"):
+    #     #              userdata["Triage Ready"] = usertype.triage_ready
+    #     #         if hasattr(usertype, "assigned_patients"):
+    #     #              userdata["Patients"] = usertype.assigned_patients
+    #     #         if hasattr(usertype, "notifications"):
+    #     #              userdata["Notifications"] = [notif["message"] for notif in getattr(usertype.notifications, "notifications", "N/A")]
+    #     #         if hasattr(usertype, "shift"):
+    #     #              userdata["Shifts"] = usertype.shift
+    #     #         if hasattr(usertype, "vitals_dict"):
+    #     #              userdata["Vitals"] = usertype.vitals_dict
+
+    #     #         # userdata["Availability"] = getattr(usertype, "available", "N/A")
+    #     #         # userdata["Triage Ready"] = getattr(usertype, "triage_ready", "N/A")
+    #     #         # userdata["Patients Assigned"] = getattr(usertype, "assigned_patients", "N/A")
+    #     #         # userdata["Notifications"] = [notif["message"] for notif in getattr(usertype.notifications, "notifications", "N/A")]
+    #     #         # userdata["Shifts"] = getattr(usertype, "shift", "N/A")
+    #     #         # userdata["Vitals"] = getattr(usertype, "vitals_dict", "N/A")
+    #     #     elif role_selected == "patient":
+    #     #         # Patient-specific fields can be added here if necessary
+    #     #         pass
+    #     #     elif role_selected == "ed_staff" or role_selected == "system_administrator":
+    #     #         # Fields for other roles can be handled here as needed
+    #     #         pass
+                
+             
+
+        # df = pd.DataFrame(table_data)
+        # # df.dropna(inplace=True)
+        # print(df.to_string(index=False))
+        # input("\nPress Enter to go back to the Dashboard...")
                
 
-
-
-    # if USER_ACCOUNTS:
-    #     print("\n--- User Accounts ---")
-    #     for user, details in USER_ACCOUNTS.items():
-    #         print(f"User: {user}, Role: {details['role']}, Status: {details['status']}, Permission: {details['permission_level']}")
-    # else:
-    #     print("No user accounts found.")
 
 
 def manage_user_accounts(admin):
