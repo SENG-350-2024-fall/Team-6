@@ -33,6 +33,7 @@ class SystemAdministrator(SystemAdmin):
         user_factory_patient = PatientFactory()
         user_factory_admin = SystemAdminFactory()
         user_factory_edstaff = EdStaffFactory()
+        user_factory_nurse = NurseFactory()
 
         if role == 'doctor':
             age = input("Enter Age: ").strip()
@@ -64,33 +65,65 @@ class SystemAdministrator(SystemAdmin):
             phone = input("Enter Phone Number: ").strip()
             username = input("Enter the Username: ").strip()
             password = input("Enter Password: ").strip()
-            new_user = user_factory_admin.create_user(name,age,address,phone,username,password)
+            new_user = user_factory_edstaff.create_user(name,age,address,phone,username,password)
+        elif role == 'nurse':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            avail = input("Enter Availibility (yes/no): ").strip().lower() == 'yes'
+            triage = input("Enter whether Triage Ready or Not (yes/no): ").strip().lower() == 'yes'
+            assigned_patients = input("Enter Assigned Patients (seperated by ,) or press enter to it blank: ").split(',')
+            notifications = input("Enter notification or press enter to it blank: ").strip()
+            shift = input("Enter Shift (Day/Night/Evening): ").strip()
 
-        if role in all_users:
-            all_users[role].append(new_user)
+            assigned_patients = [patient.strip() for patient in assigned_patients if patient.strip()]
+
+            new_user = user_factory_nurse.create_user(name,age,address,phone,username,password,avail,triage,assigned_patients,notifications,shift)
+
+
+        all_users[role].append(new_user)
 
         if new_user in all_users[role]:
             print(f"User '{new_user.name}' successfully added to role '{role}'.")
-            for user in all_users["patient"]:
-                print(f"Name: {user.name}, Username: {user.username}")
+            print(f"Please go to View User Accounts and select {role} to view updated user account list.")
+            input("\nPress Enter to go back to the Dashboard...")
            
 
         
-    def remove_user_account(self, user):
-        if user in USER_ACCOUNTS:
-            del USER_ACCOUNTS[user]
-            self.notifications.add_notification(f"User {user} has been removed from the system.")
-            print(f"User {user} removed successfully.")
-        else:
-            print(f"User {user} does not exist.")
+    def remove_user_account(self, name, username,role):
 
-    def update_user_account(self, user, updates):
-        if user in USER_ACCOUNTS:
-            USER_ACCOUNTS[user].update(updates)
-            self.notifications.add_notification(f"User {user}'s account has been updated.")
-            print(f"User {user} updated successfully.")
-        else:
-            print(f"User {user} does not exist.")
+        remove_user = None
+        for curr in all_users[role]:
+            if curr.name == name and curr.username == username:
+                remove_user = curr
+                break
+
+        if remove_user:
+            all_users[role].remove(remove_user)
+            print(f"User '{name}' removed successfully from role '{role}'.")
+            print(f"Please go to View User Accounts and select {role} to view updated user account list.")
+            input("\nPress Enter to go back to the Dashboard...")
+        
+
+        # if user in USER_ACCOUNTS:
+        #     del USER_ACCOUNTS[user]
+        #     self.notifications.add_notification(f"User {user} has been removed from the system.")
+        #     print(f"User {user} removed successfully.")
+        # else:
+        #     print(f"User {user} does not exist.")
+
+    def update_user_account(self, name, username,role):
+        name = input("Enter the user's current name: ").strip()
+        username = input("Enter user's current username: ").strip()
+        role = input("Enter the user's role: ").strip().lower()
+        age = input("Enter Age: ").strip()
+        address = input("Enter Address: ")
+        phone = input("Enter Phone Number: ").strip()
+        password = input("Enter Password: ").strip()
+
+        
 
     def maintain_system(self):
         print("System maintenance in progress.")
@@ -211,7 +244,6 @@ def admin_dashboard(admin):
                 return False
         elif choice in tasks:
             tasks[choice]()
-            time.sleep(20)
         else:
             print("Invalid selection. Please try again.")
             time.sleep(5)
@@ -265,7 +297,7 @@ def view_user_accounts():
                 userdata["Availability"] = usertype.available
                 userdata["Triage Ready"] = usertype.triage_ready
                 userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
-                userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications]
+                userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications] if [notif["message"] for notif in usertype.notifications.notifications] else "N/A"
                 userdata["Shifts"] = usertype.shift
                 userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
                 
@@ -307,16 +339,35 @@ def manage_user_accounts(admin):
         role = input("Enter the user's role: ").strip().lower()
         admin.add_user_account(user, role)
     elif action_selected == 'update':
-        updates = {}
-        role = input("Enter new role (leave blank to skip): ").strip()
-        if role:
-            updates["role"] = role
-        status = input("Enter new status (Active/Inactive): ").strip()
-        if status:
-            updates["status"] = status
-        admin.update_user_account(user, updates)
+        name = input("Enter the user's current name: ").strip()
+        username = input("Enter user's current username: ").strip()
+        role = input("Enter the user's role: ").strip().lower()
+        age = input("Enter Age: ").strip()
+        address = input("Enter Address: ")
+        phone = input("Enter Phone Number: ").strip()
+        password = input("Enter Password: ").strip()
+
+        
+        # updates = {
+        #     "name": name,
+        #     "username": username,
+        #     "role": role
+        # }
+
+        # if role == "patient" or role ==
+
+        # role = input("Enter new role (leave blank to skip): ").strip()
+        # if role:
+        #     updates["role"] = role
+        # status = input("Enter new status (Active/Inactive): ").strip()
+        # if status:
+        #     updates["status"] = status
+        admin.update_user_account(name,username,role)
     elif action_selected == 'remove':
-        admin.remove_user_account(user)
+        name = input("Enter the user's name: ").strip()
+        username = input("Enter username: ").strip()
+        role = input("Enter the user's role: ").strip().lower()
+        admin.remove_user_account(name,username,role)
     else:
         print("Invalid action. Please try again.")
 
