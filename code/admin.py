@@ -3,7 +3,9 @@ import os
 from user import SystemAdmin
 from data_stores import all_users
 import pandas as pd
+from user import UserLoader
 from notification import Notification, notify_action, Observer
+from user import DoctorFactory,PatientFactory,NurseFactory,SystemAdminFactory,EdStaffFactory
 
 
 new_notification = 0
@@ -25,13 +27,55 @@ class SystemAdministrator(SystemAdmin):
         super().__init__(name, 0, '', '', username, 'password')
         self.admin_level = "Super Admin"
 
-    def add_user_account(self, user, role):
-        if user in USER_ACCOUNTS:
-            print(f"User {user} already exists.")
-        else:
-            USER_ACCOUNTS[user] = {"role": role, "status": "Active", "permission_level": "Read"}
-            self.notifications.add_notification(f"User {user} has been added with {role} role.")
+    def add_user_account(self, name, role):
+        
+        user_factory_doctor = DoctorFactory()
+        user_factory_patient = PatientFactory()
+        user_factory_admin = SystemAdminFactory()
+        user_factory_edstaff = EdStaffFactory()
 
+        if role == 'doctor':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            spec = input("Enter Specialization: ").strip()
+            avail = input("Enter Availibility: ").strip()
+
+            new_user = user_factory_doctor.create_user(name,age,address,phone,username,password,spec,avail)
+        elif role == 'patient':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            new_user = user_factory_patient.create_user(name,age,address,phone,username,password)
+        elif role== 'system_administrator':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            new_user = user_factory_admin.create_user(name,age,address,phone,username,password)
+        elif role == 'ed_staff':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            new_user = user_factory_admin.create_user(name,age,address,phone,username,password)
+
+        if role in all_users:
+            all_users[role].append(new_user)
+
+        if new_user in all_users[role]:
+            print(f"User '{new_user.name}' successfully added to role '{role}'.")
+            for user in all_users["patient"]:
+                print(f"Name: {user.name}, Username: {user.username}")
+           
+
+        
     def remove_user_account(self, user):
         if user in USER_ACCOUNTS:
             del USER_ACCOUNTS[user]
@@ -244,13 +288,25 @@ def view_user_accounts():
 
 def manage_user_accounts(admin):
     print("\n--- Manage User Accounts ---")
-    action = input("Enter action (add/update/remove): ").strip().lower()
-    user = input("Enter the user's name: ").strip()
+    print("Choose one of the following action's: ")
+    print("""\
+1.  add
+2.  remove
+3.  update""")
+    action = input("\nPlease enter the number corresponding to the to type of user account you want to see: ").strip()
+    actions = {
+        "1": "add",
+        "2": "remove",
+        "3": "nurse",
+    }
 
-    if action == 'add':
-        role = input("Enter the user's role: ").strip()
+    action_selected = actions.get(action)
+    print(action_selected)
+    if action_selected == 'add':
+        user = input("Enter the user's name: ").strip()
+        role = input("Enter the user's role: ").strip().lower()
         admin.add_user_account(user, role)
-    elif action == 'update':
+    elif action_selected == 'update':
         updates = {}
         role = input("Enter new role (leave blank to skip): ").strip()
         if role:
@@ -259,7 +315,7 @@ def manage_user_accounts(admin):
         if status:
             updates["status"] = status
         admin.update_user_account(user, updates)
-    elif action == 'remove':
+    elif action_selected == 'remove':
         admin.remove_user_account(user)
     else:
         print("Invalid action. Please try again.")
