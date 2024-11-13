@@ -2,8 +2,8 @@ import pandas as pd
 from abc import ABC, abstractmethod
 import notification
 
-## All users' list global variable
-users = []
+## All patients' list global variable
+users_patients = []
 
 # Abstract Base Class for User
 class User(notification.Observer, ABC):
@@ -253,12 +253,17 @@ class UserLoader:
         """Load users for all roles and return them as a dictionary with roles as keys."""
         roles = UserLoader.role_factory_map.keys()
         all_users = {}
-        
         for role in roles:
             users = UserLoader.load_users(role)
-            if users:
+            if users and role.lower() == "patient":
+                all_users[role] = users_patients
+
+            elif users:
                 all_users[role] = users
+
             else:
                 print(f"No users found for role: {role}.")
+
+
                 
         return all_users
