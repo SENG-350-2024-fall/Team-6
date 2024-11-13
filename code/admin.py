@@ -107,23 +107,64 @@ class SystemAdministrator(SystemAdmin):
             input("\nPress Enter to go back to the Dashboard...")
         
 
-        # if user in USER_ACCOUNTS:
-        #     del USER_ACCOUNTS[user]
-        #     self.notifications.add_notification(f"User {user} has been removed from the system.")
-        #     print(f"User {user} removed successfully.")
-        # else:
-        #     print(f"User {user} does not exist.")
 
     def update_user_account(self, name, username,role):
-        name = input("Enter the user's current name: ").strip()
-        username = input("Enter user's current username: ").strip()
-        role = input("Enter the user's role: ").strip().lower()
-        age = input("Enter Age: ").strip()
-        address = input("Enter Address: ")
-        phone = input("Enter Phone Number: ").strip()
-        password = input("Enter Password: ").strip()
+        
+        user_to_update = None
+
+        for user in all_users[role]:
+            if user.username == username:
+                user_to_update = user
+                print(user_to_update.name)
+                break
 
         
+        # Prompt for each specific attribute
+        age = input(f"Enter new Age (current: '{user_to_update.age}'): ").strip()
+        if age:
+            user_to_update.age = age
+
+        address = input(f"Enter new Address (current: '{user_to_update.address}'): ").strip()
+        if address:
+            user_to_update.address = address
+
+        phone = input(f"Enter new Phone Number (current: '{user_to_update.phone_number}'): ").strip()
+        if phone:
+            user_to_update.phone_number = phone
+
+        password = input(f"Enter new Password (current: '{user_to_update.password}'): ").strip()
+        if password:
+            user_to_update.password = password
+
+        if role == "doctor":
+            avail = input("Enter Availibility (yes/no): ").strip().lower() == 'yes'
+            if avail:
+                user_to_update.available = avail
+            spec = input("Enter Specialization: ").strip()
+            if spec:
+                user_to_update.specialization = spec
+        
+        if role == "nurse":
+            avail = input("Enter Availibility (yes/no): ").strip().lower() == 'yes'
+            if avail:
+                user_to_update.available = avail
+            triage = input("Enter Traige Ready (yes/no): ").strip().lower() == 'yes'
+            if triage:
+                user_to_update.triage_ready = triage
+            shifts = input("Enter Shift (Day/Night/Evening): ").strip()
+            if shifts:
+                user_to_update.shift = shifts
+            assigned_patient = input("Enter Assigned Patients (seperated by ,) or press enter to it blank: ").split(',')
+            assigned_patient = [patient.strip() for patient in assigned_patient if patient.strip()]
+            if assigned_patient:
+                user_to_update.assigned_patients = assigned_patient
+
+        print(f"User '{name}' updated successfully from role '{role}'.")
+        print(f"Please go to View User Accounts and select {role} to view updated user account list.")
+        input("\nPress Enter to go back to the Dashboard...")
+        
+            
+
 
     def maintain_system(self):
         print("System maintenance in progress.")
@@ -247,7 +288,6 @@ def admin_dashboard(admin):
         else:
             print("Invalid selection. Please try again.")
             time.sleep(5)
-        # time.sleep(30)
 
 
 def view_user_accounts():
@@ -308,16 +348,6 @@ def view_user_accounts():
         input("\nPress Enter to go back to the Dashboard...")
                
 
-
-
-    # if USER_ACCOUNTS:
-    #     print("\n--- User Accounts ---")
-    #     for user, details in USER_ACCOUNTS.items():
-    #         print(f"User: {user}, Role: {details['role']}, Status: {details['status']}, Permission: {details['permission_level']}")
-    # else:
-    #     print("No user accounts found.")
-
-
 def manage_user_accounts(admin):
     print("\n--- Manage User Accounts ---")
     print("Choose one of the following action's: ")
@@ -329,7 +359,7 @@ def manage_user_accounts(admin):
     actions = {
         "1": "add",
         "2": "remove",
-        "3": "nurse",
+        "3": "update",
     }
 
     action_selected = actions.get(action)
@@ -342,26 +372,7 @@ def manage_user_accounts(admin):
         name = input("Enter the user's current name: ").strip()
         username = input("Enter user's current username: ").strip()
         role = input("Enter the user's role: ").strip().lower()
-        age = input("Enter Age: ").strip()
-        address = input("Enter Address: ")
-        phone = input("Enter Phone Number: ").strip()
-        password = input("Enter Password: ").strip()
 
-        
-        # updates = {
-        #     "name": name,
-        #     "username": username,
-        #     "role": role
-        # }
-
-        # if role == "patient" or role ==
-
-        # role = input("Enter new role (leave blank to skip): ").strip()
-        # if role:
-        #     updates["role"] = role
-        # status = input("Enter new status (Active/Inactive): ").strip()
-        # if status:
-        #     updates["status"] = status
         admin.update_user_account(name,username,role)
     elif action_selected == 'remove':
         name = input("Enter the user's name: ").strip()
