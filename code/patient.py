@@ -10,6 +10,7 @@ warnings.filterwarnings("ignore")
 tr = Triage()
 password = "password"
 new_users =[]
+signed_in = 0
 
 # Strategy interface
 class TriageStrategy:
@@ -142,7 +143,28 @@ class UndergoTriage(TriageStrategy):
             return
         else:
             patient_data['status'] = "Triage is taken."
-        
+
+class UpdarInfo:
+
+    def __init__(self):
+        pass
+
+    def update_usename(self):
+        username = input("\nPlease Input Your New Username:  \n")
+        return username
+    def update_password(self):
+        passwod = input("\nPlease Input Your New Password:  \n")
+        return password
+    def update_phone_number(self):
+        phone_num = input("\nPlease Input Your New Phone#:  \n")
+        return phone_num
+    def update_mailing_address(self):
+        mailing_address = input("\nPlease Input Your New Mailing Address:  \n")
+        return mailing_address
+    def update_age(self):
+        age = input("\nPlease Input Your New Age:  \n")
+        return age
+    
 # Context for the patient
 class Patient:
     def __init__(self):
@@ -157,18 +179,19 @@ class Patient:
         status = input("Please Input Your Status: 1 = New Patient,  2 = Registered Patient  ")
         
         all_users = {}
-    
+        user_new = None
+
         if status == "1":
             ##Testing           
-            username = input("Please Input Your User Name: ")
-            password = input("Please Input Your Password ")
+            username = input("Please Input Your Username: ")
+            password = input("Please Input Your Password: ")
             name = input("Please Input Your Full Name: ")
             address = input("Please Input Your Address: ")
             age = input("Please Input Your Age: ")
             phone = input("Please Input Your Phone#: ")
 
             user_factory = UserLoader.role_factory_map.get("patient")
-            user = user_factory.create_user(
+            user_new = user_factory.create_user(
                 name,
                 age,
                 address,
@@ -176,14 +199,23 @@ class Patient:
                 username,
                 password
             )
-            ## Users list from users.py
-            users.append(user)
-            
-            all_users = UserLoader.load_all_users()
 
-            return all_users
+            ## Users_patients list from users.py
+            patients = UserLoader.load_users("patient")
+            users_patients.extend(patients)
+            users_patients.extend([user_new])
+            
+            all_patients = UserLoader.load_all_users()
+
+            return all_patients
            
         elif status == "2":
+
+            patients = UserLoader.load_users("patient")
+            users_patients.extend(patients)
+
+            UserLoader.load_all_users()
+
             print("\nPlease Login First\n")
             login("patient")
 
@@ -196,7 +228,6 @@ class Patient:
             self.check_patient_status()
             return
 
-    	
     def set_strategy(self, strategy: TriageStrategy):
         self.strategy = strategy
 
@@ -207,17 +238,44 @@ class Patient:
     def initiate_actions(self):
         print()
 
-        self.check_patient_status()
+        global signed_in
 
+        if signed_in == 0:
+            self.check_patient_status()
+        signed_in = 1
+    
         print("\n")
         print("       Patient Welcome Page          ")
         print("-------------------------------------")
-        op = input("Choose an Option:\n\n 1 = Register for Triage, 2 = Undergo Triage  ")
+        op = input("Choose an Option:\n\n 1 = Register for Triage\n 2 = Undergo Triage\n 3 = Update Username\n 4 = Update Password\n 5 = Update Phone Number\n 6 = Update Mailing Address\n 7 = Update Age \n 8 = Exit\n\n ")
 
         if op == "1":
             self.set_strategy(RegisterForTriage())
         elif op == "2":
             self.set_strategy(UndergoTriage())
+        elif op == "3":
+            UpdarInfo().update_usename()
+            print("Username Has Been Updated!\n\n")
+            self.initiate_actions()
+        elif op == "4":
+            UpdarInfo().update_password()
+            print("Password Has Been Updated!\n\n")
+            self.initiate_actions()           
+        elif op == "5":
+            UpdarInfo().update_phone_number()
+            print("Phone Number Has Been Updated!\n\n")
+            self.initiate_actions()
+        elif op == "6":
+            UpdarInfo().update_mailing_address()
+            print("Mailing Address Has Been Updated!\n\n")
+            self.initiate_actions()
+        elif op == "7":
+            UpdarInfo().update_age()
+            print("Age Has Been Updated!\n\n")
+            self.initiate_actions()
+        elif op == "8":
+            signed_in = 0
+            return
         else:
             print("Please Pick a Valid Input!!")
             self.initiate_actions()
