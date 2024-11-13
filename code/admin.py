@@ -3,7 +3,9 @@ import os
 from user import SystemAdmin
 from data_stores import all_users
 import pandas as pd
+from user import UserLoader
 from notification import Notification, notify_action, Observer
+from user import DoctorFactory,PatientFactory,NurseFactory,SystemAdminFactory,EdStaffFactory
 
 new_notification = 0
 notifications = []
@@ -24,28 +26,144 @@ class SystemAdministrator(SystemAdmin):
         super().__init__(name, 0, '', '', username, 'password')
         self.admin_level = "Super Admin"
 
-    def add_user_account(self, user, role):
-        if user in USER_ACCOUNTS:
-            print(f"User {user} already exists.")
-        else:
-            USER_ACCOUNTS[user] = {"role": role, "status": "Active", "permission_level": "Read"}
-            self.notifications.add_notification(f"User {user} has been added with {role} role.")
+    def add_user_account(self, name, role):
+        
+        user_factory_doctor = DoctorFactory()
+        user_factory_patient = PatientFactory()
+        user_factory_admin = SystemAdminFactory()
+        user_factory_edstaff = EdStaffFactory()
+        user_factory_nurse = NurseFactory()
 
-    def remove_user_account(self, user):
-        if user in USER_ACCOUNTS:
-            del USER_ACCOUNTS[user]
-            self.notifications.add_notification(f"User {user} has been removed from the system.")
-            print(f"User {user} removed successfully.")
-        else:
-            print(f"User {user} does not exist.")
+        if role == 'doctor':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            spec = input("Enter Specialization: ").strip()
+            avail = input("Enter Availibility: ").strip()
 
-    def update_user_account(self, user, updates):
-        if user in USER_ACCOUNTS:
-            USER_ACCOUNTS[user].update(updates)
-            self.notifications.add_notification(f"User {user}'s account has been updated.")
-            print(f"User {user} updated successfully.")
-        else:
-            print(f"User {user} does not exist.")
+            new_user = user_factory_doctor.create_user(name,age,address,phone,username,password,spec,avail)
+        elif role == 'patient':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            new_user = user_factory_patient.create_user(name,age,address,phone,username,password)
+        elif role== 'system_administrator':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            new_user = user_factory_admin.create_user(name,age,address,phone,username,password)
+        elif role == 'ed_staff':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            new_user = user_factory_edstaff.create_user(name,age,address,phone,username,password)
+        elif role == 'nurse':
+            age = input("Enter Age: ").strip()
+            address = input("Enter Address: ")
+            phone = input("Enter Phone Number: ").strip()
+            username = input("Enter the Username: ").strip()
+            password = input("Enter Password: ").strip()
+            avail = input("Enter Availibility (yes/no): ").strip().lower() == 'yes'
+            triage = input("Enter whether Triage Ready or Not (yes/no): ").strip().lower() == 'yes'
+            assigned_patients = input("Enter Assigned Patients (seperated by ,) or press enter to it blank: ").split(',')
+            notifications = input("Enter notification or press enter to it blank: ").strip()
+            shift = input("Enter Shift (Day/Night/Evening): ").strip()
+
+            assigned_patients = [patient.strip() for patient in assigned_patients if patient.strip()]
+
+            new_user = user_factory_nurse.create_user(name,age,address,phone,username,password,avail,triage,assigned_patients,notifications,shift)
+
+
+        all_users[role].append(new_user)
+
+        if new_user in all_users[role]:
+            print(f"User '{new_user.name}' successfully added to role '{role}'.")
+            print(f"Please go to View User Accounts and select {role} to view updated user account list.")
+            input("\nPress Enter to go back to the Dashboard...")
+           
+
+        
+    def remove_user_account(self, name, username,role):
+
+        remove_user = None
+        for curr in all_users[role]:
+            if curr.name == name and curr.username == username:
+                remove_user = curr
+                break
+
+        if remove_user:
+            all_users[role].remove(remove_user)
+            print(f"User '{name}' removed successfully from role '{role}'.")
+            print(f"Please go to View User Accounts and select {role} to view updated user account list.")
+            input("\nPress Enter to go back to the Dashboard...")
+        
+
+
+    def update_user_account(self, name, username,role):
+        
+        user_to_update = None
+
+        for user in all_users[role]:
+            if user.username == username:
+                user_to_update = user
+                print(user_to_update.name)
+                break
+
+        
+        # Prompt for each specific attribute
+        age = input(f"Enter new Age (current: '{user_to_update.age}'): ").strip()
+        if age:
+            user_to_update.age = age
+
+        address = input(f"Enter new Address (current: '{user_to_update.address}'): ").strip()
+        if address:
+            user_to_update.address = address
+
+        phone = input(f"Enter new Phone Number (current: '{user_to_update.phone_number}'): ").strip()
+        if phone:
+            user_to_update.phone_number = phone
+
+        password = input(f"Enter new Password (current: '{user_to_update.password}'): ").strip()
+        if password:
+            user_to_update.password = password
+
+        if role == "doctor":
+            avail = input("Enter Availibility (yes/no): ").strip().lower() == 'yes'
+            if avail:
+                user_to_update.available = avail
+            spec = input("Enter Specialization: ").strip()
+            if spec:
+                user_to_update.specialization = spec
+        
+        if role == "nurse":
+            avail = input("Enter Availibility (yes/no): ").strip().lower() == 'yes'
+            if avail:
+                user_to_update.available = avail
+            triage = input("Enter Traige Ready (yes/no): ").strip().lower() == 'yes'
+            if triage:
+                user_to_update.triage_ready = triage
+            shifts = input("Enter Shift (Day/Night/Evening): ").strip()
+            if shifts:
+                user_to_update.shift = shifts
+            assigned_patient = input("Enter Assigned Patients (seperated by ,) or press enter to it blank: ").split(',')
+            assigned_patient = [patient.strip() for patient in assigned_patient if patient.strip()]
+            if assigned_patient:
+                user_to_update.assigned_patients = assigned_patient
+
+        print(f"User '{name}' updated successfully from role '{role}'.")
+        print(f"Please go to View User Accounts and select {role} to view updated user account list.")
+        input("\nPress Enter to go back to the Dashboard...")
+        
+            
+
 
     def maintain_system(self):
         print("System maintenance in progress.")
@@ -166,11 +284,9 @@ def admin_dashboard(admin):
                 return False
         elif choice in tasks:
             tasks[choice]()
-            time.sleep(100)
         else:
             print("Invalid selection. Please try again.")
             time.sleep(5)
-        # time.sleep(30)
 
 
 def view_user_accounts():
@@ -223,7 +339,7 @@ def view_user_accounts():
                 userdata["Availability"] = usertype.available
                 userdata["Triage Ready"] = usertype.triage_ready
                 userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
-                userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications]
+                userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications] if [notif["message"] for notif in usertype.notifications.notifications] else "N/A"
                 userdata["Shifts"] = usertype.shift
                 userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
             elif role_selected == "patient":
@@ -241,214 +357,37 @@ def view_user_accounts():
         print(df.to_string(index=False))
 
 
-
-
-    
-    # if role_selected and all_users:
-    #     # terminal_clear()
-    #     userdata = {}
-
-    #     # for doctor in all_users["doctor"]:
-    #     #     print(f"Name: {doctor.name}, Age: {doctor.age}, Specialization: {doctor.specialization}, Availability: {doctor.available}")
-
-    #     # if role_selected=="doctor":
-    #     #     for doctor in all_users['doctor']:
-    #     #         if isinstance(doctor,Doctor):
-    #     #             userdata["Name"] = doctor.name
-    #     #             userdata["Age"] = doctor.age
-    #     #             userdata["Address"] = doctor.address
-    #     #             userdata["Phone Number"] = doctor.phone_number
-    #     #             userdata["Username"] = doctor.username
-    #     #             userdata["Password"] = doctor.password
-    #     #             userdata["Specialization"] = doctor.specialization
-    #     #             userdata["Availability"] = doctor.available
-    #     #             table_data.append(userdata)
-
-        
-    #     # print(f"\n|| All {role_selected.capitalize()} Accounts ||\n")
-
-    #     # for usertype in all_users[role_selected]:
-    #         # print(f"User type: {type(user)}")  # Debugging line to confirm the object type
-            
-    #         # Basic user details
-    #         # print(f"Name: {user.name}")
-
-    #         # Role-specific details
-    #         # if role_selected == "doctor" and isinstance(usertype, Doctor):
-    #         #     # Ensure we only try to access Doctor-specific attributes for Doctor objects
-    #         #     print(f"Specialization: {usertype.specialization}, Availability: {usertype.available}")
-    #         #     userdata["Name"] = usertype.name
-    #         #     userdata["Age"] = usertype.age
-    #         #     userdata["Address"] = usertype.address
-    #         #     userdata["Phone Number"] = usertype.phone_number
-    #         #     userdata["Username"] = usertype.username
-    #         #     userdata["Password"] = usertype.password
-    #         #     userdata["Specialization"] = usertype.specialization
-    #         #     userdata["Availability"] = usertype.available
-    #         #     table_data.append(userdata)
-                
-    #         # else:
-    #         #     pass
-    #         # if role_selected == "patient" and isinstance(usertype, Patient):
-    #         #     # Patient-specific fields if any
-    #         #     # print(f"Status: {user.status}")
-    #         #     userdata["Name"] = usertype.name
-    #         #     userdata["Age"] = usertype.age
-    #         #     userdata["Address"] = usertype.address
-    #         #     userdata["Phone Number"] = usertype.phone_number
-    #         #     userdata["Username"] = usertype.username
-    #         #     userdata["Password"] = usertype.password
-    #         #     table_data.append(userdata)
-
-    #         # else:
-    #         #     pass
-
-    #         # if role_selected == "nurse" and isinstance(usertype, Nurse):
-    #         #     # Nurse-specific fields
-    #         #     # print(f"Shift: {user.shift}")
-    #         #     userdata["Name"] = usertype.name
-    #         #     userdata["Age"] = usertype.age
-    #         #     userdata["Address"] = usertype.address
-    #         #     userdata["Phone Number"] = usertype.phone_number
-    #         #     userdata["Username"] = usertype.username
-    #         #     userdata["Password"] = usertype.password
-    #         #     userdata["Availability"] = usertype.available
-    #         #     userdata["Triage Ready"] = usertype.triage_ready
-    #         #     userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
-    #         #     userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications]
-    #         #     userdata["Shifts"] = usertype.shift
-    #         #     userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
-    #         # else:
-    #         #     pass
-    #         # if role_selected == "system_administrator" and isinstance(usertype, SystemAdmin):
-    #         #     # SystemAdmin-specific fields
-    #         #     userdata["Name"] = usertype.name
-    #         #     userdata["Age"] = usertype.age
-    #         #     userdata["Address"] = usertype.address
-    #         #     userdata["Phone Number"] = usertype.phone_number
-    #         #     userdata["Username"] = usertype.username
-    #         #     userdata["Password"] = usertype.password
-    #         # else:
-    #         #     pass
-    #         # if role_selected=="ed_staff" and isinstance(user_type,EdStaff):
-    #         #     userdata["Name"] = usertype.name
-    #         #     userdata["Age"] = usertype.age
-    #         #     userdata["Address"] = usertype.address
-    #         #     userdata["Phone Number"] = usertype.phone_number
-    #         #     userdata["Username"] = usertype.username
-    #         #     userdata["Password"] = usertype.password
-
-           
-
-
-
-    #     for usertype in all_users[role_selected]:
-    #         print(usertype)
-    #     #     userdata = {
-    #     #         "Name": usertype.name,
-    #     #         "Age": usertype.age,
-    #     #         "Address": usertype.address,
-    #     #         "Phone Number": usertype.phone_number,
-    #     #         "Username": usertype.username,
-    #     #         "Password": usertype.password
-    #     #     }
-
-    #     #     if role_selected == "doctor" and isinstance(usertype):
-    #     # # Access only Doctor-specific details
-    #     #         userdata["Specialization"] = usertype.specialization
-    #     #         userdata["Availability"] = usertype.available
-            
-            
-    #         if role_selected == "doctor":
-    #              if hasattr(usertype, "name"):
-    #                  userdata["Name"] = usertype.name
-    #              if hasattr(usertype, "Age"):
-    #                  userdata["Age"] = usertype.age
-    #              if hasattr(usertype, "address"):
-    #                  userdata["Address"] = usertype.address
-    #              if hasattr(usertype, "phone_number"):
-    #                  userdata["Phone Number"] = usertype.phone_number
-    #              if hasattr(usertype, "username"):
-    #                  userdata["Username"] = usertype.username
-    #              if hasattr(usertype, "password"):
-    #                  userdata["Password"] = usertype.password
-    #              if hasattr(usertype, "specialization"):
-    #                  userdata["Specialization"] = usertype.specialization
-    #              if hasattr(usertype, "available"):
-    #                 userdata["Availability"] = usertype.available
-    #         table_data.append(userdata)
-
-    #     #         # userdata["Specialization"] = usertype.specialization
-    #     #         # userdata["Availability"] = usertype.available
-    #     #     elif role_selected == "nurse":
-
-    #     #         if hasattr(usertype, "name"):
-    #     #              userdata["Name"] = usertype.name
-    #     #         if hasattr(usertype, "Age"):
-    #     #              userdata["Age"] = usertype.age
-    #     #         if hasattr(usertype, "address"):
-    #     #             userdata["Address"] = usertype.address
-    #     #         if hasattr(usertype, "phone_number"):
-    #     #              userdata["Phone Number"] = usertype.phone_number
-    #     #         if hasattr(usertype, "username"):
-    #     #              userdata["Username"] = usertype.username
-    #     #         if hasattr(usertype, "password"):
-    #     #              userdata["Password"] = usertype.password
-    #     #         if hasattr(usertype, "available"):
-    #     #              userdata["Availability"] = usertype.available
-    #     #         if hasattr(usertype, "triage_ready"):
-    #     #              userdata["Triage Ready"] = usertype.triage_ready
-    #     #         if hasattr(usertype, "assigned_patients"):
-    #     #              userdata["Patients"] = usertype.assigned_patients
-    #     #         if hasattr(usertype, "notifications"):
-    #     #              userdata["Notifications"] = [notif["message"] for notif in getattr(usertype.notifications, "notifications", "N/A")]
-    #     #         if hasattr(usertype, "shift"):
-    #     #              userdata["Shifts"] = usertype.shift
-    #     #         if hasattr(usertype, "vitals_dict"):
-    #     #              userdata["Vitals"] = usertype.vitals_dict
-
-    #     #         # userdata["Availability"] = getattr(usertype, "available", "N/A")
-    #     #         # userdata["Triage Ready"] = getattr(usertype, "triage_ready", "N/A")
-    #     #         # userdata["Patients Assigned"] = getattr(usertype, "assigned_patients", "N/A")
-    #     #         # userdata["Notifications"] = [notif["message"] for notif in getattr(usertype.notifications, "notifications", "N/A")]
-    #     #         # userdata["Shifts"] = getattr(usertype, "shift", "N/A")
-    #     #         # userdata["Vitals"] = getattr(usertype, "vitals_dict", "N/A")
-    #     #     elif role_selected == "patient":
-    #     #         # Patient-specific fields can be added here if necessary
-    #     #         pass
-    #     #     elif role_selected == "ed_staff" or role_selected == "system_administrator":
-    #     #         # Fields for other roles can be handled here as needed
-    #     #         pass
-                
-             
-
-        # df = pd.DataFrame(table_data)
-        # # df.dropna(inplace=True)
-        # print(df.to_string(index=False))
-        # input("\nPress Enter to go back to the Dashboard...")
-               
-
-
-
 def manage_user_accounts(admin):
     print("\n--- Manage User Accounts ---")
-    action = input("Enter action (add/update/remove): ").strip().lower()
-    user = input("Enter the user's name: ").strip()
+    print("Choose one of the following action's: ")
+    print("""\
+1.  add
+2.  remove
+3.  update""")
+    action = input("\nPlease enter the number corresponding to the to type of user account you want to see: ").strip()
+    actions = {
+        "1": "add",
+        "2": "remove",
+        "3": "update",
+    }
 
-    if action == 'add':
-        role = input("Enter the user's role: ").strip()
+    action_selected = actions.get(action)
+    print(action_selected)
+    if action_selected == 'add':
+        user = input("Enter the user's name: ").strip()
+        role = input("Enter the user's role: ").strip().lower()
         admin.add_user_account(user, role)
-    elif action == 'update':
-        updates = {}
-        role = input("Enter new role (leave blank to skip): ").strip()
-        if role:
-            updates["role"] = role
-        status = input("Enter new status (Active/Inactive): ").strip()
-        if status:
-            updates["status"] = status
-        admin.update_user_account(user, updates)
-    elif action == 'remove':
-        admin.remove_user_account(user)
+    elif action_selected == 'update':
+        name = input("Enter the user's current name: ").strip()
+        username = input("Enter user's current username: ").strip()
+        role = input("Enter the user's role: ").strip().lower()
+
+        admin.update_user_account(name,username,role)
+    elif action_selected == 'remove':
+        name = input("Enter the user's name: ").strip()
+        username = input("Enter username: ").strip()
+        role = input("Enter the user's role: ").strip().lower()
+        admin.remove_user_account(name,username,role)
     else:
         print("Invalid action. Please try again.")
 
