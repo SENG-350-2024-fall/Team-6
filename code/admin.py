@@ -7,7 +7,6 @@ from user import UserLoader
 from notification import Notification, notify_action, Observer
 from user import DoctorFactory,PatientFactory,NurseFactory,SystemAdminFactory,EdStaffFactory
 
-
 new_notification = 0
 notifications = []
 
@@ -305,21 +304,23 @@ def view_user_accounts():
         "1": "doctor",
         "2": "patient",
         "3": "nurse",
-        "4": "ed_staff",
-        "5": "system_administrator"
+        "4": "EDStaff",
+        "5": "SystemAdmin"
     }
 
     role_selected = roles.get(user_type)
+    print(role_selected)
     if not role_selected:
         print("Invalid selection. Please try again.")
         return
     
     table_data = []
-    
-    if role_selected and all_users:
-        terminal_clear()
+
+    if role_selected in all_users and all_users[role_selected]:
         print(f"\n|| All {role_selected.capitalize()} Accounts ||\n")
 
+        # Prepare table data for the selected role
+        table_data = []
         for usertype in all_users[role_selected]:
             userdata = {
                 "Name": usertype.name,
@@ -329,24 +330,32 @@ def view_user_accounts():
                 "Username": usertype.username,
                 "Password": usertype.password
             }
-            
-            if role_selected=="doctor":
+
+            # Add role-specific attributes
+            if role_selected == "doctor":
                 userdata["Specialization"] = usertype.specialization
                 userdata["Availability"] = usertype.available
-            elif role_selected=="nurse":
+            elif role_selected == "nurse":
                 userdata["Availability"] = usertype.available
                 userdata["Triage Ready"] = usertype.triage_ready
                 userdata["Patients Assigned"] = usertype.assigned_patients if usertype.assigned_patients else "N/A"
                 userdata["Notifications"] = [notif["message"] for notif in usertype.notifications.notifications] if [notif["message"] for notif in usertype.notifications.notifications] else "N/A"
                 userdata["Shifts"] = usertype.shift
                 userdata["Vitals"] = usertype.vitals_dict if usertype.vitals_dict else "N/A"
-                
+            elif role_selected == "patient":
+                userdata["Status"] = usertype.status
+            elif role_selected == "system_administrator":
+                userdata["Admin Level"] = usertype.admin_level
+            elif role_selected == "ed_staff":
+                # Add any specific fields for EdStaff if needed
+                pass
+
             table_data.append(userdata)
 
+        # Convert to DataFrame for a formatted table view
         df = pd.DataFrame(table_data)
         print(df.to_string(index=False))
-        input("\nPress Enter to go back to the Dashboard...")
-               
+
 
 def manage_user_accounts(admin):
     print("\n--- Manage User Accounts ---")

@@ -2,6 +2,9 @@ import pandas as pd
 from abc import ABC, abstractmethod
 import notification
 
+## All patients' list global variable
+users_patients = []
+
 # Abstract Base Class for User
 class User(notification.Observer, ABC):
     def __init__(self, name, age, address, phone_number, username, password):
@@ -142,13 +145,15 @@ class UserLoader:
     }
 
     @staticmethod
+    # @staticmethod
     def load_users(role):
         """Load users of a specific role from a CSV file and create instances of the corresponding class."""
         filename = f"{role}.csv"  # CSV file assumed to be named after the role (e.g., Doctor.csv, Patient.csv)
+        users = []  # Reset or initialize an empty list for this call
+        
         try:
             df = pd.read_csv(filename)
-            users = []
-
+            
             # Check the role and adjust user creation logic as needed
             user_factory = UserLoader.role_factory_map.get(role.lower())
             if not user_factory:
@@ -168,7 +173,6 @@ class UserLoader:
                             row['Password'],
                             row['Specialization'],
                             row['Available']
-                            # Additional Doctor-specific attributes could be added here
                         )
                     elif role.lower() == 'patient':
                         user = user_factory.create_user(
@@ -178,14 +182,11 @@ class UserLoader:
                             row['Phone'],
                             row['Username'],
                             row['Password']
-                            # Additional Patient-specific attributes could be added here
                         )
                     elif role.lower() == 'nurse':
-                        # Nurse-specific attributes
                         assigned_patients = row["AssignedPatients"].split(";") if pd.notna(row["AssignedPatients"]) else []
                         notifications = row["Notifications"].split(";") if pd.notna(row["Notifications"]) else []
                         
-                        # Create a Nurse instance
                         user = user_factory.create_user(
                             row['Name'],
                             row['Age'],
@@ -198,11 +199,11 @@ class UserLoader:
                             assigned_patients=assigned_patients,
                             shift=row['Shift']
                         )
-
-                        # Ensure notifications instance exists and add CSV notifications
+                        
+                        # Add notifications if available
                         for notification_msg in notifications:
                             user.notifications.add_notification(notification_msg)
-                   
+                
                     elif role.lower() == 'system_administrator':
                         user = user_factory.create_user(
                             row['Name'],
@@ -211,7 +212,6 @@ class UserLoader:
                             row['Phone'],
                             row['Username'],
                             row['Password']
-                            # Additional SystemAdmin-specific attributes could be added here
                         )
                     elif role.lower() == 'ed_staff':
                         user = user_factory.create_user(
@@ -221,13 +221,13 @@ class UserLoader:
                             row['Phone'],
                             row['Username'],
                             row['Password']
-                            # Additional EdStaff-specific attributes could be added here
                         )
                     else:
                         print(f"Role-specific logic not implemented for: {role}")
                         continue
-
+                    
                     users.append(user)
+                    
                 except KeyError as e:
                     print(f"Missing field in {role}.csv: {e}")
                 except ValueError as e:
@@ -235,7 +235,7 @@ class UserLoader:
                 except Exception as e:
                     print(f"Unexpected error while creating user: {e}")
 
-            return users
+            return users  # Return only users for the requested role
         except FileNotFoundError:
             print(f"No user credentials file found for role: {role}.")
         except pd.errors.EmptyDataError:
@@ -253,12 +253,17 @@ class UserLoader:
         """Load users for all roles and return them as a dictionary with roles as keys."""
         roles = UserLoader.role_factory_map.keys()
         all_users = {}
-        
         for role in roles:
             users = UserLoader.load_users(role)
-            if users:
+            if users and role.lower() == "patient":
+                all_users[role] = users_patients
+
+            elif users:
                 all_users[role] = users
+
             else:
                 print(f"No users found for role: {role}.")
+
+
                 
         return all_users
