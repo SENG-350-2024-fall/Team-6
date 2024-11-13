@@ -182,6 +182,9 @@ class SystemAdministrator(SystemAdmin):
         print("Checking for software updates....")
         time.sleep(2)
         print("System software is already updated.")
+        time.sleep(2)
+        input("\nPress Enter to go back to the Dashboard...")
+
 
     def perform_security_check(self):
         print("Starting security check...")
@@ -217,6 +220,8 @@ class SystemAdministrator(SystemAdmin):
         print("Data integrity check passed successfully.")
         time.sleep(2)
         print("System audit completed successfully.")
+        time.sleep(2)
+        input("\nPress Enter to go back to the Dashboard...")
 
     def __str__(self):
         return f"System Administrator: {self.username}"
