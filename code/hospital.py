@@ -45,7 +45,7 @@ class Hospital:
                     self.edCapacity = int(row["capacity"])
                     self.currentEDLoad = int(row["currentEDLoad"])
                     self.location = row["location"]
-                    break 
+                    break
         except (FileNotFoundError, KeyError, ValueError) as e:
             print(f"Error loading hospital data")
 
@@ -61,7 +61,7 @@ class Hospital:
 
     def incrementED(self):
         # Increment the current ED capacity by 1 if it's below maximum.
-        if self.currentEDLoad < self.capacity:
+        if self.currentEDLoad < self.edCapacity:
             self.currentEDLoad += 1
             self._save_to_csv()
             print(f"Current ED capacity incremented to {self.currentEDLoad}.") #notification
