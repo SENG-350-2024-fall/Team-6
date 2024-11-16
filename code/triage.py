@@ -2,6 +2,7 @@ import pandas as pd
 from csv import writer
 from datetime import date
 import warnings
+from user import UserLoader
 
 warnings.filterwarnings("ignore")
 
@@ -67,14 +68,29 @@ class Triage:
 
     def __init__(self):
         self.patients = []
-        self.nurses = []
         self.triage_outcome = "Pending Nurse's Report"
         self.priority = "Low"
         self.triage_type = "Zoom"
         self.date = date.today()
         self.patient_info = {"Name": "John Doe", "Mode": self.triage_type, "Priority": self.priority}
-        self.nurse_info = {"Name": "Nurse Smith", "Mode": self.triage_type}
-        return
+        self.nurse_info = self.assign_available_nurse()
+
+    def assign_available_nurse(self):
+        """Assigns the triage to the nurse who is available and has the fewest assigned patients."""
+        nurses = UserLoader.load_users("nurse")
+        available_nurses = [nurse for nurse in nurses if nurse.available and nurse.triage_ready]
+        if not available_nurses:
+            print("No nurses are available for triage.")
+            return None
+
+        # Find the nurse with the least assigned patients
+        selected_nurse = min(available_nurses, key=lambda nurse: len(nurse.assigned_patients))
+        self.nurse_info = {"Name": selected_nurse.name, "Mode": self.triage_type}
+        
+        # Update the nurse's assigned patients
+        selected_nurse.add_patient(self.patient_info["Name"])
+        selected_nurse.notifications.add_notification("New Triage to conduct")
+        print(f"Triage assigned to Nurse {selected_nurse.name}.")
 
     def set_patient_info(self, patient_info):
         self.patient_info = patient_info

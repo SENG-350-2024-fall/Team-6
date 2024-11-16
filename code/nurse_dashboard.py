@@ -3,6 +3,7 @@ import pandas as pd
 import notification
 from user import Nurse, UserLoader, NurseFactory
 from appointment import Appointment
+from triage import Triage
 
 def run_nurse_portal(nurse):
     """Runs the nurse portal after a successful login."""
@@ -43,25 +44,40 @@ def load_nurse_data(nurse):
 def update_nurse_data(nurse):
     """Updates the nurse's information in nurse.csv using data from the Nurse object."""
     try:
+        
         # Load the CSV
         nurses_df = pd.read_csv("nurse.csv")
         
         # Find the nurse by username
         nurse_index = nurses_df.index[nurses_df["Username"] == nurse.username].tolist()
+        
         if not nurse_index:
             print(f"No record found for nurse {nurse.username}. Cannot update.")
             return
         
-        # Update fields
+        # Update fields with checks for empty values
         nurse_index = nurse_index[0]
-        nurses_df.at[nurse_index, "AssignedPatients"] = ";".join(nurse.assigned_patients)
+        
+        # Handle assigned patients (ensure it's not None)
+        nurses_df.at[nurse_index, "AssignedPatients"] = ";".join(patient['Name'] for patient in nurse.assigned_patients) if nurse.assigned_patients else ""
+
+        
+        # Update availability and triage readiness
         nurses_df.at[nurse_index, "Availability"] = nurse.available
         nurses_df.at[nurse_index, "TriageReady"] = nurse.triage_ready
-        nurses_df.at[nurse_index, "Notifications"] = ";".join([notif['message'] for notif in nurse.notifications.notifications])
-
+        
+        
+        # # Handle notifications (ensure it's not None)
+        if nurse.notifications and nurse.notifications.notifications:
+            nurses_df.at[nurse_index, "Notifications"] = ";".join([notif['message'] for notif in nurse.notifications.notifications if isinstance(notif, dict) and 'message' in notif]) 
+        else:
+            nurses_df.at[nurse_index, "Notifications"] = ""
+        
+        
         # Save back to CSV
         nurses_df.to_csv("nurse.csv", index=False)
-        print(f"Nurse {nurse.username}'s information updated successfully.")
+
+
     except FileNotFoundError:
         print("nurse.csv file not found.")
     except Exception as e:
@@ -102,6 +118,7 @@ def handle_task_selection(choice, tasks, nurse):
     if choice == '14':
         if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
             print("Logging out...")
+            update_nurse_data(nurse)
             return False
     elif choice in tasks:
         tasks[choice]()
@@ -115,8 +132,8 @@ def nurse_dashboard(nurse):
     tasks = {
         '1': nurse.notifications.view_notifications,
         '2': lambda: view_assigned_patients_details(nurse),
-        '3': conduct_triage,
-        '4': check_shifts,
+        '3': lambda: conduct_triage(nurse),
+        '4': lambda: check_shifts(nurse),
         '5': lambda: schedule_appointment(nurse),
         '6': lambda: view_scheduled_appointments(nurse),
         '7': lambda: view_patient_records(nurse),
@@ -351,9 +368,78 @@ def log_patient_vitals(nurse):
     except Exception as e:
         print(f"An unexpected error occurred while logging vitals: {e}. Please try again.")
 
-# Placeholder functions for to be developed features
-def conduct_triage():
-    print("Conducting triage...")
+def conduct_triage(nurse):
+    """Conducts triage for a selected patient."""
+    print("\n--- Conduct Triage ---")
+    
+    # Select a patient
+    patient_name = get_patient_name(nurse)
+    if not patient_name:
+        return  # Exit if no valid patient name is returned
+    
+    # Retrieve patient information
+    patient_info = next((p for p in nurse.assigned_patients if p["Name"] == patient_name), None)
+    if not patient_info:
+        print(f"Patient '{patient_name}' not found.")
+        return
+    
+    # Display current vitals and information
+    print(f"\n--- Current Information for {patient_name} ---")
+    if patient_name in nurse.vitals_dict:
+        vitals = nurse.vitals_dict[patient_name]["vitals"]
+        for key, value in vitals.items():
+            print(f"{key.replace('_', ' ').capitalize()}: {value}")
+    else:
+        print("No vitals logged for this patient.")
+    
+    print(f"Reason: {patient_info.get('Reason', 'Not provided')}")
+    
+    # Assign a priority based on assessment
+    print("\nAssign Priority Levels: 1 (Critical), 2 (Urgent), 3 (Non-Urgent)")
+    while True:
+        try:
+            priority = int(input(f"Enter priority for {patient_name} (1-3): ").strip())
+            if priority not in [1, 2, 3]:
+                print("Invalid priority. Please enter 1, 2, or 3.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input. Please enter a number (1, 2, or 3).")
+    
+    # Update the patient's priority
+    patient_info["Priority"] = priority
+    print(f"Priority for {patient_name} set to {priority}.")
 
-def check_shifts():
-    print("Checking shifts...")
+    # Optionally log a notification
+    nurse.notifications.add_notification(
+        f"Triage conducted for {patient_name}. Priority set to {priority}."
+    )
+
+def check_shifts(nurse):
+    """Displays the shift schedule for the logged-in nurse or all nurses."""
+    try:
+        # Load the nurses data from the CSV
+        nurses_df = pd.read_csv("nurse.csv")
+        
+        # Find the nurse by username
+        nurse_row = nurses_df[nurses_df["Username"] == nurse.username]
+        if nurse_row.empty:
+            print(f"No shift information found for nurse {nurse.username}.")
+            return
+
+        # Display the shift of the logged-in nurse
+        nurse_shift = nurse_row["Shift"].values[0]
+        print(f"\n--- {nurse.username}'s Shift ---")
+        print(f"Shift: {nurse_shift}")
+
+        # Optionally, show shifts of all nurses (if desired)
+        view_all_shifts = input("Do you want to view shifts of all nurses? (y/n): ").strip().lower()
+        if view_all_shifts == 'y':
+            print("\n--- All Nurses' Shifts ---")
+            for idx, row in nurses_df.iterrows():
+                print(f"{row['Username']}: {row['Shift']}")
+        
+    except FileNotFoundError:
+        print("nurse.csv file not found.")
+    except Exception as e:
+        print(f"An error occurred while checking the shifts: {e}")
