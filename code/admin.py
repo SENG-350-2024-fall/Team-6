@@ -371,19 +371,67 @@ def manage_user_accounts(admin):
     print(action_selected)
     if action_selected == 'add':
         user = input("Enter the user's name: ").strip()
-        role = input("Enter the user's role: ").strip().lower()
-        admin.add_user_account(user, role)
+        print("Different role Types:\n")
+        print("""\
+    1.  Doctors
+    2.  Patients
+    3.  Nurse
+    4.  ED Staff
+    5.  System Admin""")
+        
+        roles = {
+        "1": "doctor",
+        "2": "patient",
+        "3": "nurse",
+        "4": "ed_staff",
+        "5": "system_administrator"
+    }
+        role_type = input("Enter the user's role: ").strip().lower()
+        role_selected = roles.get(role_type)
+        admin.add_user_account(user, role_selected)
     elif action_selected == 'update':
         name = input("Enter the user's current name: ").strip()
         username = input("Enter user's current username: ").strip()
-        role = input("Enter the user's role: ").strip().lower()
+        print("Different role Types:\n")
+        print("""\
+    1.  Doctors
+    2.  Patients
+    3.  Nurse
+    4.  ED Staff
+    5.  System Admin""")
+        
+        roles = {
+        "1": "doctor",
+        "2": "patient",
+        "3": "nurse",
+        "4": "ed_staff",
+        "5": "system_administrator"
+    }
+        role_type = input("Enter the user's role: ").strip().lower()
+        role_selected = roles.get(role_type)
 
-        admin.update_user_account(name,username,role)
+        admin.update_user_account(name,username,role_selected)
     elif action_selected == 'remove':
         name = input("Enter the user's name: ").strip()
         username = input("Enter username: ").strip()
-        role = input("Enter the user's role: ").strip().lower()
-        admin.remove_user_account(name,username,role)
+        print("Different role Types:\n")
+        print("""\
+    1.  Doctors
+    2.  Patients
+    3.  Nurse
+    4.  ED Staff
+    5.  System Admin""")
+        
+        roles = {
+        "1": "doctor",
+        "2": "patient",
+        "3": "nurse",
+        "4": "ed_staff",
+        "5": "system_administrator"
+    }
+        role_type = input("Enter the user's role: ").strip().lower()
+        role_selected = roles.get(role_type)
+        admin.remove_user_account(name,username,role_selected)
     else:
         print("Invalid action. Please try again.")
 
