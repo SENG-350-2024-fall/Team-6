@@ -255,10 +255,7 @@ class UserLoader:
         all_users = {}
         for role in roles:
             users = UserLoader.load_users(role)
-            if users and role.lower() == "patient":
-                all_users[role] = users_patients
-
-            elif users:
+            if users:
                 all_users[role] = users
 
             else:

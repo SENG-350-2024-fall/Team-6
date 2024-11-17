@@ -90,7 +90,6 @@ class Triage:
         # Update the nurse's assigned patients
         selected_nurse.add_patient(self.patient_info["Name"])
         selected_nurse.notifications.add_notification("New Triage to conduct")
-        print(f"Triage assigned to Nurse {selected_nurse.name}.")
 
     def set_patient_info(self, patient_info):
         self.patient_info = patient_info
