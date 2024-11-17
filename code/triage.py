@@ -85,11 +85,12 @@ class Triage:
 
         # Find the nurse with the least assigned patients
         selected_nurse = min(available_nurses, key=lambda nurse: len(nurse.assigned_patients))
-        self.nurse_info = {"Name": selected_nurse.name, "Mode": self.triage_type}
+        nurse_info = {"Name": selected_nurse.name, "Mode": self.triage_type}
         
         # Update the nurse's assigned patients
         selected_nurse.add_patient(self.patient_info["Name"])
         selected_nurse.notifications.add_notification("New Triage to conduct")
+        return nurse_info
 
     def set_patient_info(self, patient_info):
         self.patient_info = patient_info

@@ -118,7 +118,7 @@ def handle_task_selection(choice, tasks, nurse):
     if choice == '14':
         if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
             print("Logging out...")
-            update_nurse_data(nurse)
+            # update_nurse_data(nurse)
             return False
     elif choice in tasks:
         tasks[choice]()
@@ -385,6 +385,11 @@ def conduct_triage(nurse):
         print(f"Patient '{patient_name}' not found.")
         return
     
+    patients = UserLoader.load_users("patient")
+    for patient in patients:
+        if patient.name == patient_name:
+            pt = patient
+    
     # Display current vitals and information
     print(f"\n--- Current Information for {patient_name} ---")
     if patient_name in nurse.vitals_dict:
@@ -415,6 +420,8 @@ def conduct_triage(nurse):
     nurse.notifications.add_notification(
         f"Triage conducted for {patient_name}. Priority set to {priority}."
     )
+    pt.notifications.add_notification(f"Triage been performed. Priority defined as: {priority}")
+
 
 def check_shifts(nurse):
     """Displays the shift schedule for the logged-in nurse or all nurses."""
