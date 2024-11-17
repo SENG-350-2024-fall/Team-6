@@ -153,8 +153,8 @@ class UpdarInfo:
         username = input("\nPlease Input Your New Username:  \n")
         return username
     def update_password(self):
-        passwod = input("\nPlease Input Your New Password:  \n")
-        return password
+        passw = input("\nPlease Input Your New Password:  \n")
+        return passw
     def update_phone_number(self):
         phone_num = input("\nPlease Input Your New Phone#:  \n")
         return phone_num
@@ -201,20 +201,12 @@ class Patient:
             )
 
             ## Users_patients list from users.py
-            patients = UserLoader.load_users("patient")
-            users_patients.extend(patients)
-            users_patients.extend([user_new])
-            
-            all_patients = UserLoader.load_all_users()
+            users_patients.append(user_new)
+            UserLoader.load_all_users()
 
-            return all_patients
+            return
            
         elif status == "2":
-
-            patients = UserLoader.load_users("patient")
-            users_patients.extend(patients)
-
-            UserLoader.load_all_users()
 
             print("\nPlease Login First\n")
             login("patient")
