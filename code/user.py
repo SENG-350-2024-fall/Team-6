@@ -253,11 +253,16 @@ class UserLoader:
         """Load users for all roles and return them as a dictionary with roles as keys."""
         roles = UserLoader.role_factory_map.keys()
         all_users = {}
+        
         for role in roles:
             users = UserLoader.load_users(role)
-            if users:
+            if users and role.lower() == "patient":
+                all_users[role] = users_patients
+                all_users[role].extend(users)
+                
+            elif users:
                 all_users[role] = users
-
+                
             else:
                 print(f"No users found for role: {role}.")
 
