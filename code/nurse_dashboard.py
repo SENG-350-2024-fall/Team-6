@@ -296,6 +296,8 @@ def schedule_appointment(nurse):
         )
         print(f"Appointment scheduled successfully for {patient_name} with Dr. {selected_doctor.name} on {appointment_date_time}.")
         nurse.notifications.add_notification(f"Patient {patient_name} assigned to Dr. {selected_doctor.name}.")
+        discharge_patient(nurse, selected_patient)
+
     except ValueError as e:
         print(f"Error scheduling appointment: {e}")
 
@@ -410,7 +412,6 @@ def conduct_triage(nurse):
     patient_info["Priority"] = priority
     print(f"Priority for {patient_name} set to {priority}.")
 
-    # Optionally log a notification
     nurse.notifications.add_notification(
         f"Triage conducted for {patient_name}. Priority set to {priority}."
     )
