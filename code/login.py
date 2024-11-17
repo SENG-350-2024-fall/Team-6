@@ -1,6 +1,7 @@
 import os
 import time
 from data_stores import all_users  # Import all_users from data_stores
+import getpass
 
 login_check = 0
 
@@ -27,7 +28,7 @@ def login(role):
     Prompt for login credentials and verify against all_users data.
     """
     username = input("Enter your username: ")
-    password = input("Enter your password: ")
+    password = getpass.getpass("Enter your password: ")
 
 
     user = check_credentials(role, username, password)
