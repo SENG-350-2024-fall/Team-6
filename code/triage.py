@@ -89,7 +89,7 @@ class Triage:
         
         # Update the nurse's assigned patients
         selected_nurse.add_patient(self.patient_info["Name"])
-        selected_nurse.notifications.add_notification("New Triage to conduct")
+        selected_nurse.notifications.add_notification_for_observer("New Triage to conduct", selected_nurse.username)
         return nurse_info
 
     def set_patient_info(self, patient_info):

@@ -1,4 +1,4 @@
 Name,Age,Address,Phone,Username,Password,Availability,TriageReady,AssignedPatients,Notifications,Shift
 Carol Lee,34,123 Maple St,555-1234,nurse_carol,password,True,False,Emily Brown;Ryan White,"Patient Liam Fox has been removed from your care.",Day
-Alice Smith,28,456 Oak Ave,555-5678,nurse_alice,password,True,True,"John Doe;Jack Doe","Patient John Doe has been assigned;Requested additional supplies",Night
+Alice Smith,28,456 Oak Ave,555-5678,nurse_alice,password,True,True,"John Doe;Jack Doe","Patient Jenna Dove has been discharged;Requested additional supplies",Night
 Bob Johnson,40,789 Pine Rd,555-9876,nurse_bob,password,False,True,,"Mandatory training session",Evening

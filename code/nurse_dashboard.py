@@ -22,7 +22,8 @@ def run_nurse_portal(nurse):
             print("Error loading nurse dashboard.")
 
 if __name__ == "__main__":
-    run_nurse_portal("Carol Lee")
+    run_nurse_portal(Nurse("Carol Lee"))  # Example of passing a Nurse object
+
  
 
 #CSV Management
@@ -118,7 +119,7 @@ def handle_task_selection(choice, tasks, nurse):
     if choice == '14':
         if input("Do you want to logout? (y/n): ").strip().lower() == 'y':
             print("Logging out...")
-            # update_nurse_data(nurse)
+            update_nurse_data(nurse)
             return False
     elif choice in tasks:
         tasks[choice]()
@@ -260,14 +261,18 @@ def schedule_appointment(nurse):
     """Assigns a patient to a doctor and schedules an appointment."""
     patients = UserLoader.load_users("patient")  # Load the list of patients
     patient_name = get_patient_name(nurse)
+    
     # Find the patient by name
     selected_patient = next((p for p in patients if p.name == patient_name), None)
     if not selected_patient:
         print(f"Patient '{patient_name}' not found.")
         return
 
-    # Load and list available doctors
-    doctors = UserLoader.load_users("doctor")
+    # Load and list available doctors (only show those who are available)
+    doctors = [doctor for doctor in UserLoader.load_users("doctor") if doctor.available == True]
+    if not doctors:
+        print("No available doctors at the moment.")
+        return
     print("\nAvailable Doctors:")
     for i, doctor in enumerate(doctors):
         print(f"{i+1}. {doctor.name} - Specialization: {doctor.specialization}")
@@ -285,21 +290,31 @@ def schedule_appointment(nurse):
         return
 
     # Schedule appointment
-    appointment_date_time = input("Enter appointment date and time (e.g., YYYY-MM-DD HH:MM): ").strip()
-    try:
-        appointment = Appointment.schedule(
-            patient_username=selected_patient.username,
-            doctor_username=selected_doctor.username,
-            date_time=appointment_date_time,
-            patient_list=patients,
-            doctor_list=doctors
-        )
-        print(f"Appointment scheduled successfully for {patient_name} with Dr. {selected_doctor.name} on {appointment_date_time}.")
-        nurse.notifications.add_notification(f"Patient {patient_name} assigned to Dr. {selected_doctor.name}.")
-        discharge_patient(nurse, selected_patient)
+    while True:
+        appointment_date_time = input("Enter appointment date and time (e.g., YYYY-MM-DD HH:MM): ").strip()
+        
+        # Check if the appointment time is already booked
+        if any(appointment.date_time == appointment_date_time and appointment.doctor.username == selected_doctor.username
+               for appointment in Appointment.all_appointments):
+            print("This appointment time is already taken. Please choose a different date and time.")
+            continue  # Ask for a new time if there is a conflict
+        
+        try:
+            appointment = Appointment.schedule(
+                patient_username=selected_patient.username,
+                doctor_username=selected_doctor.username,
+                date_time=appointment_date_time,
+                patient_list=patients,
+                doctor_list=doctors
+            )
+            print(f"Appointment scheduled successfully for {patient_name} with Dr. {selected_doctor.name} on {appointment_date_time}.")
+            nurse.notifications.add_notification(f"Patient {patient_name} assigned to Dr. {selected_doctor.name}.")
+            nurse.notifications.add_notification_for_observer(f"New appointment scheduled for {patient_name} on {appointment_date_time}", selected_doctor.username)
+            discharge_patient(nurse, selected_patient)
+            break  # Break the loop if appointment is successfully scheduled
 
-    except ValueError as e:
-        print(f"Error scheduling appointment: {e}")
+        except ValueError as e:
+            print(f"Error scheduling appointment: {e}")
 
 def view_scheduled_appointments(nurse):
     """Displays all scheduled appointments for the nurse."""
@@ -392,14 +407,23 @@ def conduct_triage(nurse):
     
     # Display current vitals and information
     print(f"\n--- Current Information for {patient_name} ---")
+    # Check if vitals are logged and not None for all fields
     if patient_name in nurse.vitals_dict:
         vitals = nurse.vitals_dict[patient_name]["vitals"]
-        for key, value in vitals.items():
-            print(f"{key.replace('_', ' ').capitalize()}: {value}")
+        if all(value is not None for value in vitals.values()):
+            for key, value in vitals.items():
+                print(f"{key.replace('_', ' ').capitalize()}: {value}")
+        else:
+            print("Vitals are incomplete or missing. Please log vitals first.")
     else:
         print("No vitals logged for this patient.")
     
-    print(f"Reason: {patient_info.get('Reason', 'Not provided')}")
+    print(f"Previously Diagnosed Diseases: {patient_info.get('Diagnosed diseases')}")
+    print(f"Reason for triage: {patient_info.get('Reason', 'Not provided')}")
+    answers = patient_info.get('Answers').strip('[').strip(']').split(',')
+    print(f"Symptom length: {answers[1]}")
+    print(f"Has symptom been experienced before? (y/n): {answers[2]}")
+    print(f"Significant affect to daily life? (y/n): {answers[3]}")
     
     # Assign a priority based on assessment
     print("\nAssign Priority Levels: 1 (Critical), 2 (Urgent), 3 (Non-Urgent)")
@@ -415,13 +439,33 @@ def conduct_triage(nurse):
     
     # Update the patient's priority
     patient_info["Priority"] = priority
+
+    # Update patient.csv with new priority for the patient
+    try:
+        patients_df = pd.read_csv("patient.csv")
+        patient_index = patients_df.index[patients_df["Name"] == patient_name].tolist()
+        if patient_index:
+            patients_df.at[patient_index[0], "Priority"] = priority
+            patients_df.to_csv("patient.csv", index=False)
+            print(f"Priority for {patient_name} updated in patient.csv.")
+        else:
+            print(f"Could not find patient '{patient_name}' in patient.csv to update priority.")
+    except FileNotFoundError:
+        print("patient.csv file not found.")
+    except Exception as e:
+        print(f"An error occurred while updating patient.csv: {e}")
+
     print(f"Priority for {patient_name} set to {priority}.")
 
     nurse.notifications.add_notification(
         f"Triage conducted for {patient_name}. Priority set to {priority}."
     )
-    pt.notifications.add_notification(f"Triage been performed. Priority defined as: {priority}")
 
+    # Prompt to schedule an appointment after triage
+    apt = input("Schedule Appointment? (y/n): ").strip().lower()
+    if apt == 'y':
+        schedule_appointment(nurse)
+    nurse.notifications.add_notification_for_observer(f"Triage has been performed. Priority defined as: {priority}", pt.username)
 
 def check_shifts(nurse):
     """Displays the shift schedule for the logged-in nurse or all nurses."""

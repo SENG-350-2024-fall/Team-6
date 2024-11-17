@@ -14,7 +14,8 @@ class User(notification.Observer, ABC):
         self.phone_number = phone_number
         self.username = username
         self.password = password
-        self.notifications = notification.Notification()
+        # Each user has their own Notification instance with their username
+        self.notifications = notification.Notification(self.username)
         self.notifications.add_observer(self)
 
     @abstractmethod
