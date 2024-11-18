@@ -3,7 +3,7 @@ import notification
 import hospital
 import time
 from user import Patient
-from data_stores import all_users
+from data_stores import all_users, UserLoader
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -11,7 +11,6 @@ def clear_terminal():
 class EdDashboard:
     def __init__(self):
         self.hospital = hospital.Hospital()
-        self.notifications = notification.Notification()
 
     def view_ed_capacity(self):
         current_load = self.hospital.getCurrentEDCapacity()
@@ -67,21 +66,18 @@ def assign_patient_to_nurse():
     patient = next((p for p in patients if p.username.lower() == patient_username.lower()), None)
 
     if patient:
-        print("Available Nurses:")
-        for i, nurse in enumerate(nurses, 1):
-            print(f"{i}. {nurse.name}")  # Access the nurse's name
-        nurse_choice = int(input("Enter the number corresponding to the nurse:\n"))
+        nurses = UserLoader.load_users("nurse")
+        available_nurses = [nurse for nurse in nurses if nurse.available and nurse.triage_ready]
+        if not available_nurses:
+            print("No nurses are available for triage.")
+            return None
 
-        if 1 <= nurse_choice <= len(nurses):
-            patient.assigned_nurse = nurses[nurse_choice - 1].name  # Assign nurse by name
-            print(f"Assigned {nurses[nurse_choice - 1].name} to {patient.username}.")
-            time.sleep(2)
-            return
-        else:
-            print("Invalid nurse selection.")
-            time.sleep(2)
-            return
-    print("Patient not found.")
+        # Find the nurse with the least assigned patients
+        selected_nurse = min(available_nurses, key=lambda nurse: len(nurse.assigned_patients))
+
+        # Update the nurse's assigned patients
+        selected_nurse.add_patient(patient.name)
+        selected_nurse.notifications.add_notification_for_observer("New Triage to conduct", selected_nurse.username)
     time.sleep(2)
 
 def list_all_patients():
