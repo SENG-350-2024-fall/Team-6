@@ -58,12 +58,14 @@ class RegisterForTriage(TriageStrategy):
             return
         
         for i in range(len(data)):
-            if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
+            if data["Username"].iloc[i] == username:
                 print("\nYou are Already Registered!!\n")
                 Patient().initiate_actions()
                 return
                 
         ## Notifying Patient and Nurse
+        curr_patient = {"Name": name, "Mode": tr.get_mode(), "Priority": tr.get_priority()}
+        tr.set_patient_info(curr_patient)
         tr.notify_patient_nurse()
         ##
 
@@ -115,12 +117,12 @@ class UndergoTriage(TriageStrategy):
         registered = False
         
         for i in range(len(data)):
-            if data["Username"].iloc[i] == username and data["Name"].iloc[i] == name:
+            if data["Username"].iloc[i] == username:
                 
                 data["Answers"].iloc[i] = answers
                 data["Priority"].iloc[i] = tr.get_priority()
                 data["Mode"].iloc[i] = tr.get_mode()
-                data["Nurse"].iloc[i] = tr.get_nurse_info()['Name']
+                data["Nurse"].iloc[i] = tr.get_nurse_info()["Name"]
 
                 # Write to CSV file
                 data.to_csv("patient.csv", sep=",", index=False, encoding="utf-8")
