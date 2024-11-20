@@ -1,6 +1,7 @@
 import csv
 import os
 from notification import Notification
+from data_stores import all_users
 
 # Creating hospital class using singleton pattern
 class Hospital:
@@ -78,10 +79,16 @@ class Hospital:
             return True
         print("Emergency department capacity is already at zero.")
         return False
+    
+    def get_current_patient_count(self):
+        # Dynamically fetch the current number of patients from UserLoader
+        global all_users
+        patients = all_users.get("patient", [])
+        return len(patients)
 
     def getCurrentEDCapacity(self):
         # Return the current emergency department capacity.
-        return self.currentEDLoad
+        return self.get_current_patient_count()
 
     def setName(self, name):
         # Set the hospital's name and save to hospital.csv
