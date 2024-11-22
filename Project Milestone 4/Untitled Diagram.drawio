@@ -50,13 +50,73 @@
             <mxPoint x="470" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="q27jSjWM-QuiwaOQiHTf-11" value="Staff &lt;br&gt;(Nurse/Doctor/ED Staff/System Admin)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" width="160" height="80" as="geometry" />
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-13" value="3.0&lt;div&gt;ED Required/Not Required&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="q27jSjWM-QuiwaOQiHTf-12" value="Login Credentials" style="endArrow=classic;html=1;rounded=0;entryX=0.44;entryY=-0.01;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-11" target="q27jSjWM-QuiwaOQiHTf-2">
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-14" value="Triage results" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-4" target="q27jSjWM-QuiwaOQiHTf-13">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="150" y="80" as="sourcePoint" />
-            <mxPoint x="200" y="30" as="targetPoint" />
+            <mxPoint x="160" y="420" as="sourcePoint" />
+            <mxPoint x="210" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-15" value="4.0&amp;nbsp;&lt;div&gt;Appointment&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="520" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-16" value="ED Required" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-13" target="q27jSjWM-QuiwaOQiHTf-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="50" y="650" as="sourcePoint" />
+            <mxPoint x="100" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-17" value="Nurse" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-18" value="Schedule Appointment" style="endArrow=classic;html=1;rounded=0;entryX=0.017;entryY=0.342;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-17" target="q27jSjWM-QuiwaOQiHTf-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-310" y="630" as="sourcePoint" />
+            <mxPoint x="-260" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-19" value="Doctors" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-440" y="610" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-20" value="Patient Appointment&lt;div&gt;Notification&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-15" target="q27jSjWM-QuiwaOQiHTf-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-230" y="700" as="sourcePoint" />
+            <mxPoint x="-180" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-21" value="Appointment confirmation notification&amp;nbsp;&lt;br&gt;+&lt;br&gt;Required details" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.433;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-15" target="q27jSjWM-QuiwaOQiHTf-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-180" y="460" as="sourcePoint" />
+            <mxPoint x="-130" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-22" value="ED Staff" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-23" value="Notify ED staff" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-15" target="q27jSjWM-QuiwaOQiHTf-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-50" y="540" as="sourcePoint" />
+            <mxPoint y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-24" value="5.0&amp;nbsp;&lt;div&gt;Alternative Methods&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="510" y="585" width="95" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-25" value="ED Not Required" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-13" target="q27jSjWM-QuiwaOQiHTf-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="720" as="sourcePoint" />
+            <mxPoint x="420" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-26" value="Nurse" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="690" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q27jSjWM-QuiwaOQiHTf-27" value="Suggest treatments/medicines/clinics" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="q27jSjWM-QuiwaOQiHTf-26" target="q27jSjWM-QuiwaOQiHTf-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="740" as="sourcePoint" />
+            <mxPoint x="450" y="690" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
