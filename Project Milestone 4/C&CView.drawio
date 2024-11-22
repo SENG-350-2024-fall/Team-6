@@ -7,104 +7,100 @@
         <mxCell id="1" parent="0" />
 
         <!-- GUI System -->
-        <mxCell id="gui_component" value="GUI System" style="rounded=1;whiteSpace=wrap;fillColor=#8eb5e0;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="gui_component_1" value="GUI System" style="rounded=1;whiteSpace=wrap;fillColor=#8eb5e0;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="60" y="60" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Login System -->
-        <mxCell id="login_component" value="Login System" style="rounded=1;whiteSpace=wrap;fillColor=#ff6b6b;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="login_component_2" value="Login System" style="rounded=1;whiteSpace=wrap;fillColor=#ff6b6b;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="240" y="60" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- User Management -->
-        <mxCell id="user_management_component" value="User Management" style="rounded=1;whiteSpace=wrap;fillColor=#f0a202;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="user_management_component_3" value="User Management" style="rounded=1;whiteSpace=wrap;fillColor=#f0a202;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="420" y="60" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Notification System -->
-        <mxCell id="notification_component" value="Notification System" style="rounded=1;whiteSpace=wrap;fillColor=#3b8d99;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="notification_component_4" value="Notification System" style="rounded=1;whiteSpace=wrap;fillColor=#3b8d99;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="60" y="180" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Patient Management -->
-        <mxCell id="patient_component" value="Patient Management" style="rounded=1;whiteSpace=wrap;fillColor=#f48fb1;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="patient_component_5" value="Patient Management" style="rounded=1;whiteSpace=wrap;fillColor=#f48fb1;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="240" y="180" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Triage System -->
-        <mxCell id="triage_component" value="Triage System" style="rounded=1;whiteSpace=wrap;fillColor=#b39ddb;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="triage_component_6" value="Triage System" style="rounded=1;whiteSpace=wrap;fillColor=#b39ddb;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="420" y="180" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Doctor Dashboard -->
-        <mxCell id="doctor_dashboard" value="Doctor Dashboard" style="rounded=1;whiteSpace=wrap;fillColor=#81c784;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="doctor_dashboard_7" value="Doctor Dashboard" style="rounded=1;whiteSpace=wrap;fillColor=#81c784;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="60" y="320" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Nurse Dashboard -->
-        <mxCell id="nurse_dashboard" value="Nurse Dashboard" style="rounded=1;whiteSpace=wrap;fillColor=#64b5f6;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="nurse_dashboard_8" value="Nurse Dashboard" style="rounded=1;whiteSpace=wrap;fillColor=#64b5f6;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="240" y="320" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- ED Staff Dashboard -->
-        <mxCell id="ed_staff_dashboard" value="ED Staff Dashboard" style="rounded=1;whiteSpace=wrap;fillColor=#ffcc80;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="ed_staff_dashboard_9" value="ED Staff Dashboard" style="rounded=1;whiteSpace=wrap;fillColor=#ffcc80;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="420" y="320" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- System Administrator -->
-        <mxCell id="system_admin" value="System Administrator" style="rounded=1;whiteSpace=wrap;fillColor=#ffab91;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="system_admin_10" value="System Administrator" style="rounded=1;whiteSpace=wrap;fillColor=#ffab91;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="600" y="320" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Appointment Management -->
-        <mxCell id="appointment_component" value="Appointment Management" style="rounded=1;whiteSpace=wrap;fillColor=#aed581;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="appointment_component_11" value="Appointment Management" style="rounded=1;whiteSpace=wrap;fillColor=#aed581;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="240" y="460" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Hospital Data Management -->
-        <mxCell id="hospital_component" value="Hospital Data Management" style="rounded=1;whiteSpace=wrap;fillColor=#90a4ae;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="hospital_component_12" value="Hospital Data Management" style="rounded=1;whiteSpace=wrap;fillColor=#90a4ae;fontSize=16;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="420" y="460" width="140" height="80" as="geometry" />
         </mxCell>
 
         <!-- Connectors -->
         <!-- GUI to Login -->
-        <mxCell id="connector_gui_login" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
+        <mxCell id="connector_gui_login_13" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
           <mxGeometry relative="1" as="geometry" />
-          <mxSourceEdge id="gui_component" />
-          <mxTargetEdge id="login_component" />
+          <mxCell id="source_gui_13" source="gui_component_1" target="login_component_2" />
         </mxCell>
 
         <!-- Login to User Management -->
-        <mxCell id="connector_login_user_management" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
+        <mxCell id="connector_login_user_management_14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
           <mxGeometry relative="1" as="geometry" />
-          <mxSourceEdge id="login_component" />
-          <mxTargetEdge id="user_management_component" />
+          <mxCell id="source_login_14" source="login_component_2" target="user_management_component_3" />
         </mxCell>
 
         <!-- Patient to Triage -->
-        <mxCell id="connector_patient_triage" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
+        <mxCell id="connector_patient_triage_15" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
           <mxGeometry relative="1" as="geometry" />
-          <mxSourceEdge id="patient_component" />
-          <mxTargetEdge id="triage_component" />
+          <mxCell id="source_patient_15" source="patient_component_5" target="triage_component_6" />
         </mxCell>
 
         <!-- Triage to Nurse -->
-        <mxCell id="connector_triage_nurse" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
+        <mxCell id="connector_triage_nurse_16" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
           <mxGeometry relative="1" as="geometry" />
-          <mxSourceEdge id="triage_component" />
-          <mxTargetEdge id="nurse_dashboard" />
+          <mxCell id="source_triage_16" source="triage_component_6" target="nurse_dashboard_8" />
         </mxCell>
 
-        <!-- Notification System to Various Dashboards -->
-        <mxCell id="connector_notification_patient" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
+        <!-- Notification System to Patient Dashboard -->
+        <mxCell id="connector_notification_patient_17" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
           <mxGeometry relative="1" as="geometry" />
-          <mxSourceEdge id="notification_component" />
-          <mxTargetEdge id="patient_component" />
+          <mxCell id="source_notification_17" source="notification_component_4" target="patient_component_5" />
         </mxCell>
-        <mxCell id="connector_notification_nurse" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
+
+        <!-- Notification System to Nurse Dashboard -->
+        <mxCell id="connector_notification_nurse_18" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;strokeColor=#000000;">
           <mxGeometry relative="1" as="geometry" />
-          <mxSourceEdge id="notification_component" />
-          <mxTargetEdge id="nurse_dashboard" />
+          <mxCell id="source_notification_18" source="notification_component_4" target="nurse_dashboard_8" />
         </mxCell>
 
       </root>
