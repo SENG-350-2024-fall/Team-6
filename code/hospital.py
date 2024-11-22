@@ -48,7 +48,7 @@ class Hospital:
                     self.location = row["location"]
                     break
         except (FileNotFoundError, KeyError, ValueError) as e:
-            print(f"Error loading hospital data")
+            print("")
 
     def updateEDCapacity(self, new_capacity):
         # Update the emergency department's maximum capacity and save to hospital.csv

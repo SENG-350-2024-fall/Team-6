@@ -82,7 +82,7 @@ def update_nurse_data(nurse):
     except FileNotFoundError:
         print("nurse.csv file not found.")
     except Exception as e:
-        print(f"An error occurred while updating the nurse data: {e}")
+        print("")
 
 def load_patient_data_for_nurse(nursename):
     try:
@@ -211,15 +211,15 @@ def discharge_patient(nurse, patient=None):
         
         # Check if the patient is in the assigned patients list
         for assigned_patient in nurse.assigned_patients:
-            print(assigned_patient['Name'])
-            print(patient)
+            #print(assigned_patient['Name'])
+            #print(patient)
             if assigned_patient['Name'] == patient:
                 # Notify and remove the patient from the assigned list
                 print(f"Patient {patient} has been discharged.")
                 nurse.remove_patient(assigned_patient)  # Assuming this method takes the patient dict
                 nurse.vitals_dict.pop(patient, None)  # Safely remove from vitals dict
                 return
-    print(f"Patient {patient} not found in the assigned list.")
+    # print(f"Patient {patient} not found in the assigned list.")
     return None
 
 def view_patient_records(nurse):

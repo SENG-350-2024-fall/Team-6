@@ -103,7 +103,7 @@ def ed_staff_dashboard(user):
     logged_in = True
     while logged_in:
         clear_terminal()
-        print(f"Welcome {user} !!\n")
+        print(f"Welcome {user.name} !!\n")
         print(" =============================")
         print("|| Welcome to the ED Staff Dashboard ||")
         print(" =============================\n")

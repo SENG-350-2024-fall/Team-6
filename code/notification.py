@@ -54,7 +54,7 @@ class Notification(Subject):
         """Send a notification to a specific user identified by their username."""
         if target_username in Notification._user_notifications:
             Notification._user_notifications[target_username].append({"message": message, "is_new": True})
-            print(f"Notification sent to {target_username}.")
+            # print(f"Notification sent to {target_username}.")
         else:
             print(f"User {target_username} does not exist.")
 
