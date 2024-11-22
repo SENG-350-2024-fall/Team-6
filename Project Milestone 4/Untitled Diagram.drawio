@@ -1,90 +1,9 @@
-<mxfile>
-  <diagram name="Updated DFD Level 1">
-    <mxGraphModel dx="1271" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="24.8.8">
+  <diagram name="Page-1" id="bhY8xR5nmjv-XzyrEy0E">
+    <mxGraphModel>
       <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-
-        <!-- Entities -->
-        <mxCell id="2" value="Patient" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="300" width="100" height="60" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="3" value="Nurse" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="500" width="100" height="60" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="4" value="ED Staff" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="750" y="50" width="100" height="60" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="5" value="System Administrator" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="750" y="300" width="120" height="60" as="geometry"/>
-        </mxCell>
-
-        <!-- Processes -->
-        <mxCell id="6" value="1.0 Login/Register" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="50" width="150" height="80" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="7" value="2.0 Virtual Triage" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="200" width="150" height="80" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="8" value="3.0 ED Required/Not Required" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="350" width="150" height="80" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="9" value="4.0 Appointment" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="450" y="500" width="150" height="80" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="10" value="5.0 Alternative Methods" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="450" y="650" width="150" height="80" as="geometry"/>
-        </mxCell>
-
-        <!-- Data Stores -->
-        <mxCell id="11" value="6.0 Status" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="450" y="50" width="100" height="60" as="geometry"/>
-        </mxCell>
-
-        <!-- Relationships / Arrows -->
-        <mxCell id="12" value="Login/Registration Details" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="2" target="6">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="13" value="View Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="6" target="11">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="14" value="Answer Virtual Triage Questions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="6" target="7">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="15" value="Assess Patient Triage Responses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="7" target="3">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="16" value="Triage Results" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="7" target="8">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="17" value="ED Required" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="8" target="4">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="18" value="ED Not Required" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="8" target="10">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="19" value="Book/Cancel Appointments" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="3" target="9">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
-        <mxCell id="20" value="Triage Follow-ups & Alternative Care" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=blockThin;" edge="1" parent="1" source="10" target="9">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
-
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
       </root>
     </mxGraphModel>
   </diagram>
