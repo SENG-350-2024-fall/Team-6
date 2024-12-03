@@ -136,7 +136,7 @@ class UndergoTriage(TriageStrategy):
             global new_users
             # Simulate answer storage for newly added/registered users
             for usn, n in new_users:
-                if (usn == username and n == name):
+                if (usn == username):
                     print("\nAnswers Are Saved Successfully!\n")
                     return
 
